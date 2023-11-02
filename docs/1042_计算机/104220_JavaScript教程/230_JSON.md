@@ -1,0 +1,152 @@
+---
+id: 4c0f4552-7dab-42c3-a8fc-845dc445e3a4
+---
+
+# JSON
+
+## 语法
+
+### 简单值
+
+```json
+// 字符串, 数值, 布尔值, null 为简单值
+// 最简单的 JSON 可以只有一个简单值
+"Hello world!" // JSON 字符串必须使用双引号
+```
+
+### 对象
+
+```json
+// 同级不能存在相同属性
+// JSON 属性名必须使用双引号
+// JSON 最后没有分号
+{
+  "name": "Nicholas",
+  "age": 29,
+  "school": {
+    "name": "Merrimack College",
+    "location": "North Andover, MA"
+  }
+}
+```
+
+### 数组
+
+```json
+[25, "hi", true] // 最简单的数组
+// 与对象连用
+[
+{
+"title": "Professional JavaScript",
+"authors": [
+"Nicholas C. Zakas",
+"Matt Frisbie"
+],
+"edition": 4,
+"year": 2017
+},
+{
+"title": "Professional JavaScript",
+"authors": [
+"Nicholas C. Zakas"
+],
+"edition": 3,
+"year": 2011
+}
+]
+```
+
+## 解析和序列化
+
+### 基础
+
+```typescript
+// stringify() 把 js 对象序列化为 JSON 字符串
+let book = {
+  title: "Professional JavaScript",
+  authors: ["Nicholas C. Zakas", "Matt Frisbie"],
+  edition: 4,
+  year: 2017,
+};
+let jsonText = JSON.stringify(book);
+// parse() 把 JSON 字符串转换为 js 对象
+// stringify() 和 parse() 连用常用于深拷贝
+let bookCopy = JSON.parse(jsonText);
+```
+
+### 序列化选项
+
+##### 过滤结果
+
+```typescript
+let book = {
+  title: "Professional JavaScript",
+  authors: ["Nicholas C. Zakas", "Matt Frisbie"],
+  edition: 4,
+  year: 2017,
+};
+// 若第二个参数为数组, 值序列化数组对应属性
+let jsonText = JSON.stringify(book, ["title", "edition"]); // 只序列化 title 和 edition 属性
+// 若第二个参数为函数, 具有 key 和 value 两个参数
+let jsonText = JSON.stringify(book, (key, value) => {
+  switch (key) {
+    case "authors":
+      return value.join(",");
+    case "year":
+      return 5000;
+    case "edition":
+      return undefined; // 返回 undefined 导致该属性被忽略
+    default:
+      return value;
+  }
+});
+```
+
+##### 字符串缩进
+
+```typescript
+// stringify() 第三个参数控制缩进
+let book = {
+  title: "Professional JavaScript",
+  authors: ["Nicholas C. Zakas", "Matt Frisbie"],
+  edition: 4,
+  year: 2017,
+};
+let jsonText = JSON.stringify(book, null, 4); // 缩进四个空格
+let jsonText = JSON.stringify(book, null, "--"); // 使用 -- 代替空格
+```
+
+##### toJSON()
+
+```typescript
+// 使用 toJSON 自定义返回结果
+let book = {
+  title: "Professional JavaScript",
+  authors: ["Nicholas C. Zakas", "Matt Frisbie"],
+  edition: 4,
+  year: 2017,
+  toJSON: function () {
+    return this.title;
+  },
+};
+let jsonText = JSON.stringify(book); // 返回 "Professional JavaScript" 字符串
+```
+
+### 解析选项
+
+```typescript
+// 接受一个函数, 具有 key, value 两个参数
+// 返回值作为对象的对应键值, 若返回 undefined, 则删除该属性
+let book = {
+  title: "Professional JavaScript",
+  authors: ["Nicholas C. Zakas", "Matt Frisbie"],
+  edition: 4,
+  year: 2017,
+  releaseDate: new Date(2017, 11, 1),
+};
+let jsonText = JSON.stringify(book);
+let bookCopy = JSON.parse(jsonText, (key, value) =>
+  key == "releaseDate" ? new Date(value) : value
+);
+alert(bookCopy.releaseDate.getFullYear());
+```
