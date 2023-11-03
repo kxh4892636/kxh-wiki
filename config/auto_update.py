@@ -58,7 +58,7 @@ def convert_chinese_symbols(root_dir: str) -> None:
             continue
 
         for file in files:
-            if not file.endswith('.md') or '.git' in cur_dir or '.obsidian' in cur_dir:
+            if not file.endswith('.md') or '1020' in cur_dir or '.git' in cur_dir or '.obsidian' in cur_dir:
                 continue
 
             file_path = os.path.join(cur_dir, file)
