@@ -167,7 +167,7 @@ console.log(secondProxy.foo);
 
 ### Proxy Considerations and Shortcomings
 
-##### ’this’ Inside a Proxy
+##### ' this'  Inside a Proxy
 
 ##### Proxies and Internal Slots
 

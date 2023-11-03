@@ -49,6 +49,42 @@ def delete_valid_images(images: list[str]) -> None:
         os.remove(image)
 
 
+def convert_chinese_symbols(root_dir: str) -> None:
+    for cur_dir, _, files in os.walk(root_dir):
+        if (cur_dir.find('wiki\\docs') == -1 and cur_dir.find('wiki\\blog') == -1):
+            continue
+
+        if 'diary' in cur_dir:
+            continue
+
+        for file in files:
+            if not file.endswith('.md') or '.git' in cur_dir or '.obsidian' in cur_dir:
+                continue
+
+            file_path = os.path.join(cur_dir, file)
+            with open(file_path, 'r+', encoding='utf8') as f:
+                text = f.read()
+                text = text.replace("，", ", ")
+                text = text.replace("。", ". ")
+                text = text.replace("！", "! ")
+                text = text.replace("？", "? ")
+                text = text.replace("；", "; ")
+                text = text.replace("：", ": ")
+                text = text.replace("“", " \"")
+                text = text.replace("”", "\" ")
+                text = text.replace("‘", " '")
+                text = text.replace("’", "' ")
+                text = text.replace("（", " (")
+                text = text.replace("）", ") ")
+                text = text.replace("【", " [")
+                text = text.replace("】", "] ")
+                text = text.replace("、", ", ")
+                f.seek(0)
+                f.truncate()
+                f.seek(0)
+                f.write(text)
+
+
 def count_note_size(root_dir: str) -> None:
     size = 0
     num = 0
@@ -99,5 +135,6 @@ if __name__ == '__main__':
 
     images = print_valid_images(dir)
     delete_valid_images(images)
+    convert_chinese_symbols(dir)
     count_note_size(dir)
     find_long_note(dir)
