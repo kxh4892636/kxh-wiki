@@ -332,7 +332,7 @@ let alpha = data[3]; // A 波段
 
 ```typescript
 imageData.data = data;
-context.putImageData(imageData, 0, 0); // 以 (0, 0) 填充 imageData
+context.putImageData(imageData, 0, 0); // 从 (0, 0) 使用 imageData 填充 context
 ```
 
 ### 合成
