@@ -220,6 +220,9 @@ pnpm add eslint-import-resolver-typescript --save-dev
 
 ##### 配置
 
+- 解决 node import 不使用 index.d.ts 问题;
+- 前端似乎不用配置;
+
 ```javascript
 module.exports = {
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
