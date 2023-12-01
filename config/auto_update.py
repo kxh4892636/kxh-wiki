@@ -1,4 +1,14 @@
 import os
+import shutil
+
+
+def copy_images(origin: str, target: str):
+    for filename in os.listdir(origin):
+        source_file = os.path.join(origin, filename)
+        destination_file = os.path.join(target, filename)
+        if os.path.exists(destination_file):
+            continue
+        shutil.copy2(source_file, destination_file)
 
 
 def print_valid_images(root_dir: str) -> list[str]:
@@ -54,11 +64,8 @@ def convert_chinese_symbols(root_dir: str) -> None:
         if (cur_dir.find('wiki\\docs') == -1 and cur_dir.find('wiki\\blog') == -1):
             continue
 
-        if 'diary' in cur_dir:
-            continue
-
         for file in files:
-            if not file.endswith('.md') or '1020' in cur_dir or '.git' in cur_dir or '.obsidian' in cur_dir:
+            if not file.endswith('.md') or '.git' in cur_dir or '.obsidian' in cur_dir:
                 continue
 
             file_path = os.path.join(cur_dir, file)
@@ -133,6 +140,8 @@ def find_long_note(root_dir: str) -> None:
 if __name__ == '__main__':
     dir = r'D:\kxh\10_wiki'
 
+    copy_images(r'D:\kxh\10_wiki\docs\1070_科研\107090_文献笔记\images',
+                r'D:\kxh\10_wiki\docs\1070_科研\107090_文献整理\images')
     images = print_valid_images(dir)
     delete_valid_images(images)
     convert_chinese_symbols(dir)
