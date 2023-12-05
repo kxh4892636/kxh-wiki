@@ -1,3 +1,6 @@
+---
+id: 20f88259-5342-476f-8911-8910d9ff507a
+---
 # process 模块
 
 ## 事件
@@ -68,8 +71,17 @@ process.connected; // IPC 通道状态
 process.env; // 环境变量
 process.exitCode; // 退出代码
 process.pid; // 进程 id
-process.platform // 系统表示
-process.ppid // 父进程 id
+process.platform; // 系统表示
+process.ppid; // 父进程 id
+process.release; // node 版本信息
+process.report; // 进程诊断报告 Report 类型
+process.stderr; // 报错流, net.Socket, Duplex stream, 若指向文件为 Writable stream
+process.stdin; // 输入流, net.Socket, Duplex stream, 若指向文件为 Writable stream
+process.stdout; // 输入流, net.Socket, Duplex stream, 若指向文件为 Writable stream
+process.title; // 进程标题
+process.uptime; // 进程执行时间 (秒)
+process.version; // node 版本
+process.versions; // node 及其依赖版本
 ```
 
 ## 方法
@@ -126,11 +138,20 @@ emitWarning("Something happened!", {
 process.getuid();
 // 有效的用户 id
 process.geteuid();
-
 // 进程组 id
 process.getgid();
 // 有效的进程组 id
 process.getegid();
+// 设置 egid
+process.setegid(id);
+// 设置 euid
+process.seteuid(id);
+// 设置 gid
+process.setgid(id);
+// 设置 Group ID
+process.setgroups(groups);
+// 设置 uid
+process.setuid(id);
 
 // process.kill(pid[, signal])
 // 杀死指定进程
@@ -150,4 +171,18 @@ console.log("scheduled");
 // start
 // scheduled
 // nextTick callback
+
+// 当前进程资源占用信息
+process.resourceUsage();
+
+// process.send(message[, sendHandle[, options]][, callback])
+// 若 IPC 通道存在, 发送信息至父进程, 触发 ChildProcess 的 message 事件
+process.send("hello");
 ```
+
+## 结束码
+
+| 结束码 | 意义                                                                           |
+| ------ | ------------------------------------------------------------------------------ |
+| 0      | 正常退出                                                                       |
+| 其他   | [非正常退出](https://nodejs.org/docs/latest-v18.x/api/process.html#exit-codes) |

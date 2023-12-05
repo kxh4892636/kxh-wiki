@@ -144,6 +144,6 @@ if __name__ == '__main__':
                 r'D:\kxh\10_wiki\docs\1070_科研\107090_文献整理\images')
     images = print_valid_images(dir)
     delete_valid_images(images)
-    convert_chinese_symbols(dir)
+    # convert_chinese_symbols(dir)
     count_note_size(dir)
     find_long_note(dir)

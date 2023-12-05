@@ -61,9 +61,10 @@ class Dummy {
 String data
 void methods()
 }
-class Flight {
-flightNumber : Integer
-departureTime : Date
+
+class Dummy {
+{field} A field (despite parentheses)
+{method} Some method
 }
 @enduml
 ```
