@@ -90,6 +90,11 @@ const config = {
         title: "KXH-WIKI",
         items: [
           {
+            to: "/docs/方法论/0d286b10-e13d-4b61-bbfd-535a59f3eed5",
+            label: "方法论",
+            position: "right",
+          },
+          {
             to: "/docs/读书笔记/毛泽东选集/05dc24c8-806f-40d6-b3d6-dda562cf8908",
             label: "读书笔记",
             position: "right",
