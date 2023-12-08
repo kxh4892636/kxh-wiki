@@ -4,7 +4,7 @@ id: b6409bf7-4517-46a9-acea-fe3c5e2e0df3
 
 # execa 教程
 
-## execa 入门
+## execa 基础
 
 ##### 安装
 
