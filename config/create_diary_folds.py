@@ -2,14 +2,14 @@
 
 # months = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
 #           7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
-# year = '2023'
+# year = '2024'
 
-# folds_path = fr"D:\kxh\10_note\1020_diary\1020{year[-2:]}_{year}"
+# folds_path = fr"D:\kxh\10_wiki\docs\1020_日记\1020{year[-2:]}_{year}"
 # if not os.path.exists(folds_path):
 #     os.mkdir(folds_path)
 
 # for month, days in months.items():
-#     file_path = fr"D:\kxh\10_note\1020_diary\1020{year[-2:]}_{year}\{year}{month:02d}.md"
+#     file_path = fr"D:\kxh\10_wiki\docs\1020_日记\1020{year[-2:]}_{year}\{year}{month:02d}.md"
 #     if os.path.exists(file_path):
 #         break
 
