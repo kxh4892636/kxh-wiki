@@ -195,6 +195,8 @@ function EditContact() {
 
 ##### preventScrollReset
 
+- 保存滚动位置状态;
+
 ```typescript
 <Link to="?tab=one" preventScrollReset={true} />
 ```
