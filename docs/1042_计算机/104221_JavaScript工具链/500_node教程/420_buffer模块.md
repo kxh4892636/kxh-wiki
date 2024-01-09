@@ -8,7 +8,7 @@ id: 4e2da8c8-7675-444a-bf0f-6173d69323f2
 
 ##### 基本单元
 
-- Buffer 是一个 Unit8Array 的子集;
+- Buffer 是一个 Uint8Array 的子集;
 - 以 1 个字节作为基本单元;
 - 支持 TypedArray 的所有方法;
 

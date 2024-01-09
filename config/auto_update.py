@@ -51,6 +51,7 @@ def print_valid_images(root_dir: str) -> list[str]:
     for image in images:
         print(image)
 
+    print(f'')
     return images
 
 
@@ -93,8 +94,10 @@ def convert_chinese_symbols(root_dir: str) -> None:
 
 
 def count_note_size(root_dir: str) -> None:
-    size = 0
-    num = 0
+    noteSize = 0
+    diarySize = 0
+    noteNum = 0
+    diaryNum = 0
 
     for cur_dir, _, files in os.walk(root_dir):
         if (cur_dir.find('wiki\\docs') == -1 and cur_dir.find('wiki\\blog') == -1):
@@ -108,15 +111,25 @@ def count_note_size(root_dir: str) -> None:
             if file == 'README.md':
                 continue
 
-            size += os.path.getsize(os.path.join(cur_dir, file))
-            num += 1
+            if ('1020_' in cur_dir):
+                diarySize += os.path.getsize(os.path.join(cur_dir, file))
+                diaryNum += 1
+            else:
+                noteSize += os.path.getsize(os.path.join(cur_dir, file))
+                noteNum += 1
 
-    print(f'共 {num} 个笔记')
-    print(f'{size/(1024*1024)} MB')
-    print(f'约合中文字符 {size/2} 个')
+    print(f'共 {noteNum} 个笔记')
+    print(f'{noteSize/(1024*1024)} MB')
+    print(f'约合中文字符 {noteSize/2} 个')
+    print(f'')
+    print(f'共 {diaryNum} 个日记')
+    print(f'{diarySize/(1024*1024)} MB')
+    print(f'约合中文字符 {diarySize/2} 个')
+    print(f'')
 
 
 def find_long_note(root_dir: str) -> None:
+    print(f'以下文件行数超过 999')
     for cur_dir, _, files in os.walk(root_dir):
         if (cur_dir.find('wiki\\docs') == -1 and cur_dir.find('wiki\\blog') == -1):
             continue
@@ -135,6 +148,8 @@ def find_long_note(root_dir: str) -> None:
 
                 if lines_num > 999:
                     print(file_path)
+
+    print(f'')
 
 
 if __name__ == '__main__':
