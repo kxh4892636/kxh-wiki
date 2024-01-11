@@ -6,7 +6,7 @@ id: bd98186f-4745-4f96-8576-517c5b8c1176
 
 ## 创建
 
-- 继承于 <EventEmitter>;
+- 继承于 \<EventEmitter\>;
 
 ```typescript
 import { stdin as input, stdout as output } from "process";
