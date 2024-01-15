@@ -56,7 +56,6 @@ pipeline(filepath, gzip, res, (err) => {
 });
 
 // 压缩字符串
-const gzip = zlib.createGzip();
 res.writeHead(200, {
   "Content-Encoding": "gzip",
 });

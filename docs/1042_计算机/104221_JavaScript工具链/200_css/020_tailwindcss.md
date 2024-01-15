@@ -496,21 +496,6 @@ export default {
 </ul>
 ```
 
-##### 下划线
-
-- 使用 \_ 表示后代选择器;
-
-```typescript
-<div class="[&_p]:mt-4">
-  <p>Lorem ipsum...</p>
-  <ul>
-    <li>
-      <p>Lorem ipsum...</p>
-    </li>
-  </ul>
-</div>
-```
-
 ### 操作符列表
 
 - [操作符列表](https://tailwindcss.com/docs/hover-focus-and-other-states#quick-reference);
