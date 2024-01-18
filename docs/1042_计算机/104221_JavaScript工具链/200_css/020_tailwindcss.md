@@ -166,7 +166,7 @@ export default {
 
 ##### 选择器
 
-- 使用 group-[*] 操作符表示 \* 选择器对应标签的状态;
+- 使用 `group-[*]` 操作符表示 \* 选择器对应标签的状态;
 
 ```typescript
 <div class="group is-published">
@@ -219,13 +219,13 @@ export default {
 
 #### 基于父元素/同级元素的后代
 
-- 使用 group-has-\* 和 peer-has-\* 操作符;
+- 使用 `group-has-*` 和 `peer-has-*` 操作符;
 
 ### 伪元素
 
 ##### before 和 after
 
-- 使用 before 和 after 操作符;
+- 使用 `before` 和 `after` 操作符;
 
 ```typescript
 <label class="block">
@@ -244,7 +244,7 @@ export default {
 ##### Placeholder text
 
 - input 中的 placeholder;
-- 使用 placeholder 操作符;
+- 使用 `placeholder` 操作符;
 
 ```typescript
 <label class="relative block">
@@ -259,7 +259,7 @@ export default {
 ##### File input buttons
 
 - input 中的 file;
-- 使用 file 操作符;
+- 使用 `file` 操作符;
 
 ```typescript
 <form class="flex items-center space-x-6">
@@ -289,7 +289,7 @@ export default {
 ##### List markers
 
 - list 中的 maker;
-- 使用 marker 操作符;
+- 使用 `marker` 操作符;
 
 ```typescript
 <ul
@@ -305,7 +305,7 @@ export default {
 ##### Highlighted text
 
 - 选中文字;
-- 使用 selection 操作符;
+- 使用 `selection` 操作符;
 
 ```typescript
 <div class="selection:bg-fuchsia-300 selection:text-fuchsia-900">
@@ -322,7 +322,7 @@ export default {
 ##### First-line and first-letter
 
 - 第一行/第一个字母;
-- 使用 first-line/first-letter 操作符;
+- 使用 `first-line`/`first-letter` 操作符;
 
 ```typescript
 <p
@@ -350,7 +350,7 @@ export default {
 #### Viewport orientation
 
 - 设备视口方向;
-- 使用 portrait 和 landscape 操作符;
+- 使用 `portrait` 和 `landscape` 操作符;
 
 ```typescript
 <div>
@@ -369,7 +369,7 @@ export default {
 #### Print styles
 
 - 打印文档时样式;
-- 使用 print 操作符;
+- 使用 `print` 操作符;
 
 ```typescript
 <div>
@@ -387,7 +387,7 @@ export default {
 #### Supports rules
 
 - 浏览器是否支持特定功能;
-- 使用 supports-[...] 操作符;
+- 使用 `supports-[...]` 操作符;
 
 ```typescript
 <div class="flex supports-[display:grid]:grid ...">
@@ -415,7 +415,7 @@ export default {
 ##### Data 属性
 
 - 根据 data 属性设置样式;
-- 使用 data-\* 修饰符;
+- 使用 `data-*` 修饰符;
 
 ```typescript
 <!-- Will apply -->
@@ -432,7 +432,7 @@ export default {
 ##### RTL
 
 - 根据文字方向设置样式;
-- 使用 rtl 和 ltr 操作符;
+- 使用 `rtl` 和 `ltr` 操作符;
 
 ```typescript
 <div class="group flex items-center">
@@ -451,7 +451,7 @@ export default {
 ##### Open/closed state
 
 - 作用于 \<details\> 或 \<dialog\> 标签, 表示其 open/close 状态;
-- 使用 open 操作符表示打开状态;
+- 使用 `open` 操作符表示打开状态;
 
 ```typescript
 <div class="max-w-lg mx-auto p-8">
@@ -506,7 +506,7 @@ export default {
 
 ##### 断点
 
-- 使用 sm/md/lg/xl/2xl 操作符;
+- 使用 `sm/md/lg/xl/2xl` 操作符;
 
 | Breakpoint prefix | Minimum width | CSS                                |
 | ----------------- | ------------- | ---------------------------------- |
@@ -533,7 +533,7 @@ export default {
 
 ##### 断点范围
 
-- 使用 max-\* 修饰符;
+- 使用 `max-*` 修饰符;
 
 | Modifier | Media query                                    |
 | -------- | ---------------------------------------------- |
@@ -558,7 +558,7 @@ export default {
 ##### dark 属性
 
 - 默认为浅色模式;
-- 使用 dark 操作符表示深色模式;
+- 使用 `dark` 操作符表示深色模式;
 
 ```typescript
 <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
@@ -575,7 +575,7 @@ export default {
 ##### 手动切换
 
 - 使用 class 策略;
-- 设置 dark 修饰符;
+- 设置 `dark` 修饰符;
 
 ```typescript
 /** @type {import('tailwindcss').Config} */
@@ -609,7 +609,7 @@ module.exports = {
 
 ##### 系统偏好
 
-- 使用 Window.matchMedia() API 和 prefers-color-scheme 选择器;
+- 使用 `Window.matchMedia()` API 和 `prefers-color-scheme` 选择器;
 
 ```typescript
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -689,7 +689,7 @@ module.exports = {
 ##### 基础样式
 
 - index.css 中设置;
-- 使用 @layer base 操作符;
+- 使用 `@layer base` 操作符;
 
 ```css
 @tailwind base;
@@ -710,7 +710,7 @@ module.exports = {
 ##### 自定义原子类
 
 - tailwindcss 不包含的原子 css 属性;
-- 使用 @layer utilities 操作符;
+- 使用 `@layer utilities` 操作符;
 
 ```css
 @tailwind base;

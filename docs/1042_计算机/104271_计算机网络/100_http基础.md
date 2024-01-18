@@ -158,7 +158,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 
 ##### 目的
 
-- 压缩报文体积;
+- 压缩报文实体内容的体积;
 
 ##### 常用编码
 
@@ -270,3 +270,399 @@ Range: bytes=-3000, 5000-7000
 
 - 500 Internal Server Error: 服务器端执行请求报错;
 - 503 Service Unavailable: 服务器端停机维护;
+
+## HTTP 首部字段
+
+### 基础
+
+##### 字段结构
+
+```bash
+首部字段名: 字段值
+```
+
+##### 字段类型
+
+- 通用首部字段: 用于请求报文和响应报文;
+- 请求首部字段: 仅用于请求报文;
+- 响应首部字段: 仅用于响应报文;
+- 实体首部字段: 描述报文实体;
+
+##### 字段协议
+
+- HTTP/1.1 协议 (RFC2616);
+- 非 HTTP 协议(RFC4229);
+
+##### 端到端首部
+
+- End-to-end Header;
+- 必须被转发给最终接受目标的首部;
+
+##### 逐跳首部
+
+- Hop-by-hop Header;
+- 只需转发单次的首部;
+  - Connection;
+  - Keep-Alive;
+  - Proxy-Authenticate;
+  - Proxy-Authorization;
+  - Trailer;
+  - TE;
+  - Transfer-Encoding;
+  - Upgrade;
+
+### 通用首部字段
+
+##### Cache-Control
+
+- 控制缓存行为;
+
+```bash
+Cache-Control: private, max-age=0, no-cache
+```
+
+```bash
+# 所有用户可缓存
+Cache-Control: public
+# 特定用户缓存
+Cache-Control: private
+# 使用缓存, 但不使用缓存过期的资源
+Cache-Control: no-cache
+# 不进行缓存
+Cache-Control: no-store
+# 缓存最大生效时间
+Cache-Control: max-age=604800
+# 缓存最小生效时间
+Cache-Control: min-fresh=60
+# 缓存最大过期时间, 只要小于对应数值, 都接受
+Cache-Control: max-stale=3600
+# 仅在具有缓存的情况下返回
+Cache-Control: only-if-cached
+# 缓存服务器必须验证资源是否有效
+Cache-Control: must-revalidate
+# 缓存服务器必须验证资源是否有效
+Cache-Control: proxy-revalidate
+# 禁止改变实体主体 MIME 类型
+Cache-Control: no-transform
+```
+
+##### Connection
+
+- 控制不再转发的首部字段;
+- 管理持久连接;
+
+```bash
+# 控制不再转发的首部字段
+Connection: 不再转发的首部字段名
+# 控制持久管理
+Connection: Keep-Alive
+Connection: close
+```
+
+##### Date
+
+- 表示 HTTP 报文的创建时间;
+
+```bash
+Date: Tue, 03 Jul 2012 04:40:59 GMT
+```
+
+##### Pragma
+
+- HTTP 遗留字段;
+- 等效 `Cache-Control: no-cache`;
+
+```bash
+Cache-Control: no-cache
+Pragma: no-cache
+```
+
+##### Trailer
+
+- 记录报文主体中的首部字段;
+
+```bash
+...
+Trailer: Expires
+...(报文主体)...
+0
+Expires: Tue, 28 Sep 2004 23:59:59 GMT
+```
+
+##### Transfer-Encoding
+
+- 传输报文主体使用的编码方式;
+
+```bash
+Transfer-Encoding: chunked
+```
+
+##### Upgrade
+
+- 检测能否使用更高版本的协议;
+- 与 `Connection` 协同使用;
+
+```bash
+GET /index.htm HTTP/1.1
+Upgrade: TLS/1.0
+Connection: Upgrade
+```
+
+##### Via
+
+- 记录请求的传输路径;
+
+```bash
+GET / HTTP/1.1
+# 转发一次
+GET / HTTP/1.1
+Via: 1.0 gw.hackr.jp(Squid/3.1)
+# 转发二次
+GET / HTTP/1.1
+Via: 1.0 gw.hackr.jp(Squid/3.1),
+1.1 a1.example.com(Squid/2.7)
+```
+
+##### Warning
+
+- 记录缓存相关的警告;
+
+```bash
+Warning: [警告码][警告的主机:端口号]“[警告内容]”([日期时间])
+```
+
+### 请求首部字段
+
+##### Accept
+
+- 客户端支持的多媒体类型和优先级;
+  - 优先返回优先级高的多媒体类型;
+  - 权重值 q 取值范围 0-1, 默认为 1;
+  - ; 分隔;
+- \*/\* 表示任何类型;
+
+```bash
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+```
+
+##### Accept-Charset
+
+- 客户端支持的字符集和优先级;
+
+```bash
+Accept-Charset: iso-8859-5, unicode-1-1;q=0.8
+```
+
+##### Accept-Encoding
+
+- 客户段支持的内容编码类型和优先级;
+
+```bash
+Accept-Encoding: gzip, deflate
+```
+
+##### Accept-Language
+
+- 客户端支持的自然语言集和优先级;
+
+```bash
+Accept-Language: zh-cn,zh;q=0.7,en-us,en;q=0.3
+```
+
+##### Authorization
+
+- 客户端认证信息;
+- 用于 401 状态码响应;
+
+```bash
+GET /index.htm
+Authorization: Basic dWVub3NlbjpwYXNzd29yZA==
+```
+
+##### Expect
+
+- 客户端期待出现的行为;
+
+```bash
+Expect: 100-continue
+```
+
+##### From
+
+- 客户端邮箱地址;
+
+```bash
+From: info@hackr.jp
+```
+
+##### Host
+
+- 指明服务器端 URL;
+- 必须使用;
+
+```bash
+Host: www.hackr.jp
+```
+
+##### If-Match
+
+- 条件请求字段;
+- 服务器资源的 ETag 值对应才会执行对应操作;
+
+```bash
+If-Match: "123456"
+```
+
+##### If-None-Match
+
+- `If-Match` 取反;
+- 服务器总会返回最新的资源;
+
+##### If-Modified-Since
+
+- 条件请求字段;
+- 判断资源是否在对应时间后发生更新;
+- 若未更新返回 304;
+
+```bash
+If-Modified-Since: Thu, 15 Apr 2004 00:00:00 GMT
+```
+
+##### If-Unmodified-Since
+
+- `If-Modified-Since` 取反;
+- 若更新返回 412;
+
+##### If-Range
+
+- 条件请求字段;
+- 若资源的 ETag 值对应, 按照范围请求处理;
+- 反之返回 412;
+
+```bash
+GET /index.html
+If-Range: "123456"
+Range: bytes=5001-10000
+```
+
+##### Max-Forwards
+
+- 最大转发次数;
+- 作用于 TRACE 和 OPTIONS 方法;
+
+```bash
+Max-Forwards: 10
+```
+
+##### Proxy-Authorization
+
+- 同 `Authorization`;
+
+```bash
+Proxy-Authorization: Basic dGlwOjkpNLAGfFY5
+```
+
+##### Range
+
+- 设置范围请求中响应报文主体范围;
+- 返回 206 或 200;
+
+```bash
+Range: bytes=5001-10000
+```
+
+##### Refer
+
+- 设置发起请求报文的 URL;
+
+```bash
+GET /
+Referer: http://www.hackr.jp/index.htm
+```
+
+##### TE
+
+- 等效 `Accept-Encoding`;
+- 作用于传输编码, 而非内容编码;
+
+```bash
+TE: gzip, deflate;q=0.5
+```
+
+##### User-Agent
+
+- 浏览器种类;
+
+```bash
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/⇒
+20100101 Firefox/13.0.1
+```
+
+## Web 服务器
+
+### 虚拟主机
+
+- 一台物理主机构建多台虚拟主机;
+- 进而构建多个 Web 服务;
+- 通过端口号进行映射;
+
+### 数据转发
+
+#### 代理
+
+##### 代理
+
+- 服务器和客户端的中间商;
+  - 接受客户端请求并转发给服务器;
+  - 接受服务器响应并转发给客户端;
+- 经过代理服务器写入 Via 首部字段;
+
+![代理](images/2024-01-17-10-15-59.png)
+
+##### 作用
+
+- 基于缓存技术减少网络带宽;
+- 控制访问;
+- 日志管理;
+
+##### 分类
+
+- 缓存代理: 缓存请求资源;
+- 透明代理: 不加工转发请求的代理;
+- 非透明代理: 加工转发请求的代理;
+
+#### 网关
+
+- 类似于代理;
+- 转发其他服务器数据的服务器;
+- 可以将 HTTP 协议转换为其他通讯协议;
+
+![网关](images/2024-01-17-10-18-51.png)
+
+#### 隧道
+
+- 建立客户端和服务器端的通信线路;
+- 使用 SSL 进行加密通信;
+
+![隧道](images/2024-01-17-10-19-36.png)
+
+### 缓存
+
+##### 缓存
+
+- 服务器端的资源副本;
+
+##### 作用
+
+- 减少对服务器的访问;
+- 降低通信流量和响应时间;
+
+##### 刷新缓存
+
+- 根据客户端要求或者缓存有效期限;
+- 缓存服务器再次请求服务器端, 刷新缓存资源;
+
+##### 客户端缓存
+
+- 临时网络文件, 存储在磁盘中;
+- 具有缓存刷新机制;
