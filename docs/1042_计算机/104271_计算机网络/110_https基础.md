@@ -140,6 +140,7 @@ id: b90e5ab4-2d51-4e4e-b504-1d3d11dc1f76
   - 服务器端发送 Server Hello Done 报文, 第一次 SSL 握手结束;
 - 第二次握手;
   - 客户端发送 Client Key Exchange, 随机生成 Pre-master secret, 使用公开密钥加密发送至客户端;
+    - Pre-master secret 用于构造之后对称加密中的共享秘钥;
   - 客户端发送 Change Cipher Spec 报文, 表明之后通信使用 Pre-master secret 校验;
   - 客户端发送 Finished 报文, 包含之前报文的整体校验值, 作为第二次握手成功的判定标准;
   - 服务器端发送 Change Cipher Spec 报文;

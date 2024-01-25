@@ -598,6 +598,82 @@ User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/⇒
 20100101 Firefox/13.0.1
 ```
 
+### 响应首部字段
+
+##### Accept-Ranges
+
+- 服务器能否处理范围请求;
+
+```bash
+# 可以
+Accept-Ranges: bytes
+# 不可以
+Accept-Ranges: none
+```
+
+##### Age
+
+- 源服务器创建响应的时间 (s);
+- 常作用于缓存服务器, 查询缓存验证时间;
+
+```bash
+# 可以
+Age: 600
+```
+
+##### ETag
+
+- 资源唯一标识;
+
+```bash
+ETag: "82e22293907ce725faf67773957acd12"
+```
+
+##### Location
+
+- 引导客户端访问指定 URL;
+- 常用于 3XX 状态码;
+
+```bash
+Location: http://www.usagidesign.jp/sample.html
+```
+
+##### Proxy-Authenticate
+
+- 发送代理服务器要求的认证信息;
+
+```bash
+Proxy-Authenticate: Basic realm="Usagidesign Auth"
+```
+
+##### Retry-After
+
+- 告知客户端访问时间;
+- 常与 3XX 和 503 状态码使用;
+
+```bash
+Retry-After: 120
+```
+
+##### Server
+
+- 服务器端 Web 服务器信息;
+
+```bash
+Server: Apache/2.2.6 (Unix) PHP/5.2.5
+```
+
+##### Vary
+
+- 对缓存进行控制;
+- 缓存服务器仅对 Vary 执行首部字段的请求返回缓存;
+
+```bash
+Vary: Accept-Language
+```
+
+![Vary](images/2024-01-19-16-41-48.png)
+
 ## Web 服务器
 
 ### 虚拟主机

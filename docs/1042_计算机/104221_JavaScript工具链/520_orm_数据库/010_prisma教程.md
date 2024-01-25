@@ -16,7 +16,7 @@ id: 906d423e-eb09-4f20-8d76-5dc16dce1c3c
 ##### 安装相关依赖
 
 ```bash
-npm install prisma
+npm install prisma --save-dev
 npm install @prisma/client
 ```
 
