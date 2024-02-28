@@ -271,6 +271,8 @@ Range: bytes=-3000, 5000-7000
 - 500 Internal Server Error: 服务器端执行请求报错;
 - 503 Service Unavailable: 服务器端停机维护;
 
+// TODO
+
 ## HTTP 首部字段
 
 ### 基础
@@ -673,6 +675,149 @@ Vary: Accept-Language
 ```
 
 ![Vary](images/2024-01-19-16-41-48.png)
+
+### 实体首部字段
+
+##### Allow
+
+- 告知服务器支持的 HTTP 方法;
+
+```bash
+Allow: GET, HEAD
+```
+
+##### Content-Encoding
+
+- 实体主体部分的内容编码;
+
+```bash
+Content-Encoding: gzip
+```
+
+##### Content-Language
+
+- 实体主体部分使用的自然语言;
+
+```bash
+Content-Language: zh-CN
+```
+
+##### Content-Length
+
+- 实体主体部分的字节长度;
+
+```bash
+Content-Length: 15000
+```
+
+##### Content-Location
+
+- 实体主体部分对应的 URL;
+- 不同于 Location 字段;
+
+```bash
+Content-Location
+```
+
+##### Content-MD5
+
+- 实体主体部分的 MD5;
+
+```bash
+Content-MD5: OGFkZDUwNGVhNGY3N2MxMDIwZmQ4NTBmY2IyTY==
+```
+
+##### Content-Range
+
+- 用于范围请求;
+- 表示发送部分和总体长度;
+
+```bash
+Content-Range: bytes 5001-10000/10000
+```
+
+##### Content-Type
+
+- 实体主体 MIME 类型和字符集;
+
+```bash
+Content-Type: text/html; charset=UTF-8
+```
+
+##### Expires
+
+- 实体失效时间;
+- 超过指定时间后重新向源服务器请求;
+
+```bash
+Expires: Wed, 04 Jul 2012 08:26:05 GMT
+```
+
+##### Last-Modified
+
+- 对应资源最后被修改的时间;
+
+```bash
+Last-Modified: Wed, 23 May 2012 09:59:55 GMT
+```
+
+### Cookie 首部字段
+
+##### Set-Cookie
+
+- 服务器通知客户端设置 cookie 为指定值;
+
+```bash
+Set-Cookie: status=enable; expires=Tue, 05 Jul 2011 07:26:31 GMT; ⇒
+path=/; domain=.hackr.jp;
+```
+
+##### Cookie
+
+- 请求中客户端的 cookie 信息;
+
+```bash
+Cookie: status=enable
+```
+
+### 其他首部字段
+
+##### X-Frame-Options
+
+- Frame 标签的权限管理;
+
+```bash
+# 拒绝其他页面访问
+X-Frame-Options: DENY
+# 仅允许同源页面范围
+X-Frame-Options: SAMEORIGIN
+```
+
+##### X-XSS-Protection
+
+- 控制浏览器 XSS 防护机制;
+
+```bash
+X-XSS-Protection: 1
+```
+
+##### DNT
+
+- 拒绝个人信息被收集;
+
+```bash
+DNT: 1
+```
+
+##### P3P
+
+- 将个人隐私信息转换仅程序可读的形式;
+- 用于保护用户隐私;
+
+```bash
+P3P: CP="CAO DSP LAW CURa ADMa DEVa TAIa PSAa PSDa ⇒
+IVAa IVDa OUR BUS IND UNI COM NAV INT"
+```
 
 ## Web 服务器
 
