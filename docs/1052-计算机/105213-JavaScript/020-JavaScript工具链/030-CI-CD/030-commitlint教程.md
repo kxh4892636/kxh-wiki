@@ -20,7 +20,7 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitl
 
 ##### 搭配 husky 添加 hook
 
-- [010_husky 教程#commitlint](010_husky教程.md#commitlint);
+- [[010_husky教程]];
 
 ## 规范
 

@@ -27,4 +27,4 @@ app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerOption));
 ##### 配置文件
 
 - 配置文件默认使用 openapi 规范;
-- 详见 [050_openapi 教程](../../104200_规范标准/050_openapi教程.md);
+- 详见 [[050_openapi 教程]];
