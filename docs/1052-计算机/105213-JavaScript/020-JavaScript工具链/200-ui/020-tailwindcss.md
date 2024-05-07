@@ -188,22 +188,6 @@ export default {
 </form>
 ```
 
-#### 直接子元素状态
-
-- 父元素基础上将 group 替换为 \*;
-
-```typescript
-<div>
-  <h2>Categories<h2>
-  <ul class="*:rounded-full *:border *:border-sky-100 *:bg-sky-50 *:px-2 *:py-0.5 dark:text-sky-300 dark:*:border-sky-500/15 dark:*:bg-sky-500/10 ...">
-    <li>Sales</li>
-    <li>Marketing</li>
-    <li>SEO</li>
-    <!-- ... -->
-  </ul>
-</div>
-```
-
 #### 后代元素状态
 
 - 父元素基础上将 group 替换为 has;
@@ -216,6 +200,23 @@ export default {
   Google Pay
   <input type="radio" class="checked:border-indigo-500 ..." />
 </label>
+```
+
+#### 设置直接子元素
+
+- 设置直接子元素样式;
+- 父元素基础上将 group 替换为 \*;
+
+```typescript
+<div>
+  <h2>Categories<h2>
+  <ul class="*:rounded-full *:border *:border-sky-100 *:bg-sky-50 *:px-2 *:py-0.5 dark:text-sky-300 dark:*:border-sky-500/15 dark:*:bg-sky-500/10 ...">
+    <li>Sales</li>
+    <li>Marketing</li>
+    <li>SEO</li>
+    <!-- ... -->
+  </ul>
+</div>
 ```
 
 #### 基于父元素/同级元素的后代

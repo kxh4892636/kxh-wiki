@@ -4,6 +4,19 @@ id: a4c4658a-8735-49d0-877b-359bab1f4624
 
 # react hook
 
+## hook 原则
+
+### 条件语句
+
+- hook 禁止放置于条件语句;
+- react 确保每次渲染, hook 调用顺序一致;
+- 放置于条件语句, 可能打乱调用顺序;
+
+### 使用限制
+
+- 只能在函数式组件和自定义 hook 使用;
+- 必须在组件顶层使用;
+
 ## useState
 
 ### 基础
@@ -391,7 +404,7 @@ const App = () => {
 ##### 传递 ref 对应 dom
 
 - react 不允件引用其他组件的 DOM 节点;
-- 若要引用, 使用 forwardRef hook;
+- 若要引用, 使用 forwardRef api;
 
 ```typescript
 import { forwardRef, useRef } from "react";
@@ -414,4 +427,111 @@ export default function Form() {
     </>
   );
 }
+```
+
+## useImperativeHandle
+
+### 基本使用
+
+- useImperativeHandle(ref, createHandle, dependencies?);
+- 配合 forwardRef api 暴漏命令式句柄 (DOM 自定义对象);
+
+```typescript
+import { forwardRef, useRef, useImperativeHandle } from "react";
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+  const inputRef = useRef(null);
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        focus() {
+          inputRef.current.focus();
+        },
+        scrollIntoView() {
+          inputRef.current.scrollIntoView();
+        },
+      };
+    },
+    []
+  );
+
+  return <input {...props} ref={inputRef} />;
+});
+```
+
+### 依赖项
+
+- 使用 Object.is 比较依赖项;
+- dependencies 发生改变时, 重新执行 createHandle;
+
+```typescript
+import { useEffect } from "react";
+const App = () => {
+  useImperativeHandle(
+    ref,
+    () => {
+      // ...
+    },
+    [dependencies]
+  );
+  // ...
+};
+```
+
+### 自定义句柄
+
+- 配合 forwardRef api;
+- 暴漏部分 DOM (命令式句柄), 而不是整个 DOM 节点;
+
+```typescript
+import { useRef } from "react";
+import MyInput from "./MyInput.js";
+
+export default function Form() {
+  const ref = useRef(null);
+
+  function handleClick() {
+    ref.current.focus();
+    // This won't work because the DOM node isn't exposed:
+    ref.current.style.opacity = 0.5;
+  }
+
+  return (
+    <form>
+      <MyInput placeholder="Enter your name" ref={ref} />
+      <button type="button" onClick={handleClick}>
+        Edit
+      </button>
+    </form>
+  );
+}
+```
+
+### 自定义方法
+
+- 命令式句柄暴漏方法不必与 DOM 方法匹配;
+
+```typescript
+import { forwardRef, useRef, useImperativeHandle } from "react";
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+  const inputRef = useRef(null);
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        focusAndScrollIntoView() {
+          inputRef.current.focus();
+          inputRef.current.scrollIntoView();
+        },
+      };
+    },
+    []
+  );
+
+  return <input {...props} ref={inputRef} />;
+});
 ```

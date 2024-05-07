@@ -64,22 +64,43 @@ window.addEventListener("message", (event) => {
 });
 ```
 
-## File API
+## 二进制数据 API
 
-### File 类型
+### 二进制数据类型概述
+
+##### Blob
+
+- 浏览器二进制文件;
+
+##### File
+
+- File 对于 Blob 的封装;
+- 针对文件操作拓展;
+
+##### Buffer
+
+- node 内置二进制数据类型;
+- js 无内置读写方法;
+- 等同于 es6 中的 Uint8Array;
+
+##### ArrayBuffer
+
+- es6 二进制缓冲区;
+- 通过 DataView 和 TypedArray 读写;
+
+### File API
+
+#### File
 
 ```typescript
-// 表示表单文件字段中的选择文件
-filesList.addEventListener("change", (event) => {
-  let files = event.target.files; // 选择的文件集合
-  for (const file of files) {
-    // name 属性表示文件名, type 属性表示 MIME 类型, size 属性表示文件 byte 大小
-    console.log(`${file.name} (${file.type}, ${file.size} bytes)`);
-  }
+// myFile = new File(bits, name[, options]);
+// bits 可为 ArrayBuffer，ArrayBufferView，Blob, String
+var file = new File(["foo"], "foo.txt", {
+  type: "text/plain",
 });
 ```
 
-### FileReader 类型
+#### FileReader 类型
 
 ##### API
 
@@ -89,16 +110,16 @@ filesList.addEventListener("change", (event) => {
 // 接受 File 或者 Blob 类型数据
 const reader = new FileReader();
 
-// 以文本形式读取文件
+// 读取文件为 text
 reader.readAsText(file);
 const content = reader.result;
-// 以 URL 读取文件
+// 读取文件为 object url
 reader.readAsDataURL(file);
 const content = reader.result;
-// 以二进制读取文件
+// 读取文件为二进制
 reader.readAsBinaryString(file);
 const content = reader.result;
-// 以 ArrayBuffer 形式读取文件
+// 读取文件为 arraybuffer
 reader.readAsArrayBuffer(file);
 const content = reader.result;
 
@@ -144,16 +165,16 @@ reader.addEventListener(
 );
 ```
 
-### FileReaderSync 类型
+#### FileReaderSync 类型
 
 ##### FileReaderSync 类型
 
 - FileReader 的同步版本;
 - 只在 FileReaderSync 中可用;
 
-## Blob API
+### Blob API
 
-### Blob
+#### Blob
 
 ##### blob
 
@@ -189,7 +210,7 @@ img.src = url;
 window.URL.revokeObjectURL(url);
 ```
 
-### 读取拖放文件
+#### 读取拖放文件
 
 ```typescript
 // 拖放触发 drop事件

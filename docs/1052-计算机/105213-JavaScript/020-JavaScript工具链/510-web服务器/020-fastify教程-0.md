@@ -179,13 +179,6 @@ fastify.get("/", options, async function (request, reply) {
 fastify.register(testRoute, { prefix: "/v1" });
 ```
 
-### 常用 hook
-
-- preValidation(request, reply, done): 身份验证 hook;
-- preHandler(request, reply, done): 执行 handler 之前调用的 hook;
-- onTimeout(request, reply, done): 超时 hook;
-- onError(request, reply, error, done): 报错 hook;
-
 ## request
 
 ### 属性
@@ -331,8 +324,6 @@ fastify.get(
   }
 );
 ```
-
-// NOTE
 
 ## 验证和序列化
 

@@ -30,16 +30,17 @@ channels:
   - defaults
 show_channel_urls: true
 default_channels:
-  - http://mirrors.aliyun.com/anaconda/pkgs/main
-  - http://mirrors.aliyun.com/anaconda/pkgs/r
-  - http://mirrors.aliyun.com/anaconda/pkgs/msys2
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
 custom_channels:
-  conda-forge: http://mirrors.aliyun.com/anaconda/cloud
-  msys2: http://mirrors.aliyun.com/anaconda/cloud
-  bioconda: http://mirrors.aliyun.com/anaconda/cloud
-  menpo: http://mirrors.aliyun.com/anaconda/cloud
-  pytorch: http://mirrors.aliyun.com/anaconda/cloud
-  simpleitk: http://mirrors.aliyun.com/anaconda/cloud
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 ```
 
 ## 常用命令

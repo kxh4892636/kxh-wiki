@@ -4,27 +4,29 @@ id: 685470f7-7b7d-43a3-a35a-8fc90967dce0
 
 # react hook 最佳实践
 
-## useMemo 和 useCallback
+## 性能优化
+
+### 相关 hook 和 api
+
+- useMemo;
+- useCallback;
+- memo;
 
 ### 基本原则
 
 - 若无必要, 不使用 useMemo 和 useCallback;
 
-### 使用误区
-
-##### useMemo
+### 比较开销
 
 ```typescript
-// 不要滥用 useMemo
-// 考虑计算和比较变化的收益
+// 考虑计算 props 变化和重新计算/渲染的收益
 const c = useMemo(() => a + b, [a, b]);
 ```
 
-##### useCallback
+### memo 属性要求
 
 ```typescript
-// 尽量少的使用 useCallback
-// 只有组件被 memo 包裹, 且组件每个属性都使用 useCallback, useCallback 才会生效
+// 只有组件每个引用类型属性都使用 useCallback/useMemo, memo 才会生效
 const func = useCallback(() => {
   // ...
 }, []);
@@ -154,4 +156,53 @@ const App = () => {
   }, []);
   return <h1>{count}</h1>;
 };
+```
+
+## 模拟生命周期
+
+### componentDidMount
+
+- 使用 useEffect 和空依赖数组实现;
+
+```typescript
+useEffect(() => {
+  // componentDidMount 逻辑
+  return () => {
+    // componentWillUnmount 逻辑
+  };
+}, []);
+```
+
+### componentDidUpdate
+
+- 使用 useEffect 和依赖数组实现;
+
+```typescript
+useEffect(() => {
+  // componentDidUpdate 逻辑
+}, [dependencies]);
+```
+
+### shouldComponentUpdate
+
+- 使用 memo 实现;
+
+```typescript
+const MemoizedComponent = React.memo(Component);
+```
+
+### componentDidCatch
+
+- 自定义 ErrorBoundary 组件;
+
+```typescript
+function ErrorBoundary({ children }) {
+  const [error, setError] = useState(null);
+  const [errorInfo, setErrorInfo] = useState(null);
+
+  if (error) {
+    // ...
+  }
+  return children;
+}
 ```

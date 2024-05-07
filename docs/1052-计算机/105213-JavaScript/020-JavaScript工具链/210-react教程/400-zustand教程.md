@@ -73,7 +73,7 @@ const useBearStore = create<BearStore>((set) => ({
 
 ### immer
 
-[[410_immer教程#zustand]]
+- [immer](./410-immer教程.md#zustand);
 
 ## 中间件
 

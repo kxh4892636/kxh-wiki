@@ -1,6 +1,7 @@
 ---
 id: 20f88259-5342-476f-8911-8910d9ff507a
 ---
+
 # process 模块
 
 ## 事件
@@ -37,6 +38,12 @@ process.on("rejectionHandled", (promise) => {
 // promise 被拒绝且没有使用 catch()
 process.on("unhandledRejection", (reason, promise) => {
   unhandledRejections.set(promise, reason);
+});
+
+// 任何未捕获的错误
+// 作为错误处理的最后一道防线
+process.on("uncaughtException", (err, origin) => {
+  //
 });
 
 // node 发出警告

@@ -441,3 +441,40 @@ import { Buffer, transcode } from "Buffer";
 const newBuf = transcode(Buffer.from("€"), "utf8", "ascii");
 console.log(newBuf.toString("ascii")); // ?
 ```
+
+## 最佳实践
+
+### 二进制数据格式的转换
+
+##### File 和 Blob
+
+```typescript
+// file 转 blob
+const blob = new Blob([fs.createReadStream(file.path)]);
+// blob 转 file
+const file = new File([blob], "hello.txt", {
+  type: "text/plain",
+});
+```
+
+##### Blob 和 Buffer
+
+```typescript
+// blob 转 buffer
+const blob = new Blob(["hello world"], { type: "text/plain" });
+blob.arrayBuffer().then((arrayBuffer) => {
+  const buffer = Buffer.from(arrayBuffer);
+});
+
+// buffer 转 blob
+const buffer = Buffer.from("hello world");
+const json = buffer.toJSON();
+const blob = new Blob([JSON.stringify(json)], { type: "text/plain" });
+```
+
+##### String 和 Buffer
+
+```typescript
+const buffer = Buffer.from("hello world");
+const str = buffer.toString();
+```

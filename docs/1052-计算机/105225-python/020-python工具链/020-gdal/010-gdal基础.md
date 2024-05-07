@@ -274,8 +274,6 @@ gdal.Warp('/vsimem/simplify_tif.tif',
 | ogr.OFTInteger64     | Single 64bit integer            |
 | ogr.OFTInteger64List | List of 64bit integers          |
 
-// TODO 修改 API
-
 ### gdal
 
 ##### gdal
@@ -399,6 +397,6 @@ gdal.Warp('/vsimem/simplify_tif.tif',
 - outputType: 设置栅格文件编码格式;
 - algorithm: 设置空间内插方法;
   - 具体参数: 'https://gdal.org/programs/gdal_grid.html#interpolation-algorithms'
-  - 反距离加权:  "invdist:power=2.0:smoothing=0.0:radius1=0.0:radius2=0.0:angle=0.0:max_points=0:min_points=0:nodata=0.0" 
+  - 反距离加权: "invdist:power=2.0:smoothing=0.0:radius1=0.0:radius2=0.0:angle=0.0:max_points=0:min_points=0:nodata=0.0"
 - zfield: 设置 Z 字段;
 - weight/height: 设置输出栅格图像尺寸;

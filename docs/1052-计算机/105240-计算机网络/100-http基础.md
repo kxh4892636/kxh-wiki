@@ -84,6 +84,8 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 
 - 一次 HTTP 请求建立并断开一次 TCP 连接;
 - 增加无用的通信开销;
+- http/1.0 默认为非持久连接;
+- 使用 `Connection: Keep-Alive` 尝试持久连接;
 
 ![非持久连接](./images/2024-01-15-19-07-30.png)
 
@@ -93,14 +95,24 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 - 任意一端没有断开连接, 保持 TCP 连接状态;
 - 减少 TCP 重复建立和断开的开销;
 - HTTP/1.1 以上版本默认为持久连接;
+- 使用 `Connection: Close` 关闭持久连接;
 
 ![持久连接](./images/2024-01-15-19-08-38.png)
 
 ##### 管线化
 
-- 管线化技术做到并行发送多个请求;
+- http/1.1 特性;
+- 管线化技术做到一次发送多个请求;
+- 依旧要求按发送顺序接受响应请求;
+- 依旧会发生堵塞现象;
 
 ![管线化](./images/2024-01-15-19-10-31.png)
+
+### 多路复用
+
+- http/2.0 特性;
+- 并行交错发送多个请求;
+- 请求和响应之间互不影响;
 
 ### 状态管理
 
@@ -632,7 +644,7 @@ Server: Apache/2.2.6 (Unix) PHP/5.2.5
 ##### Vary
 
 - 对缓存进行控制;
-- 缓存服务器仅对 Vary 执行首部字段的请求返回缓存;
+- 缓存服务器仅对 Vary 首部字段相同的请求使用缓存;
 
 ```bash
 Vary: Accept-Language
@@ -782,157 +794,3 @@ DNT: 1
 P3P: CP="CAO DSP LAW CURa ADMa DEVa TAIa PSAa PSDa ⇒
 IVAa IVDa OUR BUS IND UNI COM NAV INT"
 ```
-
-## 数据转发和缓存
-
-### 数据转发
-
-#### 代理
-
-##### 代理
-
-- 服务器和客户端的中间商;
-  - 接受客户端请求并转发给服务器;
-  - 接受服务器响应并转发给客户端;
-- 经过代理服务器写入 Via 首部字段;
-
-![代理](./images/2024-01-17-10-15-59.png)
-
-##### 作用
-
-- 基于缓存技术减少网络带宽;
-- 控制访问;
-- 日志管理;
-
-##### 分类
-
-- 缓存代理: 缓存请求资源;
-- 透明代理: 不加工转发请求的代理;
-- 非透明代理: 加工转发请求的代理;
-
-#### 网关
-
-- 类似于代理;
-- 转发其他服务器数据的服务器;
-- 可以将 HTTP 协议转换为其他通讯协议;
-
-![网关](./images/2024-01-17-10-18-51.png)
-
-#### 隧道
-
-- 建立客户端和服务器端的通信线路;
-- 使用 SSL 进行加密通信;
-
-![隧道](./images/2024-01-17-10-19-36.png)
-
-### 缓存
-
-##### 缓存
-
-- 服务器端的资源副本;
-
-##### 作用
-
-- 减少对服务器的访问;
-- 降低通信流量和响应时间;
-
-##### 刷新缓存
-
-- 根据客户端要求或者缓存有效期限;
-- 缓存服务器再次请求服务器端, 刷新缓存资源;
-
-##### 客户端缓存
-
-- 临时网络文件, 存储在磁盘中;
-- 具有缓存刷新机制;
-
-## 功能追加协议
-
-### SPDY
-
-##### HTTP 弊端
-
-- 一次连接只可发送一次请求;
-- 请求只能从客户端开始;
-- 首部信息冗余且不压缩;
-
-##### SPDY (已废弃)
-
-- 使用 SSL;
-- 多路复用流: 单一 TCP 连接多个 HTTP 请求;
-- 请求优先级;
-- 强制压缩;
-- 服务器推送功能;
-
-### WebSocket
-
-##### WebSocket 协议
-
-- 基于 HTTP;
-- 全双工通信;
-- 持续时间内保持连接状态;
-
-##### 握手
-
-- 请求;
-  - Upgrade 首部告知服务器使用 WebSocket 协议;
-  - Sec-WebSocket-Key 首部作为 key 标识;
-  - Sec-WebSocket-Protocol 表示子协议;
-- 响应;
-  - 客户端返回 101 状态码;
-  - Sec-WebSocket-Accept 基于 Sec-WebSocket-Key 构造
-
-```bash
-# 请求
-GET /chat HTTP/1.1
-Host: server.example.com
-Upgrade: websocket
-Connection: Upgrade
-Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
-Origin: http://example.com
-Sec-WebSocket-Protocol: chat, superchat
-Sec-WebSocket-Version: 13
-
-# 响应
-HTTP/1.1 101 Switching Protocols
-Upgrade: websocket
-Connection: Upgrade
-Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
-Sec-WebSocket-Protocol: chat
-```
-
-![WebSocket 握手](./images/2024-03-04-19-21-22.png)
-
-### HTTP2.0
-
-- 多路复用;
-- 服务器推送;
-- 流量控制;
-- WebSocket;
-
-### WebDAV
-
-##### WebDAV
-
-- 分布式文件系统;
-- 客户端直接操作服务器内容
-
-##### 相关方法和状态码
-
-- HTTP/1.1 添加;
-
-| 方法                     | 描述                                            |
-| ------------------------ | ----------------------------------------------- |
-| PROPFIND                 | 获取属性                                        |
-| PROPPATCH                | 修改属性                                        |
-| MKCOL                    | 创建集合                                        |
-| COPY                     | 复制资源及属性                                  |
-| MOVE                     | 移动资源                                        |
-| LOCK                     | 资源加锁                                        |
-| UNLOCK                   | 资源解锁                                        |
-| 102 Processing           | 可正常处理请求,但目前是处理中状态               |
-| 207 Multi-Status         | 存在多种状态                                    |
-| 422 Unprocessible Entity | 格式正确,内容有误                               |
-| 423 Locked               | 资源已被加锁                                    |
-| 424 Failed Dependency    | 处理与某请求关联的请求失败,因此不再维持依赖关系 |
-| 507 Insufficient Storage | 保存空间不足                                    |

@@ -243,6 +243,7 @@ console.log(fastify.conf.db);
 
 - 修饰器函数使用普通函数形式;
 - 路由中将 fastify 实例绑定到 this;
+- 否则显式使用 fastify;
 
 ```typescript
 fastify.decorate("db", new DbConnection());
@@ -277,6 +278,7 @@ req.utility();
 
 - 修饰器函数使用普通函数形式;
 - 路由中将 fastify 实例绑定到 this;
+- 否则显式使用 req;
 
 ```typescript
 fastify.decorate("db", new DbConnection());
