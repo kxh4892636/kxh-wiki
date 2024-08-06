@@ -105,6 +105,29 @@ fastify.post("/", async function (req, reply) {
 });
 ```
 
+##### 大小限制
+
+- 默认限制大小为 1 MB;
+
+```typescript
+// 全局设置
+fastify.register(require("@fastify/multipart"), {
+  limits: {
+    fieldNameSize: 100, // Max field name size in bytes
+    fieldSize: 100, // Max field value size in bytes
+    fields: 10, // Max number of non-file fields
+    fileSize: 1000000, // For multipart forms, the max file size in bytes
+    files: 1, // Max number of file fields
+    headerPairs: 2000, // Max number of header key=>value pairs
+    parts: 1000, // For multipart forms, the max number of parts (fields + files)
+  },
+});
+
+// 局部设置
+const options = { limits: { fileSize: 1073741824 } };
+const file = await req.file(options);
+```
+
 ## @fastify/swagger
 
 ### 安装
@@ -165,18 +188,8 @@ fastify.post("/the/url", { schema }, handler);
     200: {
       description: 'Description and all status-code based properties are working',
       content: {
-        'application/json': {
-          schema: {
-            name: { type: 'string' },
-            image: { type: 'string' },
-            address: { type: 'string' }
-          }
-        },
-        'application/vnd.v1+json': {
-          schema: {
-            fullName: { type: 'string' },
-            phone: { type: 'string' }
-          }
+        'image/png': {
+          schema: {}
         }
       }
     }

@@ -6,11 +6,11 @@ import remarkMath from "remark-math";
 
 const config: Config = {
   title: "KXH-WIKI",
-  tagline: "Dinosaurs are cool",
+  tagline: "学到老，活到老",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://wiki.kongxiaohan.cn",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",

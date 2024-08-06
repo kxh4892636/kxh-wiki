@@ -2,6 +2,8 @@
 id: d042e820-8deb-44fa-84c2-706fcb1555f9
 ---
 
+// NOTE
+
 # 动画和 Canvas
 
 ## 动画
@@ -18,7 +20,8 @@ id: d042e820-8deb-44fa-84c2-706fcb1555f9
 
 ### requestAnimationFrame
 
-##### 语法格式
+- 在浏览器重绘之前调用;
+- 根据屏幕刷新率同步;
 
 ```typescript
 function updateProgress() {
@@ -34,8 +37,6 @@ let requestID = requestAnimationFrame(updateProgress);
 ```
 
 ### cancelAnimationFrame
-
-##### 语法格式
 
 ```typescript
 let requestID = window.requestAnimationFrame(() => {
@@ -367,4 +368,33 @@ context.globalCompositeOperation = "destination-over";
 // 绘制蓝色矩形
 context.fillStyle = "rgba(0,0,255,1)";
 context.fillRect(30, 30, 50, 50);
+```
+
+## 最佳实践
+
+### canvas 转 png
+
+```typescript
+if (isPosition) {
+  const urlData = map?.getCanvas().toDataURL()!;
+  let base = window.atob(urlData.substring(urlData.indexOf(",") + 1));
+  let length = base.length;
+  let url = new Uint8Array(length);
+  while (length--) {
+    url[length] = base.charCodeAt(length);
+  }
+  let file = new File([url], `logo.png`, {
+    type: "image/png",
+  });
+
+  let param = new FormData();
+  param.append("datasetID", "assets");
+  param.append("file", file);
+  result = await axios.request({
+    url: serverHost + "/api/data/upload",
+    method: "post",
+    headers: { "Content-Type": "multipart/form-data" },
+    data: param,
+  });
+} else;
 ```

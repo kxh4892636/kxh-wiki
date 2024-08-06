@@ -4,7 +4,7 @@ id: 9914830d-cea8-4feb-b8be-07057754d709
 
 # html 结构
 
-## html 结构
+## html 基本结构
 
 ```html
 <!-- 表明文件类型 -->
@@ -85,7 +85,9 @@ started with developing web sites and applications."
 
 ## html 内容
 
-### \<header\> element
+### 语义标签
+
+#### \<header\> element
 
 ```html
 <!-- 页眉 -->
@@ -107,7 +109,7 @@ started with developing web sites and applications."
 </article>
 ```
 
-### \<footer\> element
+#### \<footer\> element
 
 ##### 语法格式
 
@@ -125,7 +127,7 @@ started with developing web sites and applications."
 - 友情链接;
 - ...;
 
-### \<nav\> element
+#### \<nav\> element
 
 ```html
 <!-- 导航栏 -->
@@ -138,7 +140,7 @@ started with developing web sites and applications."
 </nav>
 ```
 
-### \<aside\> element
+#### \<aside\> element
 
 ```html
 <!-- 侧边栏 -->
@@ -155,7 +157,7 @@ started with developing web sites and applications."
 </article>
 ```
 
-### \<main\> element
+#### \<main\> element
 
 ```html
 <!-- 正文 -->
@@ -175,7 +177,7 @@ started with developing web sites and applications."
 </main>
 ```
 
-### \<section\> element
+#### \<section\> element
 
 ```html
 <!-- 文档正文分段 -->
@@ -186,7 +188,7 @@ started with developing web sites and applications."
 </section>
 ```
 
-### \<article\> element
+#### \<article\> element
 
 ##### 语法结构
 
@@ -206,7 +208,9 @@ started with developing web sites and applications."
   - 可视为特殊的 \<section\>
   - 但强调其独立, 完整性.
 
-### \<div\> element
+### 非语义标签
+
+#### \<div\> element
 
 ```html
 <!-- 自定义语义化标签, 块级标签 -->
@@ -215,14 +219,14 @@ started with developing web sites and applications."
 </div>
 ```
 
-### \<span\> element
+#### \<span\> element
 
 ```html
 <!-- 自定义语义化标签, 行内标签 -->
 <p><span>Some text</span></p>
 ```
 
-### \<br\> element
+#### \<br\> element
 
 ```html
 <!-- 换行 -->
@@ -231,7 +235,7 @@ Mozilla<br />
 Mountain View, CA<br />
 ```
 
-### \<hr\> element
+#### \<hr\> element
 
 ```html
 <!-- 水平线 -->

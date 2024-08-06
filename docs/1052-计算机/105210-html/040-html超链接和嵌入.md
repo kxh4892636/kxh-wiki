@@ -140,3 +140,21 @@ pdfs/project-brief.pdf
 
 - \<embed\> element 嵌套在\<object\> element 内;
 - 确保浏览器兼容性;
+
+## 最佳实践
+
+### src 和 href 的区别
+
+##### src
+
+- 指定外部资源引用路径;
+- 用于 img, script, iframe 等标签中;
+- 浏览器解析具有 src 属性的标签, 立刻下载并加载;
+
+##### href
+
+- 指定超链接的引用路径;
+- 用于 a, link 等标签中;
+- 浏览器解析到具有 href 属性的标签;
+  - a 会跳转至制定 url;
+  - link 会引用外部资源;

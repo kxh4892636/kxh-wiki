@@ -2,6 +2,8 @@
 id: 1a8bbacf-f353-47b3-90ac-b07cb9fccd25
 ---
 
+// NOTE
+
 # JavaScript API
 
 ## Atomics 与 SharedArrayBuffer
@@ -44,7 +46,7 @@ id: 1a8bbacf-f353-47b3-90ac-b07cb9fccd25
 ```typescript
 // 跨文档消息
 // otherWindow.postMessage(message, targetOrigin, [transfer]);
-// 发送 message 至 otherWindow, 指定发送目标的源为 targetOrigin
+// 发送 message 至 otherWindow, targetOrigin 为发送者源
 let iframeWindow = document.getElementById("myframe").contentWindow;
 iframeWindow.postMessage("A secret", "http://www.wrox.com");
 ```
@@ -88,13 +90,26 @@ window.addEventListener("message", (event) => {
 - es6 二进制缓冲区;
 - 通过 DataView 和 TypedArray 读写;
 
+##### 对象 URL
+
+- url 对象;
+- 使用 text, base64... 编码;
+
+```typescript
+// 接受一个 File 或 Blob 对象, 返回一个指向对应对象的 URL 字符串
+url = window.URL.createObjectURL(file);
+img.src = url;
+// 手动释放内存
+window.URL.revokeObjectURL(url);
+```
+
 ### File API
 
 #### File
 
 ```typescript
 // myFile = new File(bits, name[, options]);
-// bits 可为 ArrayBuffer，ArrayBufferView，Blob, String
+// bits 可为 ArrayBuffer, ArrayBufferView, Blob, String
 var file = new File(["foo"], "foo.txt", {
   type: "text/plain",
 });
@@ -200,35 +215,6 @@ const blob = new Blob([JSON.stringify(obj, null, 2)], {
 const slice = blob.slice(0, 3);
 ```
 
-##### 对象 URL
-
-```typescript
-// 接受一个 File 或 Blob 对象, 返回一个指向对应对象的 URL 字符串
-url = window.URL.createObjectURL(file);
-img.src = url;
-// 手动释放内存
-window.URL.revokeObjectURL(url);
-```
-
-#### 读取拖放文件
-
-```typescript
-// 拖放触发 drop事件
-let droptarget = document.getElementById("droptarget");
-function handleEvent(event) {
-  event.preventDefault(); // 必须取消默认行为
-  if (event.type == "drop") {
-    files = event.dataTransfer.files; // 拖放文件通过 event.dataTransfer.files 读取, 为 File 对象数组
-    for (const file of files) {
-      console.log(`${file.name} (${file.type}, ${file.size} bytes)`);
-    }
-  }
-}
-droptarget.addEventListener("dragenter", handleEvent);
-droptarget.addEventListener("dragover", handleEvent);
-droptarget.addEventListener("drop", handleEvent);
-```
-
 ## 原生拖放
 
 ### 拖放事件
@@ -250,6 +236,25 @@ droptarget.addEventListener("drop", handleEvent);
 - 离开放置元素范围触发 dragleave 事件;
 - 放置到目标元素后触发 drop 事件;
 
+### 读取拖放文件
+
+```typescript
+// 拖放触发 drop事件
+let droptarget = document.getElementById("droptarget");
+function handleEvent(event) {
+  event.preventDefault(); // 必须取消默认行为
+  if (event.type == "drop") {
+    files = event.dataTransfer.files; // 拖放文件通过 event.dataTransfer.files 读取, 为 File 对象数组
+    for (const file of files) {
+      console.log(`${file.name} (${file.type}, ${file.size} bytes)`);
+    }
+  }
+}
+droptarget.addEventListener("dragenter", handleEvent);
+droptarget.addEventListener("dragover", handleEvent);
+droptarget.addEventListener("drop", handleEvent);
+```
+
 ### 自定义放置目标
 
 ```typescript
@@ -267,7 +272,7 @@ droptarget.addEventListener("dragenter", (event) => {
 
 ##### dataTransfer 对象
 
-- 暴露于 event 属性;
+- 暴露于拖放回调中 event 属性;
 - 用于被拖动元素向放置目标传递字符串数据;
 
 ##### API

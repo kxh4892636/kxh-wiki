@@ -229,11 +229,6 @@ export default function Page({ productId, referrer }) {
 - 组件重新渲染时, 只有当 [] 中的属性发生变化时, 执行回调函数, 更新其函数地址;
 
 ```typescript
-// 两者等效
-const visibleTodos = useMemo(() => {
-  return getFilteredTodos(todos, filter);
-}, [todos, filter]);
-
 const visibleTodos = useCallback(getFilteredTodos(todos, filter), [
   todos,
   filter,
