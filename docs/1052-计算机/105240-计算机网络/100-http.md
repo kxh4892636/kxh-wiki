@@ -96,6 +96,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 - 减少 TCP 重复建立和断开的开销;
 - HTTP/1.1 以上版本默认为持久连接;
 - 使用 `Connection: Close` 关闭持久连接;
+- 要求 HTTP 请求为同源请求;
 
 ![持久连接](./images/2024-01-15-19-08-38.png)
 
@@ -130,6 +131,27 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 - 下次请求报文自动添加并发送 cookie;
 
 ![cookie 状态管理](./images/2024-01-15-19-13-16.png)
+
+### 内容协商
+
+##### 内容协商
+
+- 服务器端根据客户端语言, 字符集或编码方式;
+- 提供客户端最为合适的资源;
+
+##### 首部字段
+
+- Accept;
+- Accept-Charset;
+- Accept-Encoding;
+- Accept-Language;
+- Content-Language;
+
+##### 技术类型
+
+- 服务器协商: 服务器根据客户端首部字段自动处理;
+- 客户端协商: 客户端用户或 js 脚本自动处理;
+- 同名协商: 服务器端和客户端各自协商;
 
 ### http 编码
 
@@ -184,27 +206,6 @@ Range: bytes=5001-
 Range: bytes=-3000, 5000-7000
 ```
 
-### 内容协商
-
-##### 内容协商
-
-- 服务器端根据客户端语言, 字符集或编码方式;
-- 提供客户端最为合适的资源;
-
-##### 首部字段
-
-- Accept;
-- Accept-Charset;
-- Accept-Encoding;
-- Accept-Language;
-- Content-Language;
-
-##### 技术类型
-
-- 服务器协商: 服务器根据客户端首部字段自动处理;
-- 客户端协商: 客户端用户或 js 脚本自动处理;
-- 同名协商: 服务器端和客户端各自协商;
-
 ## HTTP 状态码
 
 ### 状态码概述
@@ -217,9 +218,16 @@ Range: bytes=-3000, 5000-7000
 | 4XX | Client Error (客户端错误状态码) | 客户端发送请求错误         |
 | 5XX | Server Error (服务器错误状态码) | 服务器处理请求出错         |
 
+### 1XX
+
+- 101: 切换协议, 一般用于 WebSocket;
+
 ### 2XX
 
 - 200 OK: 请求正常处理;
+- 201 已创建: 服务器成功处理请求, 并创建新资源;
+- 202 已创建: 服务器成功处理请求, 但未处理;
+- 203 非授权信息: 服务器成功处理请求, 但返回信息为另一来源;
 - 204 No Content: 请求正常处理, 但响应报文无报文主体;
 - 206 Partial Content: 请求正常处理, 返回指定范围的报文主体;
 
@@ -228,10 +236,11 @@ Range: bytes=-3000, 5000-7000
 ##### 状态码
 
 - 301 Moved Permanently: 永久性重定向, 永久使用 URL;
-- 302 Found: 临时性重定向, 临时使用其他 URL;
-- 303 See Other: 同 302, 但希望客户端使用 GET 方法获取资源;
+- 302 Found: 临时性重定向, 临时使用其他 URL, 但希望用户依旧使用该 URL;
+- 303 See Other: 同 302, 但希望客户端使用单独的 GET 方法访问新 URL;
 - 304 Not Modified: 客户端发送附带条件的请求, 服务器端允许访问资源, 但未满足条件;
-- 307 Temporary Redirect: 同 302, 但不会从 POST 变为 GET;
+- 305 使用代理: 用户需使用代理;
+- 307 Temporary Redirect: 同 302, 但希望客户端保持请求方法类型不变访问新 URL;
 
 ##### 强制转换
 
@@ -244,12 +253,17 @@ Range: bytes=-3000, 5000-7000
 - 401 Unauthorized: 请求需要具有 HTTP 认证信息;
 - 403 Forbidden: 服务器端拒绝请求;
 - 404 Not Found: 服务器端未找到资源;
+- 405 方法禁用: http 方法禁用;
+- 408 请求超时;
 - 412: 条件请求不满足条件;
 
 ### 5XX
 
 - 500 Internal Server Error: 服务器端执行请求报错;
+- 502: 网关错误;
 - 503 Service Unavailable: 服务器端停机维护;
+- 504: 网关超时;
+- 505: 服务器不支持请求的 http 版本;
 
 ## HTTP 首部字段
 
@@ -949,14 +963,30 @@ IVAa IVDa OUR BUS IND UNI COM NAV INT"
 
 - 浏览器发送跨域请求之前;
 - 发送 options 请求, 用于检查服务器是否允许该跨域请求;
+- 简单请求忽略该 options 请求;
 
-##### 限制
+##### 简单请求
 
+- 简单请求不会触发预检请求, 即使跨域;
 - 请求方法必须为 POST, GET 或 HEAD;
 - 指定 Header;
   - 规定的首部字段: Accept-_, Content-_;
-  - POST 使用规定的表单数据类型: application/x-www-form-urlencoded, multipart/form-data, text/plain;
-- 响应请求包含 `Access-Control-Allow-*` 首部字段;
+  - Context-Type 限制: application/x-www-form-urlencoded, multipart/form-data, text/plain;
+
+##### 复杂请求
+
+- 违背简单请求约束的请求均为复杂请求;
+  - 请求方法;
+  - 首部字段;
+  - Content-Type;
+
+##### 关键首部字段
+
+- Access-Control-Allow-XXX;
+  - Method: 服务器允许的 http 方法;
+  - Origin: 服务器允许的跨域 URL;
+  - Header: 服务器允许的首部字段;
+  - Max-Age: 预检请求缓存时间, 缓存时间内不会再次触发预检请求;
 
 ## http/1.x
 
@@ -992,15 +1022,6 @@ IVAa IVDa OUR BUS IND UNI COM NAV INT"
 - image/png;
 
 ### cookie
-
-##### 属性
-
-- path;
-- domain;
-- max-age;
-- expires;
-- secure;
-- httponly;
 
 ##### 自动携带 cookie
 
@@ -1041,7 +1062,7 @@ IVAa IVDa OUR BUS IND UNI COM NAV INT"
 - 使用 HPACK 算法, 具有静态压缩和动态压缩两种方式;
 - 静态压缩;
   - 预先建立称为静态表的字典, 将经常使用的首部字段预先编码并存储在静态表中;
-  - 传递 HTTP 请求时, 仅发送静态表的编码值和索引号;
+  - 传递 HTTP 请求时, 仅发送静态表的索引;
 - 动态压缩;
   - 基于哈希算法, 对 HTTP 首部进行编码, 双方维护一张哈希表;
   - 传递 HTTP 请求时, 仅发送哈希表索引值;

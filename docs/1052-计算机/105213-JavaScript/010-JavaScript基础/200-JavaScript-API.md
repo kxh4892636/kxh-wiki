@@ -2,65 +2,35 @@
 id: 1a8bbacf-f353-47b3-90ac-b07cb9fccd25
 ---
 
-// NOTE
-
 # JavaScript API
-
-## Atomics 与 SharedArrayBuffer
-
-##### Atomics 与 SharedArrayBuffer
-
-- 多个上下文读取同一个 SharedArrayBuffer;
-
-## 媒体元素
-
-##### 媒体元素
-
-- js 提供一系列属性, 方法, 事件用于 \<audio\> 和 \<video\> 标签;
-
-## Encoding API
-
-##### Encoding API
-
-- 用于字符串和 typed array 的转换;
-
-## Web 组件
-
-##### Web 组件
-
-- 用于增强 DOM 行为的工具;
-  - shadow DOM;
-  - HTML 模板;
-  - 自定义元素;
 
 ## 跨上下文消息
 
 ##### 要求
 
-- 相同 http 协议;
-- 相同 domain;
-- 相同 port;
+- 同源;
 
 ##### postMessage()
 
+- otherWindow.postMessage(message, targetOrigin, [transfer]);
+- 发送 message 至 otherWindow, targetOrigin 为发送者源;
+
 ```typescript
-// 跨文档消息
-// otherWindow.postMessage(message, targetOrigin, [transfer]);
-// 发送 message 至 otherWindow, targetOrigin 为发送者源
 let iframeWindow = document.getElementById("myframe").contentWindow;
 iframeWindow.postMessage("A secret", "http://www.wrox.com");
 ```
 
 ##### message 事件
 
+- 接受 XDM 消息后触发 message 事件;
+  - event.origin 表示发送者的源;
+  - event.data 表示消息内容;
+  - event.source 为发送者的 window 对象的代理;
+
 ```typescript
-// 接受 XDM 消息后触发 message 事件
 window.addEventListener("message", (event) => {
-  // event.origin 表示发送者的源
   if (event.origin == "http://www.wrox.com") {
-    // event.data 表示消息内容
     processMessage(event.data);
-    // event.source 为发送者的 window 对象的代理
     event.source.postMessage("Received!", "http://p2p.wrox.com");
   }
 });
@@ -94,12 +64,11 @@ window.addEventListener("message", (event) => {
 
 - url 对象;
 - 使用 text, base64... 编码;
+- window.URL.createObjectURL(file): 接受一个 File 或 Blob 对象;
 
 ```typescript
-// 接受一个 File 或 Blob 对象, 返回一个指向对应对象的 URL 字符串
 url = window.URL.createObjectURL(file);
 img.src = url;
-// 手动释放内存
 window.URL.revokeObjectURL(url);
 ```
 
@@ -107,9 +76,10 @@ window.URL.revokeObjectURL(url);
 
 #### File
 
+- myFile = new File(bits, name[, options]);
+- bits 可为 ArrayBuffer, ArrayBufferView, Blob, String;
+
 ```typescript
-// myFile = new File(bits, name[, options]);
-// bits 可为 ArrayBuffer, ArrayBufferView, Blob, String
 var file = new File(["foo"], "foo.txt", {
   type: "text/plain",
 });
@@ -119,10 +89,11 @@ var file = new File(["foo"], "foo.txt", {
 
 ##### API
 
+- 异步读取文件;
+- 创建 FileReader 对象;
+- 接受 File 或者 Blob 类型数据;
+
 ```typescript
-// 异步读取文件
-// 创建 FileReader 对象
-// 接受 File 或者 Blob 类型数据
 const reader = new FileReader();
 
 // 读取文件为 text
@@ -144,9 +115,13 @@ reader.abort(); // 触发 abort 事件
 
 ##### 事件
 
+- progress: 50ms 触发一次;
+- error: 报错触发;
+- load: 加载成功触发;
+- abort: 执行 abort() 触发;
+
 ```typescript
 const reader = new FileReader();
-// 50 ms 触发一次, 可以实时读取 result 属性
 reader.addEventListener(
   "progress",
   () => {
@@ -154,7 +129,7 @@ reader.addEventListener(
   },
   false
 );
-// 报错触发
+
 reader.addEventListener(
   "error",
   () => {
@@ -162,7 +137,7 @@ reader.addEventListener(
   },
   false
 );
-// 加载成功后触发
+
 reader.addEventListener(
   "load",
   () => {
@@ -170,7 +145,7 @@ reader.addEventListener(
   },
   false
 );
-// 执行 abort() 触发
+
 reader.addEventListener(
   "abort",
   () => {
@@ -197,14 +172,18 @@ reader.addEventListener(
 
 ##### 创建 blob
 
+- new Blob(data,init);
+  - 接受字符串数组, ArrayBuffers, ArrayBufferViews, 可指定 MIME 类型;
+  - size 属性表示字节大小, type 表示 MIME 类型;
+
 ```typescript
-// 接受字符串数组, ArrayBuffers, ArrayBufferViews, 可指定 MIME 类型
-// size 属性表示字节大小, type 表示 MIME 类型
 const blob = new Blob(["foo"]); // Blob {size: 3, type: ""}
 const blob = new Blob(['{"a": "b"}'], { type: "application/json" }); // {size: 10, type: "application/json"}
 ```
 
 ##### 切分数据
+
+- blob.slice();
 
 ```typescript
 const obj = { hello: "world" };
@@ -255,10 +234,11 @@ droptarget.addEventListener("dragover", handleEvent);
 droptarget.addEventListener("drop", handleEvent);
 ```
 
-### 自定义放置目标
+### 强制放置
+
+- 部分元素不支持放置, 可通过覆盖 dragover 和 dragenter 默认行为将任何标签转换为可放置目标;
 
 ```typescript
-// 部分元素不支持放置, 可通过覆盖 dragover 和 dragenter 默认行为将任何标签转换为可放置目标
 let droptarget = document.getElementById("droptarget");
 droptarget.addEventListener("dragover", (event) => {
   event.preventDefault();
@@ -313,6 +293,15 @@ const effectAllowed = dataTransfer.effectAllowed;
 <div draggable="true">...</div>
 ```
 
+## Web 组件
+
+##### Web 组件
+
+- 用于增强 DOM 行为的工具;
+  - shadow DOM;
+  - HTML 模板;
+  - 自定义元素;
+
 ## Notifications API
 
 ##### 通知权限
@@ -322,9 +311,10 @@ const effectAllowed = dataTransfer.effectAllowed;
 
 ##### 请求权限
 
+- 权限请求每个域只能触发一次;
+- 返回一个 promise, 期约值为 granted 表示允许, denied 表示拒绝;
+
 ```typescript
-// 权限请求每个域只能触发一次
-// 返回一个 promise, 期约值为 granted 表示允许, denied 表示拒绝
 Notification.requestPermission().then((permission) => {
   console.log("User responded to permission request:", permission);
 });
@@ -332,19 +322,26 @@ Notification.requestPermission().then((permission) => {
 
 ##### 显示和隐藏通知
 
+- 显示通知: n = new Notification(text, init);
+- 隐藏通知: n.close()
+
 ```typescript
-// 显示通知
 const n = new Notification("Title text!"); // 显示 Title text!
 const n = new Notification("Title text!", {
   body: "Body text!",
   image: "path/to/image.png",
   vibrate: true,
 }); // 通过 option 配置一堆选项
-// 关闭通知
+
 setTimeout(() => n.close(), 1000);
 ```
 
 ##### 事件
+
+- show: 显示触发;
+- click: 点击触发;
+- close: 关闭触发;
+- error: 报错触发;
 
 ```typescript
 const n = new Notification("foo");
@@ -352,6 +349,25 @@ n.onshow = () => console.log("Notification was shown!"); // 显示触发
 n.onclick = () => console.log("Notification was clicked!"); // 点击触发
 n.onclose = () => console.log("Notification was closed!"); // 关闭触发
 n.onerror = () => console.log("Notification experienced an error!"); // 报错触发
+```
+
+## Page Visibility API
+
+##### Page Visibility API
+
+- 表示页面对用户是否可见;
+
+##### API
+
+- document.visibilityState: 页面当前状态;
+  - hidden 表示不可见, visible 表示可见;
+- 状态切换触发 visibilitychange 事件;
+
+```typescript
+const visibilityState = document.visibilityState;
+document.addEventListener("visibilitychange", () => {
+  // ...
+});
 ```
 
 ## Streams API
@@ -389,13 +405,12 @@ n.onerror = () => console.log("Notification experienced an error!"); // 报错�
 
 ### High Resolution Time API
 
+- performance.now(): 微秒级别的浮点值, 从执行上下文创建计时;
+- performance.timeOrigin: 执行上下文创建的基准值;
+
 ```typescript
-// 返回微秒级别的浮点值
-// 采用相对度量, 从执行上下文创建从 0 计时
 const relativeTimestamp = performance.now();
-// 当前上下文创建时的全局上下文基准值
 const origin = performance.timeOrigin;
-// 绝对度量
 const absoluteTimestamp = performance.timeOrigin + relativeTimestamp;
 ```
 
@@ -403,8 +418,9 @@ const absoluteTimestamp = performance.timeOrigin + relativeTimestamp;
 
 ##### 性能条目
 
+- performance.getEntries(): 条目信息;
+
 ```typescript
-// 获取执行上下文中的所有性能条目
 console.log(performance.getEntries());
 ```
 
@@ -424,31 +440,14 @@ console.log(entry.duration); // 182.36500001512468
 - Navigation Timing API: 导航事件的各种时间戳;
 - Resource Timing API: 页面加载的各种时间戳;
 
-## Page Visibility API
-
-##### Page Visibility API
-
-- 表示页面对用户是否可见;
-
-##### API
-
-```typescript
-// 页面当前状态
-// hidden 表示不可见, visible 表示可见
-const visibilityState = document.visibilityState;
-// 页面切换状态时触发
-document.addEventListener("visibilitychange", () => {
-  // ...
-});
-```
-
 ## Web Cryptography API
 
 ### 随机数
 
+- crypto.getRandomValues(typedArray): 生成 typedArray 对应位数的随机数;
+- crypto.randomUUID(): 生成 UUID;
+
 ```typescript
-// 将随机数写入传递给她的定型数组
-// 最多生成 2 ** 16 个字节
 const array = new Uint8Array(1);
 const fooArray = new Uint32Array(1);
 for (let i = 0; i < 5; ++i) {
@@ -456,6 +455,28 @@ for (let i = 0; i < 5; ++i) {
   console.log(crypto.getRandomValues(fooArray)); // 产生 5 个 32 位随机数
 }
 
-// 产生 UUID
 let uuid = crypto.randomUUID();
 ```
+
+## 最佳实践
+
+### 大文件上传
+
+##### 分片上传
+
+- 根据一定规则, 将大文件分割成若干片;
+- 客户端发送分片规则, 每个分片具有唯一标识;
+- 串行或者并行发送各分片;
+- 所有分片发送完毕后, 服务端根据 md5 判断数据是否上传完整, 完整则合并分片为原始文件;
+
+##### 第一个分片
+
+- 第一个分片附带原始文件 md5, 用于服务器验证文件完整性检验;
+- 第一个分片大小最好小;
+
+##### 断点续传
+
+- 客户端传送给服务器端分片信息;
+- 服务器端接受分片, 保存为临时文件, 根据分片信息判断上传进度;
+- 如果发生网络错误, 恢复连接后, 服务器端发送给客户端当前仍未发送的分片信息;
+- 客户端继续发送剩余分片;

@@ -109,7 +109,6 @@ import Button from "./button.js";
 ##### 组件返回值永远有一个父标签
 
 ```typescript
-// <div> 或 <>
 <>
   <img src="https://i.imgur.com/yXOvdOSs.jpg" alt="Hedy Lamarr" class="photo" />
 </>
@@ -117,77 +116,44 @@ import Button from "./button.js";
 
 ##### 闭合所有标签
 
-```typescript
-// 空标签采用 <element /> 形式
-// 正常标签采用 <element></element> 形式
-<>
-  <img src="https://i.imgur.com/yXOvdOSs.jpg" alt="Hedy Lamarr" class="photo" />
-  <ul>
-    <li>Invent new traffic lights</li>
-    <li>Rehearse a movie scene</li>
-    <li>Improve the spectrum technology</li>
-  </ul>
-</>
-```
+- 空标签采用 <element /> 形式;
+- 正常标签采用 <element></element> 形式;
 
 ##### 命名规范
 
+- 标签名不区分大小写;
 - 所有属性名使用小驼峰形式;
 - 几乎所有的属性名不能使用 - ;
-- 属性名不能与 js 冲突;
-- html 冲突的属性改名;
+- 属性名不能与 js,html 冲突, 冲突改名;
 
 ### 大括号
 
-##### 机制
-
 - jsx 中可通过 {} 传递变量, 函数, 对象和表达式等;
 
-##### 传递变量
-
 ```typescript
-export default function TodoList() {
-  const name = "Gregorio Y. Zara";
-  return <h1>{name}'s To Do List</h1>;
-}
+<h1>{name}'s To Do List</h1>;
+
+<div
+  style={{
+    backgroundColor: "black";
+    color: "pink";
+  }}
+></div>
+
+<h1>{firstName + "" + lastName}'s To Do List</h1>
+
+const items = {
+  title: "delete";
+  action:{()=>{deleteItem()}}
+};
 ```
 
-##### 传递对象
+### 优点
 
-```typescript
-export default function TodoList() {
-  return (
-    // css 在 jsx 中作为 object 传递, 故 style 套两层 {}
-    <div
-      style={{
-        backgroundColor: "black";
-        color: "pink";
-      }}
-    ></div>
-  );
-}
-```
-
-##### 传递表达式
-
-```typescript
-export default function TodoList() {
-  const firstName = "Xiaohan";
-  const lastName = "Kong";
-  return <h1>{firstName + "" + lastName}'s To Do List</h1>;
-}
-```
-
-##### 传递函数
-
-```typescript
-export default function TodoList() {
-  const items = {
-    title: "delete";
-    action:{()=>{deleteItem()}}
-  };
-}
-```
+- 可读性高;
+- 表达能力强;
+- 静态类型检查;
+- 组件化;
 
 ## 属性
 
@@ -226,8 +192,6 @@ function Avatar({ person, size = 100 }) {
 - 传递一组新属性用于代替旧属性;
 
 ### children 属性
-
-##### children 属性
 
 - 组件属性使用 children 属性;
   - children 为关键字;
@@ -354,6 +318,54 @@ export default function List() {
 
 ![模块依赖树](./images/2024-03-18-16-29-01.png)
 
+## event handlers
+
+### 定义 event handlers
+
+##### 传递函数
+
+- 定义函数;
+- 作为属性传递至对应 event;
+
+```typescript
+export default function Button() {
+  function handleClick() {
+    console.log("You clicked me!");
+  }
+  return <button onClick={handleClick}>Click me</button>;
+}
+```
+
+##### 行内形式
+
+- 使用箭头函数;
+
+```typescript
+<button onClick={(e) => {
+  handleClick(e);
+  console.log('You clicked me!');
+}}>
+```
+
+### event handler 作为属性传递
+
+```typescript
+function Button({ onClick, children }) {
+  return <button onClick={onClick}>{children}</button>;
+}
+
+export default function UploadButton() {
+  return (
+    <Button onClick={() => console.log("Uploading!")}>Upload Image</Button>
+  );
+}
+```
+
+### 停止传播和默认行为;
+
+- 停止传播: stopPropagation();
+- 默认行为: preventDefault();
+
 ## 最佳实践
 
 ### 自定义组件
@@ -394,3 +406,25 @@ const LayerOutlined: React.FC<{ style: React.CSSProperties }> = ({ style }) => {
   );
 };
 ```
+
+### 受控组件和非受控组件
+
+##### 受控组件
+
+- 组件内部 state 完全被 props 控制的组件;
+
+##### 非受控组件
+
+- 组件内部 state 不被 props 控制的组件;
+- 内部状态自身管理;
+
+##### 应用场景
+
+- 非受控组件: 内部状态不受外部状态影响;
+- 受控组件: 内部状态受外部状态影响, 或需要对外部状态进行通信;
+
+### $$typeof 属性
+
+- react Root 标签具有 $$typeof 属性, 其值为 Symbol;
+- 作用为防止 XSS 攻击;
+- 用于 React 标识 Root 标签, 防止 XSS 伪造元素;

@@ -36,7 +36,23 @@ const nextState = produce(baseState, (draftState) => {
 });
 ```
 
-## react
+## 最佳实践
+
+##### 返回 draft
+
+```typescript
+// immer 是通过 proxy 实现
+// 因此本例中返回的是一个 ModelStatus 对象的 proxy, 并不是 ModelStatus 对象本身
+removeModelStatus: (key) => {
+  let model: ModelStatus;
+  set(
+    produce((draft: ModelStatusStore) => {
+      model = draft.modelStatus.filter((ms) => ms.value === key)[0];
+    })
+  );
+  return model;
+};
+```
 
 ### useState
 
@@ -77,22 +93,4 @@ export const useStore = create((set) => ({
     ),
   // ...
 }));
-```
-
-## 最佳实践
-
-##### 返回 draft
-
-```typescript
-// immer 是通过 proxy 实现
-// 因此本例中返回的是一个 ModelStatus 对象的 proxy, 并不是 ModelStatus 对象本身
-removeModelStatus: (key) => {
-  let model: ModelStatus;
-  set(
-    produce((draft: ModelStatusStore) => {
-      model = draft.modelStatus.filter((ms) => ms.value === key)[0];
-    })
-  );
-  return model;
-};
 ```

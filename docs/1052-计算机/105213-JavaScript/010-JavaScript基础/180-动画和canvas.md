@@ -2,8 +2,6 @@
 id: d042e820-8deb-44fa-84c2-706fcb1555f9
 ---
 
-// NOTE
-
 # 动画和 Canvas
 
 ## 动画
@@ -82,7 +80,7 @@ if (drawing.getContext) {
 }
 ```
 
-## 2d 绘图上下文
+## 简单绘制
 
 ### 填充和描边
 
@@ -209,44 +207,7 @@ context.strokeText("12", 100, 20, 10); // 在 (100, 20) 绘制 12, 最大宽度�
 context.measureText("Hello world!").width;
 ```
 
-### 变换
-
-##### 矩阵变化
-
-```typescript
-let drawing = document.getElementById("drawing");
-// 确保浏览器支持<canvas>
-if (drawing.getContext) {
-  let context = drawing.getContext("2d");
-  // ...
-  // 旋转
-  context.rotate(1); // 围绕原点旋转 1 弧度
-  context.scale(2, 0.5); // x 方向乘 2, y 方向乘 0.5
-  context.translate(10, 20); // 移动原点至 (10, 20)
-  // 进行矩阵变化
-  context.transform(1, 2, 1, 2, 1, 1); // 依次为 m1_1, m1_2, m2_1, m2_2, dx, dy
-  // 矩阵重置, 在调用 transform()
-  context.setTransform(1, 2, 1, 2, 1, 1); // m1_1, m1_2, m2_1, m2_2, dx, dy
-}
-```
-
-##### 保存
-
-```typescript
-// save() 保存设置至一个暂存栈
-// restore() 从暂存栈中取出并恢复设置
-context.fillStyle = "#ff0000";
-context.save();
-context.fillStyle = "#00ff00";
-context.translate(100, 100);
-context.save();
-context.fillStyle = "#0000ff";
-context.fillRect(0, 0, 100, 200); // 在(100, 100)绘制蓝色矩形
-context.restore();
-context.fillRect(10, 10, 100, 200); // 在(100, 100)绘制绿色矩形
-context.restore();
-context.fillRect(0, 0, 100, 200); // 在(0, 0)绘制红色矩形
-```
+## 高级绘制
 
 ### 阴影
 
@@ -336,6 +297,8 @@ imageData.data = data;
 context.putImageData(imageData, 0, 0); // 从 (0, 0) 使用 imageData 填充 context
 ```
 
+## 图形变换
+
 ### 合成
 
 ##### 透明度
@@ -368,6 +331,45 @@ context.globalCompositeOperation = "destination-over";
 // 绘制蓝色矩形
 context.fillStyle = "rgba(0,0,255,1)";
 context.fillRect(30, 30, 50, 50);
+```
+
+### 变换
+
+##### 矩阵变化
+
+```typescript
+let drawing = document.getElementById("drawing");
+// 确保浏览器支持<canvas>
+if (drawing.getContext) {
+  let context = drawing.getContext("2d");
+  // ...
+  // 旋转
+  context.rotate(1); // 围绕原点旋转 1 弧度
+  context.scale(2, 0.5); // x 方向乘 2, y 方向乘 0.5
+  context.translate(10, 20); // 移动原点至 (10, 20)
+  // 进行矩阵变化
+  context.transform(1, 2, 1, 2, 1, 1); // 依次为 m1_1, m1_2, m2_1, m2_2, dx, dy
+  // 矩阵重置, 在调用 transform()
+  context.setTransform(1, 2, 1, 2, 1, 1); // m1_1, m1_2, m2_1, m2_2, dx, dy
+}
+```
+
+##### 保存
+
+```typescript
+// save() 保存设置至一个暂存栈
+// restore() 从暂存栈中取出并恢复设置
+context.fillStyle = "#ff0000";
+context.save();
+context.fillStyle = "#00ff00";
+context.translate(100, 100);
+context.save();
+context.fillStyle = "#0000ff";
+context.fillRect(0, 0, 100, 200); // 在(100, 100)绘制蓝色矩形
+context.restore();
+context.fillRect(10, 10, 100, 200); // 在(100, 100)绘制绿色矩形
+context.restore();
+context.fillRect(0, 0, 100, 200); // 在(0, 0)绘制红色矩形
 ```
 
 ## 最佳实践

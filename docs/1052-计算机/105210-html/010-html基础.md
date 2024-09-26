@@ -49,11 +49,14 @@ id: 17695f0c-e935-4927-ad06-a2abb3262a31
 
 ##### 块级标签
 
-- 换行;
+- 自动换行且独占一行;
+  - 无论宽度都独占一行;
+  - 行内 + 块级 or 块级 + 行内 or 块级 + 块级都是两行;
 - 不可嵌套于 inline element, 可嵌套于 block-level elements.
 
 ##### 行内标签
 
+- 无法设置宽高, 通过文本内容确定;
 - 不换行;
 - 可嵌套于 block-level elements 和 inline element.
 
@@ -95,3 +98,31 @@ id: 17695f0c-e935-4927-ad06-a2abb3262a31
 id#id_value
 id=id_value;
 ```
+
+## 响应式设计
+
+### 基础
+
+- 根据用户行为和设备环境;
+- 使用不同的页面布局和资源;
+
+### meta 标签
+
+- 用于检查不同设备屏幕尺寸;
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no”>
+```
+
+### 媒体查询
+
+- 基于媒体查询使用不同布局, 元素尺寸;
+
+### 相对尺寸
+
+- 使用百分比/rem/vx 等相对尺寸;
+- 实现弹性布局;
+
+### 响应式多媒体
+
+- 基于 source 标签或 srcset 属性实现响应式多媒体;

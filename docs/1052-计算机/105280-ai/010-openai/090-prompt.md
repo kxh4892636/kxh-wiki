@@ -3,46 +3,44 @@
 ## prompt 格式
 
 ```markdown
-# Role
+# 角色
 
 - 扮演角色;
 
-# Profile
+# 描述
 
-- 角色信息描述
+- 角色详细信息描述;
+  - 角色描述;
+  - 版本号;
+  - 输出语言;
 
-# Background
-
-- 任务背景信息;
-- 任务发生缘由;
-
-# Mission
+# 目标
 
 - 任务总体目标;
 
-# skills
+# 技能
 
 - 角色掌握技能;
 
-# Rules
+# 约束
 
 - 任务限制, 约束;
 - 具体子目标或主观意图;
 
-# Instructions
+# 流程
 
 - 具体指令;
 - 任务实现流程;
 
-# Expected Input
+# 预计输入
 
 - 预期输入格式;
 
-# Output Format
+# 预计输出
 
 - 预期输出格式;
 
-# Example
+# 示例
 
 - 简单示例;
 ```

@@ -26,26 +26,13 @@ const testUnionField = () => {
   // }
 
   class UnionFind {
-    constructor(n) {
-      this.fa = new Array(n).fill(0).map((_, index) => index);
-    }
+    constructor(size) {}
 
-    union(x, y) {
-      const indexY = this.fa.indexOf(y);
-      this.fa[x] = indexY;
-    }
+    union(x, y) {}
 
-    find(x) {
-      while (this.fa[x] !== x) {
-        this.fa[x] = this.fa[this.fa[x]];
-        x = this.fa[x];
-      }
-      return x;
-    }
+    find(x) {}
 
-    isConnected(x, y) {
-      return this.find(x) === this.find(y);
-    }
+    isConnected(x, y) {}
   }
 
   const temp = new UnionFind(8);

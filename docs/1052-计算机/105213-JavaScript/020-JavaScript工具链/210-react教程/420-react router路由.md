@@ -324,3 +324,129 @@ export const ExtendRouter = ({ children }: AppProps) => {
 ```typescript
 <ExtendRouter>{element}</ExtendRouter>
 ```
+
+## 手写极简路由
+
+### 实现 Router
+
+- 监听 history 事件;
+  - 监听 pushState 和 popState 事件;
+  - pushState 自己通过状态管理库实现;
+  - popState 浏览器自带;
+- 定义 push 和 goBack 函数;
+- 使用状态管理保存 history 和 location;
+
+```typescript
+const useRouterStore = create((set) => ({
+  location: null,
+  setLocation: (value) => {
+    set({
+      location: value,
+    });
+  },
+  history: null,
+  setHistory: (value) => {
+    set({
+      history: value,
+    });
+  },
+}));
+
+export const Router = ({ children }) => {
+  const setHistory = useRouterStore((state) => state.setHistory);
+  const setLocation = useRouterStore((state) => state.setLocation);
+
+  useEffect(() => {
+    const { pathname } = window.location;
+    setLocation(pathname || "/");
+    setHistory({
+      push,
+      goBack,
+    });
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
+  const push = (location) => {
+    setLocation(location);
+    window.history.pushState({ location }, null, location);
+  };
+
+  const goBack = () => {
+    window.history.go(-1);
+  };
+
+  const handlePopState = () => {
+    const { pathname } = window.location;
+    setLocation(pathname);
+  };
+
+  return <>{children}</>;
+};
+```
+
+### 实现 Route
+
+- 从属性中获取 component 和 path;
+- 如果 path 相同返回 component, 反之返回 null;
+
+```typescript
+export const Route = (props) => {
+  const { component: Component, path: componentPath } = props;
+  const location = useRouterStore((state) => state.location);
+
+  return <>{location === componentPath ? <Component /> : null}</>;
+};
+```
+
+### Link
+
+- 从属性获取 to;
+- 使用 history 的 push 方法定向到 to;
+
+```typescript
+const Link = (props) => {
+  const history = useRouterStore((state) => state.history);
+
+  const handleTo = () => {
+    history.push(props.to);
+  };
+
+  return (
+    <a {...props} onClick={handleTo}>
+      {props.children}
+    </a>
+  );
+};
+```
+
+### 简单示例
+
+```typescript
+export const App = () => {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
+        <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/users" component={Users} />
+      </div>
+    </Router>
+  );
+};
+```

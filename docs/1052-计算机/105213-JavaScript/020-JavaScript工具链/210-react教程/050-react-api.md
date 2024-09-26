@@ -120,7 +120,7 @@ const FormField = forwardRef(function FormField(props, ref) {
 
 - 配合 useImperativeHandle hook;
 - 暴漏部分 DOM (命令式句柄), 而不是整个 DOM 节点;
-- 详情见 [useImperativeHandle](./040-react-hook-0.md#useimperativehandle)
+- 详情见 [useImperativeHandle](./040-react-hook.md#useimperativehandle)
 
 ## lazy
 
