@@ -268,7 +268,7 @@ function handleClick() {
   // 批量处理更新, 合并多个 state
   setCount((c) => c + 1);
   setFlag((f) => !f);
-  // React 将会 re-render 一次。
+  // React 将会 re-render 一次. 
 }
 
 function handleClick() {

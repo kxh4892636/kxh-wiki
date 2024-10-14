@@ -111,7 +111,7 @@ id=id_value;
 - 用于检查不同设备屏幕尺寸;
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no”>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
 ```
 
 ### 媒体查询
@@ -126,3 +126,16 @@ id=id_value;
 ### 响应式多媒体
 
 - 基于 source 标签或 srcset 属性实现响应式多媒体;
+
+## html5 新特性
+
+- 语义化标签;
+- 视频和音频标签;
+- 表单元素;
+- canvas 标签;
+- svg 标签;
+- web 存储;
+- worker;
+- WebSocket;
+- 拖动 API;
+- history API;

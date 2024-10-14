@@ -1203,9 +1203,9 @@ const App = () => {
 };
 ```
 
-## 模拟生命周期
+### 模拟生命周期
 
-### componentDidMount
+##### componentDidMount
 
 - 使用 useEffect 和空依赖数组实现;
 
@@ -1218,7 +1218,7 @@ useEffect(() => {
 }, []);
 ```
 
-### componentDidUpdate
+##### componentDidUpdate
 
 - 使用 useEffect 和依赖数组实现;
 
@@ -1228,7 +1228,7 @@ useEffect(() => {
 }, [dependencies]);
 ```
 
-### shouldComponentUpdate
+##### shouldComponentUpdate
 
 - 使用 memo 实现;
 
@@ -1236,7 +1236,7 @@ useEffect(() => {
 const MemoizedComponent = React.memo(Component);
 ```
 
-### componentDidCatch
+##### componentDidCatch
 
 - 自定义 ErrorBoundary 组件;
 

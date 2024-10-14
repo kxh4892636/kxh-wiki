@@ -141,6 +141,12 @@ element {
 - flex-grow + flex-basis;
 - flex-grow + flex-shrink + flex-basis;
 
+##### 常见属性值
+
+- flex: 1 = flex: 1 1 0%;
+- flex: 2 = flex: 2 1 0%;
+- flex: auto = flex: 1 1 auto;
+
 ### flex-grow 属性
 
 ##### 作用
