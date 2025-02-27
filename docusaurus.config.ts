@@ -1,8 +1,9 @@
-import type * as Preset from "@docusaurus/preset-classic";
-import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
-import rehypeKatex from "rehype-katex";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
   title: "KXH-WIKI",
@@ -44,19 +45,27 @@ const config: Config = {
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
+        // blog: {
+        //   showReadingTime: true,
+        //   feedOptions: {
+        //     type: ["rss", "atom"],
+        //     xslt: true,
+        //   },
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+        //   // Useful options to enforce blogging best practices
+        //   onInlineTags: "warn",
+        //   onInlineAuthors: "warn",
+        //   onUntruncatedBlogPosts: "warn",
+        // },
         theme: {
           customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
   ],
-
-  // stylesheets: [
-  //   {
-  //     href: "/katex/katex.css",
-  //     type: "text/css",
-  //   },
-  // ],
 
   stylesheets: [
     {
@@ -75,38 +84,43 @@ const config: Config = {
       title: "KXH-WIKI",
       items: [
         {
-          to: "/docs/方法论/0d286b10-e13d-4b61-bbfd-535a59f3eed5",
+          to: "/docs/方法论/",
           label: "方法论",
           position: "right",
         },
         {
-          to: "/docs/读书笔记/政治/毛泽东选集/05dc24c8-806f-40d6-b3d6-dda562cf8908",
-          label: "读书笔记",
+          to: "/docs/ai/",
+          label: "AI",
           position: "right",
         },
         {
-          to: "/docs/数学/线性代数/d74ca4aa-a44c-4aa0-bd53-4e9da59060e5",
-          label: "数学",
+          to: "/docs/生活/",
+          label: "生活",
           position: "right",
         },
         {
-          to: "/docs/英语/方法论/如何学习英语",
-          label: "英语",
+          to: "/docs/读书/",
+          label: "读书",
           position: "right",
         },
         {
-          to: "/docs/计算机/c/3480920b-bb5b-41ef-aa77-3f9d81ec9e97",
+          to: "/docs/计算机/",
           label: "计算机",
           position: "right",
         },
         {
-          to: "/docs/gis/地理信息原理/3971f3e7-2a24-42b7-beb8-fe991dde431e",
-          label: "gis",
+          to: "/docs/专业基础/",
+          label: "专业基础",
           position: "right",
         },
         {
-          to: "/docs/工具链/anki",
-          label: "工具链",
+          to: "/docs/工作/",
+          label: "工作",
+          position: "right",
+        },
+        {
+          to: "/docs/工具/",
+          label: "工具",
           position: "right",
         },
         {
@@ -119,7 +133,6 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["powershell", "bash", "python", "typescript"],
     },
     docs: {
       sidebar: {
@@ -128,6 +141,10 @@ const config: Config = {
       },
     },
   } satisfies Preset.ThemeConfig,
+
+  future: {
+    experimental_faster: true,
+  },
 };
 
 export default config;
