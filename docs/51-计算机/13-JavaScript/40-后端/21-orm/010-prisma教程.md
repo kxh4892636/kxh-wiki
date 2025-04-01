@@ -10,8 +10,8 @@ id: 906d423e-eb09-4f20-8d76-5dc16dce1c3c
 
 ##### 基础依赖
 
-- typescript;
-- ts-node;
+- typescript；
+- ts-node；
 
 ##### 安装相关依赖
 
@@ -40,7 +40,7 @@ postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA
 
 ##### 配置 schema.prisma 文件
 
-- 没什么好说的, 自己配置就完了;
+- 没什么好说的，自己配置就完了；
 
 ##### 应用至数据库
 
@@ -66,7 +66,7 @@ npx prisma generate
 
 ##### 配置 .env 文件
 
-- 同创建新数据库;
+- 同创建新数据库；
 
 ##### 拉取数据库配置
 
@@ -85,25 +85,25 @@ npx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma 
 
 ##### 应用至 prisma client
 
-- 同创建新数据库;
+- 同创建新数据库；
 
 ## 常用命令解析
 
 ##### npx prisma db pull
 
-- 用于从数据库拉取配置;
+- 用于从数据库拉取配置；
 
 ##### npx prisma migrate dev --name xxx
 
-- 将 schema.prisma 配置应用至数据库;
-- 同时自动执行 npx prisma generate;
-- 在修改数据库结构时使用;
+- 将 schema。prisma 配置应用至数据库；
+- 同时自动执行 npx prisma generate；
+- 在修改数据库结构时使用；
 
 ##### npx prisma generate
 
-- 将 schema.prisma 配置应用至 prisma client;
-- 一般在修改 schema.prisma 配置中别名或拉取数据库配置后使用;
-- 修改后 vscode 要重启才能生效, 其余 IDE 不清楚;
+- 将 schema。prisma 配置应用至 prisma client；
+- 一般在修改 schema。prisma 配置中别名或拉取数据库配置后使用；
+- 修改后 vscode 要重启才能生效，其余 IDE 不清楚；
 
 ## prisma schema
 
@@ -129,19 +129,19 @@ model MyUser {
 
 ##### create/createMany
 
-- 重复添加具有唯一约束的字段报错;
+- 重复添加具有唯一约束的字段报错；
 
 ##### find/findMany
 
-- 好像不会报错;
+- 好像不会报错；
 
 ##### update/updateMany
 
-- 更新不存在的字段报错;
+- 更新不存在的字段报错；
 
 ##### delete/deleteMany
 
-- 删除不存在的字段报错;
+- 删除不存在的字段报错；
 
 #### create
 
@@ -233,8 +233,8 @@ const getActiveUsers = await prisma.user.findMany({
 
 ##### 返回值
 
-- findUnique() 返回 {} 或 null;
-- findMany() 返回数组, 但数组可为空;
+- findUnique() 返回 {} 或 null；
+- findMany() 返回数组，但数组可为空；
 
 #### update
 
@@ -296,8 +296,8 @@ const deleteUsers = await prisma.user.deleteMany({});
 
 ##### 作用
 
-- 执行原生 sql;
-- 进行 prisma 难以进行的操作;
+- 执行原生 sql；
+- 进行 prisma 难以进行的操作；
 
 ##### 常用 API
 
@@ -320,13 +320,13 @@ await prisma.$queryRaw`UPDATE data SET name = null WHERE id = 1`;
 
 ### prisma cli 使用
 
-- 仅使用 prisma db pull 和 prisma generate 两个命令;
-- 不使用 prisma 改变数据库;
+- 仅使用 prisma db pull 和 prisma generate 两个命令；
+- 不使用 prisma 改变数据库；
 
 ### undefined 使用
 
-- 更新操作中对字段赋值 undefined;
-- prisma 忽略该字段更新;
+- 更新操作中对字段赋值 undefined；
+- prisma 忽略该字段更新；
 
 ```typescript
 const updateUser = await prisma.user.update({

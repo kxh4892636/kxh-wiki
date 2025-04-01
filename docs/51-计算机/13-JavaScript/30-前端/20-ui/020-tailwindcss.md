@@ -17,7 +17,7 @@ pnpm dlx tailwindcss init -p
 
 ##### 配置文件
 
-- 根目录创建 `tailwind.config.js`;
+- 根目录创建 `tailwind.config.js`；
 
 ```typescript
 /** @type {import('tailwindcss').Config} */
@@ -32,7 +32,7 @@ export default {
 
 ##### css 文件
 
-- 创建 `./src/index.css`;
+- 创建 `./src/index.css`；
 
 ```css
 @tailwind base;
@@ -42,17 +42,17 @@ export default {
 
 ### 插件
 
-- vscode plugin;
-- prettier-plugin-tailwindcss;
+- vscode plugin；
+- prettier-plugin-tailwindcss；
 
 ## 状态管理
 
 ### 支持状态管理
 
-- 伪类;
-- 微元素;
-- 媒体查询;
-- 选择器;
+- 伪类；
+- 微元素；
+- 媒体查询；
+- 选择器；
 
 ### 伪类
 
@@ -83,7 +83,7 @@ export default {
 
 #### 表单状态
 
-- required/invalid/disabled;
+- required/invalid/disabled；
 
 ```typescript
 <form>
@@ -105,9 +105,9 @@ export default {
 
 ##### 基础
 
-- 根据父元素的状态设置自身样式;
-- 使用 group 标记父元素;
-- 使用 group-\* 设置状态;
+- 根据父元素的状态设置自身样式；
+- 使用 group 标记父元素；
+- 使用 group-\* 设置状态；
 
 ```typescript
 <a href="#" class="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500">
@@ -121,8 +121,8 @@ export default {
 
 ##### 嵌套父元素
 
-- 使用 `group/{name}` 标记父元素;
-- 使用 `group-*/{name}` 设置状态;
+- 使用 `group/{name}` 标记父元素；
+- 使用 `group-*/{name}` 设置状态；
 
 ```typescript
 <ul role="list">
@@ -146,7 +146,7 @@ export default {
 
 ##### 选择器
 
-- 使用 `group-[*]` 操作符表示 \* 选择器对应标签的状态;
+- 使用 `group-[*]` 操作符表示 \* 选择器对应标签的状态；
 
 ```typescript
 <div class="group is-published">
@@ -156,7 +156,7 @@ export default {
 
 #### 同级元素状态
 
-- 父元素基础上将 group 替换为 peer;
+- 父元素基础上将 group 替换为 peer；
 
 ```typescript
 <form>
@@ -169,7 +169,7 @@ export default {
 
 #### 后代元素状态
 
-- 父元素基础上将 group 替换为 has;
+- 父元素基础上将 group 替换为 has；
 
 ```typescript
 <label class="has-[:checked]:bg-indigo-50 has-[:checked]:text-indigo-900 has-[:checked]:ring-indigo-200 ..">
@@ -183,8 +183,8 @@ export default {
 
 #### 设置直接子元素
 
-- 设置直接子元素样式;
-- 父元素基础上将 group 替换为 \*;
+- 设置直接子元素样式；
+- 父元素基础上将 group 替换为 \*；
 
 ```typescript
 <div>
@@ -200,13 +200,13 @@ export default {
 
 #### 基于父元素/同级元素的后代
 
-- 使用 `group-has-*` 和 `peer-has-*` 操作符;
+- 使用 `group-has-*` 和 `peer-has-*` 操作符；
 
 ### 伪元素
 
 ##### before 和 after
 
-- 使用 `before` 和 `after` 操作符;
+- 使用 `before` 和 `after` 操作符；
 
 ```typescript
 <label class="block">
@@ -224,8 +224,8 @@ export default {
 
 ##### Placeholder text
 
-- input 中的 placeholder;
-- 使用 `placeholder` 操作符;
+- input 中的 placeholder；
+- 使用 `placeholder` 操作符；
 
 ```typescript
 <label class="relative block">
@@ -239,8 +239,8 @@ export default {
 
 ##### File input buttons
 
-- input 中的 file;
-- 使用 `file` 操作符;
+- input 中的 file；
+- 使用 `file` 操作符；
 
 ```typescript
 <form class="flex items-center space-x-6">
@@ -269,8 +269,8 @@ export default {
 
 ##### List markers
 
-- list 中的 maker;
-- 使用 `marker` 操作符;
+- list 中的 maker；
+- 使用 `marker` 操作符；
 
 ```typescript
 <ul
@@ -285,8 +285,8 @@ export default {
 
 ##### Highlighted text
 
-- 选中文字;
-- 使用 `selection` 操作符;
+- 选中文字；
+- 使用 `selection` 操作符；
 
 ```typescript
 <div class="selection:bg-fuchsia-300 selection:text-fuchsia-900">
@@ -302,8 +302,8 @@ export default {
 
 ##### First-line and first-letter
 
-- 第一行/第一个字母;
-- 使用 `first-line`/`first-letter` 操作符;
+- 第一行/第一个字母；
+- 使用 `first-line`/`first-letter` 操作符；
 
 ```typescript
 <p
@@ -322,16 +322,16 @@ export default {
 
 #### 响应式
 
-- [[#响应式设计]];
+- [[#响应式设计]]；
 
 #### 主题
 
-- [[#主题切换]];
+- [[#主题切换]]；
 
 #### Viewport orientation
 
-- 设备视口方向;
-- 使用 `portrait` 和 `landscape` 操作符;
+- 设备视口方向；
+- 使用 `portrait` 和 `landscape` 操作符；
 
 ```typescript
 <div>
@@ -349,8 +349,8 @@ export default {
 
 #### Print styles
 
-- 打印文档时样式;
-- 使用 `print` 操作符;
+- 打印文档时样式；
+- 使用 `print` 操作符；
 
 ```typescript
 <div>
@@ -367,8 +367,8 @@ export default {
 
 #### Supports rules
 
-- 浏览器是否支持特定功能;
-- 使用 `supports-[...]` 操作符;
+- 浏览器是否支持特定功能；
+- 使用 `supports-[...]` 操作符；
 
 ```typescript
 <div class="flex supports-[display:grid]:grid ...">
@@ -380,7 +380,7 @@ export default {
 
 ##### ARIA 属性
 
-- 根据 ARIA 属性设置样式;
+- 根据 ARIA 属性设置样式；
 
 | Modifier      | CSS                     |
 | ------------- | ----------------------- |
@@ -395,8 +395,8 @@ export default {
 
 ##### Data 属性
 
-- 根据 data 属性设置样式;
-- 使用 `data-*` 修饰符;
+- 根据 data 属性设置样式；
+- 使用 `data-*` 修饰符；
 
 ```typescript
 <!-- Will apply -->
@@ -412,8 +412,8 @@ export default {
 
 ##### RTL
 
-- 根据文字方向设置样式;
-- 使用 `rtl` 和 `ltr` 操作符;
+- 根据文字方向设置样式；
+- 使用 `rtl` 和 `ltr` 操作符；
 
 ```typescript
 <div class="group flex items-center">
@@ -431,8 +431,8 @@ export default {
 
 ##### Open/closed state
 
-- 作用于 details\> 或 \<dialog 标签, 表示其 open/close 状态;
-- 使用 `open` 操作符表示打开状态;
+- 作用于 details\> 或 \<dialog 标签，表示其 open/close 状态；
+- 使用 `open` 操作符表示打开状态；
 
 ```typescript
 <div class="max-w-lg mx-auto p-8">
@@ -454,8 +454,8 @@ export default {
 
 ##### 自定义选择器
 
-- & 表示 class 对应标签;
-- 使用 [] 包裹;
+- & 表示 class 对应标签；
+- 使用 [] 包裹；
 
 ```typescript
 <ul role="list">
@@ -467,7 +467,7 @@ export default {
 
 ##### 选择器堆叠
 
-- 选择器可任意堆叠;
+- 选择器可任意堆叠；
 
 ```typescript
 <ul role="list">
@@ -479,7 +479,7 @@ export default {
 
 ### 操作符列表
 
-- [操作符列表](https://tailwindcss.com/docs/hover-focus-and-other-states#quick-reference);
+- [操作符列表](https://tailwindcss.com/docs/hover-focus-and-other-states#quick-reference)；
 
 ## 设计系统
 
@@ -487,7 +487,7 @@ export default {
 
 ##### 断点
 
-- 使用 `sm/md/lg/xl/2xl` 操作符;
+- 使用 `sm/md/lg/xl/2xl` 操作符；
 
 | Breakpoint prefix | Minimum width | CSS                                  |
 | ----------------- | ------------- | ------------------------------------ |
@@ -505,8 +505,8 @@ export default {
 
 ##### 移动优先
 
-- 默认使用移动布局设计;
-- 单独设置 sm/md/lg...;
+- 默认使用移动布局设计；
+- 单独设置 sm/md/lg。。。；
 
 ```typ<!-- This will center text on mobile, and left align it on screens 640px and wider -->
 <div class="text-center sm:text-left"></div>escript
@@ -514,7 +514,7 @@ export default {
 
 ##### 断点范围
 
-- 使用 `max-*` 修饰符;
+- 使用 `max-*` 修饰符；
 
 | Modifier | Media query                                      |
 | -------- | ------------------------------------------------ |
@@ -534,12 +534,12 @@ export default {
 
 ##### 默认机制
 
-- 默认使用系统偏好;
+- 默认使用系统偏好；
 
 ##### dark 属性
 
-- 默认为浅色模式;
-- 使用 `dark` 操作符表示深色模式;
+- 默认为浅色模式；
+- 使用 `dark` 操作符表示深色模式；
 
 ```typescript
 <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
@@ -555,8 +555,8 @@ export default {
 
 ##### 手动切换
 
-- 使用 class 策略;
-- 设置 `dark` 修饰符;
+- 使用 class 策略；
+- 设置 `dark` 修饰符；
 
 ```typescript
 /** @type {import('tailwindcss').Config} */
@@ -590,7 +590,7 @@ module.exports = {
 
 ##### 系统偏好
 
-- 使用 `Window.matchMedia()` API 和 `prefers-color-scheme` 选择器;
+- 使用 `Window.matchMedia()` API 和 `prefers-color-scheme` 选择器；
 
 ```typescript
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -638,7 +638,7 @@ module.exports = {
 
 ##### 任意属性值
 
-- 使用 [] 包裹对应 css 属性值;
+- 使用 [] 包裹对应 css 属性值；
 
 ```typescript
 <div class="top-[117px]">
@@ -648,7 +648,7 @@ module.exports = {
 
 ##### 任意 css 属性
 
-- 使用 [] 包裹对应 css 属性;
+- 使用 [] 包裹对应 css 属性；
 
 ```typescript
 <div class="[mask-type:luminance] hover:[mask-type:alpha]">
@@ -658,8 +658,8 @@ module.exports = {
 
 ##### 处理空白
 
-- 使用 \_ 表示空白;
-- 用于任意 css 简写属性;
+- 使用 \_ 表示空白；
+- 用于任意 css 简写属性；
 
 ```typescript
 <div class="grid grid-cols-[1fr_500px_2fr]">
@@ -669,8 +669,8 @@ module.exports = {
 
 ##### 基础样式
 
-- index.css 中设置;
-- 使用 `@layer base` 操作符;
+- index。css 中设置；
+- 使用 `@layer base` 操作符；
 
 ```css
 @tailwind base;
@@ -690,8 +690,8 @@ module.exports = {
 
 ##### 自定义原子类
 
-- tailwindcss 不包含的原子 css 属性;
-- 使用 `@layer utilities` 操作符;
+- tailwindcss 不包含的原子 css 属性；
+- 使用 `@layer utilities` 操作符；
 
 ```css
 @tailwind base;
@@ -715,10 +715,10 @@ module.exports = {
 
 ### 操作符
 
-- @tailwind: tailwindcss 默认规则;
-- @layer: 用户自定义规则;
-- @apply: 内联自定义 css;
-- @config: 加载配置文件;
+- @tailwind：tailwindcss 默认规则；
+- @layer：用户自定义规则；
+- @apply：内联自定义 css；
+- @config：加载配置文件；
 
 ```css
 @config "./tailwind.site.config.js";
@@ -732,7 +732,7 @@ module.exports = {
 
 ##### theme()
 
-- 访问自定义主题配置;
+- 访问自定义主题配置；
 
 ```typescript
 .content-area {
@@ -742,7 +742,7 @@ module.exports = {
 
 ##### screen()
 
-- 通过名称引用断点媒体查询;
+- 通过名称引用断点媒体查询；
 
 ```css
 @media screen(sm) {

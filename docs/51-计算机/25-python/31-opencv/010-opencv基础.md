@@ -20,8 +20,8 @@ sudo apt install python3-opencv
 
 ##### 代码提示
 
-- opencv 安装后没有代码提示;
-- 将 `C:\Users\kxh\miniforge3\envs\gis\Lib\site-packages\cv2\cv2.pyd` 文件复制到上级目录即可;
+- opencv 安装后没有代码提示；
+- 将 `C:\Users\kxh\miniforge3\envs\gis\Lib\site-packages\cv2\cv2.pyd` 文件复制到上级目录即可；
 
 ## 伪彩色合成
 

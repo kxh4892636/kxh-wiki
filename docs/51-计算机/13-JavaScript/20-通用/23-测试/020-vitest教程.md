@@ -15,7 +15,7 @@ pnpm add -D vitest
 
 ### 工作区配置文件
 
-- vitest.workspace.ts;
+- vitest。workspace。ts；
 
 ```typescript
 import { defineWorkspace } from "vitest/config";
@@ -43,9 +43,9 @@ export default defineWorkspace([
 
 ### 项目配置文件
 
-- 同 vitest.config.ts;
-- 工作区项目不支持所有配置属性;
-- 使用 defineProject 方法;
+- 同 vitest。config。ts；
+- 工作区项目不支持所有配置属性；
+- 使用 defineProject 方法；
 
 ```typescript
 import { defineProject } from "vitest/config";
@@ -90,13 +90,13 @@ vitest bench
 
 ### 命令行选项
 
-- [命令行选项](https://vitest.dev/guide/cli.html#options);
+- [命令行选项](https://vitest.dev/guide/cli.html#options)；
 
 ## 覆盖测试
 
 ### 运行覆盖测试
 
-- 使用 `--coverage` 标识;
+- 使用 `--coverage` 标识；
 
 ```bash
 vitest run --coverage
@@ -122,8 +122,8 @@ export default defineConfig({
 
 ### 运行快照测试
 
-- 使用 `toMatchSnapshot()` API;
-- 第一次执行快照测试, 保存快照至指定位置;
+- 使用 `toMatchSnapshot()` API；
+- 第一次执行快照测试，保存快照至指定位置；
 
 ```typescript
 import { expect, it } from "vitest";
@@ -136,8 +136,8 @@ it("toUpperCase", () => {
 
 ### 内联快照
 
-- 使用 `toMatchInlineSnapshot()` API;
-- 将快照文件存储在测试文件中;
+- 使用 `toMatchInlineSnapshot()` API；
+- 将快照文件存储在测试文件中；
 
 ```typescript
 import { expect, it } from "vitest";
@@ -150,7 +150,7 @@ it("toUpperCase", () => {
 
 ### 更新快照
 
-- 使用 `--update` 标识;
+- 使用 `--update` 标识；
 
 ```typescript
 vitest --update
@@ -158,12 +158,12 @@ vitest --update
 
 ## Mocking
 
-- 模拟测试中某模块结果;
-- 我一般不用, 略;
+- 模拟测试中某模块结果；
+- 我一般不用，略；
 
 ## 报告器
 
-- 不同格式显示测试结果;
+- 不同格式显示测试结果；
 
 ```typescript
 import { defineConfig } from "vite";
@@ -181,7 +181,7 @@ export default defineConfig({
 
 ##### 基础
 
-- 定义一次测试;
+- 定义一次测试；
 
 ```typescript
 import { expect, test } from "vitest";
@@ -193,7 +193,7 @@ test("should work as expected", () => {
 
 ##### 跳过测试
 
-- 跳过测试但不删除;
+- 跳过测试但不删除；
 
 ```typescript
 import { assert, test } from "vitest";
@@ -208,7 +208,7 @@ test.skip("skipped test", () => {
 
 ##### 基础
 
-- 性能基准测试;
+- 性能基准测试；
 
 ```typescript
 import { bench } from "vitest";
@@ -227,7 +227,7 @@ bench(
 
 ##### 跳过测试
 
-- 跳过测试但不删除;
+- 跳过测试但不删除；
 
 ```typescript
 import { bench } from "vitest";
@@ -244,7 +244,7 @@ bench.skip("normal sorting", () => {
 
 ##### 基础
 
-- test 或 bench 的抽象;
+- test 或 bench 的抽象；
 
 ```typescript
 import { expect, test, describe } from "vitest";
@@ -259,7 +259,7 @@ describe("Test the Route class", () => {
 
 ##### 跳过测试
 
-- 跳过测试但不删除;
+- 跳过测试但不删除；
 
 ```typescript
 import { expect, test, describe } from "vitest";
@@ -322,8 +322,8 @@ describe("matching cities to foods", () => {
 
 ### 软断言
 
-- 断言失败是不会终止测试;
-- 而是标记该测试为失败, 继续进行其余测试;
+- 断言失败是不会终止测试；
+- 而是标记该测试为失败，继续进行其余测试；
 
 ```typescript
 import { expect, test } from "vitest";
@@ -465,7 +465,7 @@ test("compiling android goes as expected", () => {
 
 ### 快照
 
-- [[#快照测试]];
+- [[#快照测试]]；
 
 ### 异步
 
@@ -485,10 +485,10 @@ test("the fetch fails with an error", () => {
 
 ### 常见测试环境
 
-- node: 默认环境;
-- jsdom: 使用 jsdom 模拟浏览器环境;
-- happy-dom: 使用 happy-dom 模拟浏览器环境;
-- edge-runtime: 模拟 vercel edge 环境;
+- node：默认环境；
+- jsdom：使用 jsdom 模拟浏览器环境；
+- happy-dom：使用 happy-dom 模拟浏览器环境；
+- edge-runtime：模拟 vercel edge 环境；
 
 ### 配置测试环境
 
@@ -531,7 +531,7 @@ export default defineProject({
 
 ### 配置文件
 
-- vitest.config.ts;
+- vitest。config。ts；
 
 ```typescript
 import { defineConfig } from "vitest/config";
@@ -545,7 +545,7 @@ export default defineConfig({
 
 ### 配置选项
 
-- [配置选项](https://vitest.dev/config/);
+- [配置选项](https://vitest.dev/config/)；
 
 ```typescript
 import path from "path";

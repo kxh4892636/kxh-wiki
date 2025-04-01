@@ -8,14 +8,14 @@ id: b832dd6e-a42c-4cbd-aa40-e595fa232aa0
 
 ##### 类型
 
-- Writable: 可以写入数据的流;
-- Readable: 可以读取数据的流;
-- Duplex: 既可以写入又可以读取数据的流;
-- Transform: 可以在写入和读取数据时修改或转换数据的流;
+- Writable：可以写入数据的流；
+- Readable：可以读取数据的流；
+- Duplex：既可以写入又可以读取数据的流；
+- Transform：可以在写入和读取数据时修改或转换数据的流；
 
 ##### 传输数据
 
-- 所有的 stream 传输 string 或者 buffer;
+- 所有的 stream 传输 string 或者 buffer；
 
 ##### highWaterMark
 
@@ -23,22 +23,22 @@ id: b832dd6e-a42c-4cbd-aa40-e595fa232aa0
 
 ##### 作用
 
-- 各种模块中的各种流基于该模块封装;
-- 除非自定义流, 一般不使用该模块;
-- 着重于理解流的机制和概念;
+- 各种模块中的各种流基于该模块封装；
+- 除非自定义流，一般不使用该模块；
+- 着重于理解流的机制和概念；
 
 ## stream.Writable
 
 ##### 使用 Writable stream 的模块
 
-- HTTP requests;
-- HTTP responses;
-- fs write streams;
-- zlib streams;
-- crypto streams;
-- TCP sockets;
-- child process stdin;
-- process.stdout, process.stderr;
+- HTTP requests；
+- HTTP responses；
+- fs write streams；
+- zlib streams；
+- crypto streams；
+- TCP sockets；
+- child process stdin；
+- process。stdout，process。stderr；
 
 ##### 事件
 
@@ -141,48 +141,48 @@ file.end("world!");
 
 ##### 使用 Readable 的模块
 
-- TTP responses;
-- HTTP requests;
-- fs read streams;
-- zlib streams;
-- crypto streams;
-- TCP sockets;
-- child process stdout and stderr;
-- process.stdin;
+- TTP responses；
+- HTTP requests；
+- fs read streams；
+- zlib streams；
+- crypto streams；
+- TCP sockets；
+- child process stdout and stderr；
+- process。stdin；
 
 ##### 两种读取模式
 
-- flowing mode;
-  - 数据自动从底层系统独处, 通过事件提供给应用程序;
-- paused mode;
-  - 显示调用 stream.read() 读取数据块;
+- flowing mode；
+  - 数据自动从底层系统独处，通过事件提供给应用程序；
+- paused mode；
+  - 显示调用 stream。read() 读取数据块；
 
 ##### 读取模式的转换
 
-- paused mode - flowing mode;
-  - 添加 data 事件;
-  - 调用 stream.resume() 方法;
-  - 调用 stream.pipe() 方法;
-- flowing mode - paused mode;
-  - 调用 stream.pause() 方法;
-  - 调用 stream.unpipe() 方法;
+- paused mode - flowing mode；
+  - 添加 data 事件；
+  - 调用 stream。resume() 方法；
+  - 调用 stream。pipe() 方法；
+- flowing mode - paused mode；
+  - 调用 stream。pause() 方法；
+  - 调用 stream。unpipe() 方法；
 
 ##### 读取数据机制
 
-- Readable 只有提供了读取或忽略数据的机制后才会在流中读取数据;
-- 机制即读取模式相关方法;
-- 推荐仅选择一种读取相关的方法读取数据;
+- Readable 只有提供了读取或忽略数据的机制后才会在流中读取数据；
+- 机制即读取模式相关方法；
+- 推荐仅选择一种读取相关的方法读取数据；
 
 ##### 三种状态
 
-- readable.readableFlowing === null;
-  - 初始状态;
-- readable.readableFlowing === true;
-  - 添加 data 事件;
-  - 调用 readable.resume() 或 readable.pipe() 方法;
-- readable.readableFlowing === false;
-  - 调用 readable.pause() 或 readable.unpipe() 方法;
-  - 此时添加 data 事件无效;
+- readable。readableFlowing === null；
+  - 初始状态；
+- readable。readableFlowing === true；
+  - 添加 data 事件；
+  - 调用 readable。resume() 或 readable。pipe() 方法；
+- readable。readableFlowing === false；
+  - 调用 readable。pause() 或 readable。unpipe() 方法；
+  - 此时添加 data 事件无效；
 
 ```typescript
 const pass = new PassThrough();
@@ -369,16 +369,16 @@ print(fs.createReadStream("file")).catch(console.error);
 
 ##### stream.Duplex
 
-- 同时实现了 Readable 和 Writable 的流;
-  - TCP sockets;
-  - zlib streams;
-  - crypto streams;
+- 同时实现了 Readable 和 Writable 的流；
+  - TCP sockets；
+  - zlib streams；
+  - crypto streams；
 
 ##### stream.Transform
 
-- 一种特殊的 Duplex 流, 流的输入和输出相关;
-  - zlib streams;
-  - crypto streams;
+- 一种特殊的 Duplex 流，流的输入和输出相关；
+  - zlib streams；
+  - crypto streams；
 
 ## 工具函数
 

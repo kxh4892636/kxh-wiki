@@ -23,12 +23,12 @@ const Profile = () => {
 
 ##### 命名规范
 
-- 必须大驼峰;
+- 必须大驼峰；
 
 ##### 组件返回值
 
-- 组件必须有返回值;
-- 返回 null/0/undefined 表示组件无内容;
+- 组件必须有返回值；
+- 返回 null/0/undefined 表示组件无内容；
 
 ### 使用组件
 
@@ -40,9 +40,9 @@ const Profile = () => {
 
 ##### 嵌套组件
 
-- 组件可嵌套;
-- 上层组件称为父组件;
-- 嵌套组件称为子组件;
+- 组件可嵌套；
+- 上层组件称为父组件；
+- 嵌套组件称为子组件；
 
 ```typescript
 function Gallery() {
@@ -79,9 +79,9 @@ export default Button;
 
 ##### 命名导出和默认导出的限制
 
-- 一个文件只能有一个默认导出;
-- 但可以有多个命名导出;
-- 推荐使用命名导出;
+- 一个文件只能有一个默认导出；
+- 但可以有多个命名导出；
+- 推荐使用命名导出；
 
 ### 导入组件
 
@@ -101,8 +101,8 @@ import Button from "./button.js";
 
 ### jsx 基础
 
-- 一种 js 的语法拓展;
-- 允许你在 js 中书写 html;
+- 一种 js 的语法拓展；
+- 允许你在 js 中书写 html；
 
 ### jsx 原则
 
@@ -116,19 +116,19 @@ import Button from "./button.js";
 
 ##### 闭合所有标签
 
-- 空标签采用 <element /> 形式;
-- 正常标签采用 <element></element> 形式;
+- 空标签采用 <element /> 形式；
+- 正常标签采用 <element></element> 形式；
 
 ##### 命名规范
 
-- 标签名不区分大小写;
-- 所有属性名使用小驼峰形式;
-- 几乎所有的属性名不能使用 - ;
-- 属性名不能与 js,html 冲突, 冲突改名;
+- 标签名不区分大小写；
+- 所有属性名使用小驼峰形式；
+- 几乎所有的属性名不能使用 - ；
+- 属性名不能与 js，html 冲突，冲突改名；
 
 ### 大括号
 
-- jsx 中可通过 {} 传递变量, 函数, 对象和表达式等;
+- jsx 中可通过 {} 传递变量，函数，对象和表达式等；
 
 ```typescript
 <h1>{name}'s To Do List</h1>;
@@ -150,17 +150,17 @@ const items = {
 
 ### 优点
 
-- 可读性高;
-- 表达能力强;
-- 静态类型检查;
-- 组件化;
+- 可读性高；
+- 表达能力强；
+- 静态类型检查；
+- 组件化；
 
 ## 属性
 
 ### 传递机制
 
-- 父组件向子组件传递属性;
-- 子组件使用 {} 或者 props 读取属性;
+- 父组件向子组件传递属性；
+- 子组件使用 {} 或者 props 读取属性；
 
 ```typescript
 function Avatar({ person, size }) {
@@ -176,8 +176,8 @@ export default function Profile() {
 
 ### 属性默认值
 
-- 当父组件传递属性值为 undefined 时, 使用默认值;
-- 传递 null 视为传递属性值为 null;
+- 当父组件传递属性值为 undefined 时，使用默认值；
+- 传递 null 视为传递属性值为 null；
 
 ```typescript
 function Avatar({ person, size = 100 }) {
@@ -187,15 +187,15 @@ function Avatar({ person, size = 100 }) {
 
 ### 改变属性
 
-- react 中属性不可变的;
-- 如果需要改变属性;
-- 传递一组新属性用于代替旧属性;
+- react 中属性不可变的；
+- 如果需要改变属性；
+- 传递一组新属性用于代替旧属性；
 
 ### children 属性
 
-- 组件属性使用 children 属性;
-  - children 为关键字;
-  - 表示被嵌套的内容;
+- 组件属性使用 children 属性；
+  - children 为关键字；
+  - 表示被嵌套的内容；
 
 ```typescript
 import Avatar from "./Avatar.js";
@@ -251,8 +251,8 @@ function Item({ name, isPacked }) {
 
 ### 定义列表
 
-- 使用 filter() 方法筛选数组;
-- 使用 map() 方法生成列表;
+- 使用 filter() 方法筛选数组；
+- 使用 map() 方法生成列表；
 
 ```typescript
 export default function List() {
@@ -268,19 +268,19 @@ export default function List() {
 
 ##### key 属性
 
-- react 生成列表元素时必须定义 key;
-- 用于标识每个列表元素;
+- react 生成列表元素时必须定义 key；
+- 用于标识每个列表元素；
 
 ##### key 原则
 
-- key 必须唯一;
-- key 不可改变;
+- key 必须唯一；
+- key 不可改变；
 
 ##### key 和属性的关系
 
-- 组件不可将 key 作为属性传递;
-- 若组件需要 id;
-- 自定义 id 属性;
+- 组件不可将 key 作为属性传递；
+- 若组件需要 id；
+- 自定义 id 属性；
 
 ```typescript
 <Profile key={id} userId={id} />
@@ -292,29 +292,29 @@ export default function List() {
 
 ##### 基础
 
-- react 使用树表示组件结构;
-- 对应父子组件结构关系;
+- react 使用树表示组件结构；
+- 对应父子组件结构关系；
 
 ![UI Tree](./images/2024-03-18-16-27-17.png)
 
 ##### 条件渲染
 
-- react 条件渲染中;
-- 组件可能不渲染, 但依旧占据 UI Tree 中的位置;
+- react 条件渲染中；
+- 组件可能不渲染，但依旧占据 UI Tree 中的位置；
 
 ![条件渲染](./images/2024-03-18-16-29-48.png)
 
 ##### 移除机制
 
-- 当 UI Tree 中某个节点被移除时;
-- 其所有子节点全部被移除;
+- 当 UI Tree 中某个节点被移除时；
+- 其所有子节点全部被移除；
 
 ![移除机制](./images/2022-11-23-16-07-28.png)
 
 ### 模块依赖树
 
-- react 树表示模块依赖关系;
-- 根据 import 语句构建树;
+- react 树表示模块依赖关系；
+- 根据 import 语句构建树；
 
 ![模块依赖树](./images/2024-03-18-16-29-01.png)
 
@@ -324,8 +324,8 @@ export default function List() {
 
 ##### 传递函数
 
-- 定义函数;
-- 作为属性传递至对应 event;
+- 定义函数；
+- 作为属性传递至对应 event；
 
 ```typescript
 export default function Button() {
@@ -338,7 +338,7 @@ export default function Button() {
 
 ##### 行内形式
 
-- 使用箭头函数;
+- 使用箭头函数；
 
 ```typescript
 <button onClick={(e) => {
@@ -363,8 +363,8 @@ export default function UploadButton() {
 
 ### 停止传播和默认行为;
 
-- 停止传播: stopPropagation();
-- 默认行为: preventDefault();
+- 停止传播：stopPropagation()；
+- 默认行为：preventDefault()；
 
 ## 最佳实践
 
@@ -411,20 +411,20 @@ const LayerOutlined: React.FC<{ style: React.CSSProperties }> = ({ style }) => {
 
 ##### 受控组件
 
-- 组件内部 state 完全被 props 控制的组件;
+- 组件内部 state 完全被 props 控制的组件；
 
 ##### 非受控组件
 
-- 组件内部 state 不被 props 控制的组件;
-- 内部状态自身管理;
+- 组件内部 state 不被 props 控制的组件；
+- 内部状态自身管理；
 
 ##### 应用场景
 
-- 非受控组件: 内部状态不受外部状态影响;
-- 受控组件: 内部状态受外部状态影响, 或需要对外部状态进行通信;
+- 非受控组件：内部状态不受外部状态影响；
+- 受控组件：内部状态受外部状态影响，或需要对外部状态进行通信；
 
 ### $$typeof 属性
 
-- react Root 标签具有 $$typeof 属性, 其值为 Symbol;
-- 作用为防止 XSS 攻击;
-- 用于 React 标识 Root 标签, 防止 XSS 伪造元素;
+- react Root 标签具有 $$typeof 属性，其值为 Symbol；
+- 作用为防止 XSS 攻击；
+- 用于 React 标识 Root 标签，防止 XSS 伪造元素；

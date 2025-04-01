@@ -49,10 +49,10 @@ startApp();
 
 ##### 生命周期相关
 
-- after(): 当前插件加载完成后执行, 始终在 ready() 之前执行;
-- ready(): 所有插件加载完成后执行;
-- listen(): ready() 后执行;
-- close(): 关闭 fastify 实例;
+- after()：当前插件加载完成后执行，始终在 ready() 之前执行；
+- ready()：所有插件加载完成后执行；
+- listen()：ready() 后执行；
+- close()：关闭 fastify 实例；
 
 ```typescript
 fastify
@@ -74,8 +74,8 @@ fastify
 
 ##### 插件相关
 
-- decorate()/register()/hook();
-- 详细见具体模块;
+- decorate()/register()/hook()；
+- 详细见具体模块；
 
 ## 路由
 
@@ -123,7 +123,7 @@ fastify.register(testRoute);
 
 ##### URL 参数
 
-- 支持正则表达式;
+- 支持正则表达式；
 
 ```typescript
 fastify.get("/example/:userId/:secretToken", function (request, reply) {
@@ -142,8 +142,8 @@ fastify.get("/example/:file(^\\d+).png", function (request, reply) {
 
 ### 异步写法
 
-- 使用 async 函数;
-- 使用 return 返回请求;
+- 使用 async 函数；
+- 使用 return 返回请求；
 
 ```typescript
 fastify.get("/", options, async function (request, reply) {
@@ -162,7 +162,7 @@ fastify.get("/", options, async function (request, reply) {
 
 ##### 回调函数返回请求
 
-- 使用 reply.send() 并 return reply;
+- 使用 reply。send() 并 return reply；
 
 ```typescript
 fastify.get("/", options, async function (request, reply) {
@@ -281,8 +281,8 @@ fastify.get("/streams", async function (request, reply) {
 
 ##### 自动封装
 
-- reply 返回 Error;
-- fastify 自动封装以下结构;
+- reply 返回 Error；
+- fastify 自动封装以下结构；
 
 ```typescript
 {
@@ -295,8 +295,8 @@ fastify.get("/streams", async function (request, reply) {
 
 ##### 自定义错误类型
 
-- response 为指定状态码设置 schema;
-- 若无对应状态码使用默认 schema;
+- response 为指定状态码设置 schema；
+- 若无对应状态码使用默认 schema；
 
 ```typescript
 fastify.get(
@@ -329,8 +329,8 @@ fastify.get(
 
 ### Type Provider
 
-- 个人使用 typebox;
-- 用于验证数据和序列化的 typescript 支持;
+- 个人使用 typebox；
+- 用于验证数据和序列化的 typescript 支持；
 
 ```typescript
 // index.ts
@@ -377,9 +377,9 @@ export function registerRoutes(fastify: FastifyTypebox): void {
 
 ### 验证数据
 
-- 验证输入值是否符合 schema;
-- 不符合报错, 触发 onError handler;
-- 仅用于 application-json;
+- 验证输入值是否符合 schema；
+- 不符合报错，触发 onError handler；
+- 仅用于 application-json；
 
 ```typescript
 // 定义 schema
@@ -406,9 +406,9 @@ fastify.post("/the/url", { schema }, handler);
 
 ### 序列化数据
 
-- schema 中定义 response, 加快序列化速度;
-- 使用同验证数据;
-- 仅用于 application-json;
+- schema 中定义 response，加快序列化速度；
+- 使用同验证数据；
+- 仅用于 application-json；
 
 ```typescript
 const schema = {
@@ -435,8 +435,8 @@ fastify.post("/the/url", { schema }, handler);
 
 ##### 错误处理
 
-- fastify Error 对象具有 validate 属性;
-- 标识是否为验证错误;
+- fastify Error 对象具有 validate 属性；
+- 标识是否为验证错误；
 
 ```typescript
 export const globalErrorHandler = fp(async (app: FastifyTypebox) => {
@@ -457,7 +457,7 @@ export const globalErrorHandler = fp(async (app: FastifyTypebox) => {
 
 ##### 工作机制
 
-- 使用 fastify.addHook() 监听声明周期特定事件;
+- 使用 fastify。addHook() 监听声明周期特定事件；
 - 到达事件触发对应 hook
 
 ##### 注册 hook
@@ -576,7 +576,7 @@ fastify.addHook("onRequest", async (request, reply) => {
 
 ##### 提前返回请求
 
-- 使用 return 或 reply.send();
+- 使用 return 或 reply。send()；
 
 ```typescript
 fastify.addHook("onRequest", (request, reply, done) => {
@@ -595,14 +595,14 @@ fastify.addHook("preHandler", async (request, reply) => {
 
 ##### 路由级别 hook
 
-- fastify.route 中使用对应 hook;
+- fastify。route 中使用对应 hook；
 
 ### fastify hook
 
 ##### onListen
 
-- fastify 实例监听之前触发;
-- 调用 fastify.ready() 触发;
+- fastify 实例监听之前触发；
+- 调用 fastify。ready() 触发；
 
 ```typescript
 fastify.addHook("onReady", async function () {
@@ -613,7 +613,7 @@ fastify.addHook("onReady", async function () {
 
 ##### onReady
 
-- fastify 实例监听触发;
+- fastify 实例监听触发；
 
 ```typescript
 fastify.addHook("onListen", async function () {
@@ -623,7 +623,7 @@ fastify.addHook("onListen", async function () {
 
 ##### onReady
 
-- 所有请求处理完毕, 且调用 fastify.close() 后触发;
+- 所有请求处理完毕，且调用 fastify。close() 后触发；
 
 ```typescript
 fastify.addHook("onClose", async (instance) => {
@@ -634,7 +634,7 @@ fastify.addHook("onClose", async (instance) => {
 
 ##### preClose
 
-- 调用 fastify.close() 之前触发;
+- 调用 fastify。close() 之前触发；
 
 ```typescript
 fastify.addHook("preClose", async () => {
@@ -645,7 +645,7 @@ fastify.addHook("preClose", async () => {
 
 ##### onRoute
 
-- 触发路由时触发;
+- 触发路由时触发；
 
 ```typescript
 fastify.addHook("onRoute", (routeOptions) => {
@@ -664,7 +664,7 @@ fastify.addHook("onRoute", (routeOptions) => {
 
 ##### onRegister
 
-- 注册插件且创建封装上下文之前触发;
+- 注册插件且创建封装上下文之前触发；
 
 ```typescript
 fastify.addHook("onRegister", (instance, opts) => {
@@ -732,8 +732,8 @@ Incoming Request
 
 ### 思想
 
-- Fastify 中一切且为插件;
-- 路由/hook/中间件... 一切通过插件定义;
+- Fastify 中一切且为插件；
+- 路由/hook/中间件。。。一切通过插件定义；
 
 ```typescript
 const fastify = Fastify({
@@ -754,8 +754,8 @@ export const testPlugin = async (fastify, opts, done) => {
 
 ### 异步
 
-- 异步写法下 done() 回调不必使用;
-- 使用可能出现未知结果;
+- 异步写法下 done() 回调不必使用；
+- 使用可能出现未知结果；
 
 ### 使用插件
 
@@ -767,12 +767,12 @@ fastify.register(import("./plugin.mjs"));
 
 ### 生命周期
 
-- 使用 after/ready/listen hook;
+- 使用 after/ready/listen hook；
 
 ### 插件执行顺序
 
-- 根据插件声明顺序加载插件;
-- 推荐使用下列顺序;
+- 根据插件声明顺序加载插件；
+- 推荐使用下列顺序；
 
 ```yaml
 └── plugins (from the Fastify ecosystem)
@@ -786,8 +786,8 @@ fastify.register(import("./plugin.mjs"));
 
 ### 封装上下文
 
-- fastify 自顶向下分为 Root/Child/Grandchild 三个层级上下文;
-- 后代上下文可访问父上下文;
+- fastify 自顶向下分为 Root/Child/Grandchild 三个层级上下文；
+- 后代上下文可访问父上下文；
 
 ![封装上下文](./images/2024-03-05-16-58-17.png)
 
@@ -854,7 +854,7 @@ fastify.listen({ port: 8000 });
 
 ### 获取后代上下文
 
-- 使用 fastify-plugin 插件;
+- 使用 fastify-plugin 插件；
 
 ```typescript
 "use strict";
@@ -878,12 +878,12 @@ fastify.listen({ port: 8000 });
 
 ### 作用
 
-- 自定义核心 fastify 对象;
-- 可以再生命周期中的任何 hook 中获取;
+- 自定义核心 fastify 对象；
+- 可以再生命周期中的任何 hook 中获取；
 
 ### 初始值
 
-- 初始值尽量接近未来动态设置的值;
+- 初始值尽量接近未来动态设置的值；
 
 ### 添加至 fastify 实例
 
@@ -909,9 +909,9 @@ console.log(fastify.conf.db);
 
 ##### this 指向
 
-- 修饰器函数使用普通函数形式;
-- 路由中将 fastify 实例绑定到 this;
-- 否则显式使用 fastify;
+- 修饰器函数使用普通函数形式；
+- 路由中将 fastify 实例绑定到 this；
+- 否则显式使用 fastify；
 
 ```typescript
 fastify.decorate("db", new DbConnection());
@@ -924,7 +924,7 @@ fastify.get("/", async function (request, reply) {
 
 ##### 修饰器值类型
 
-- 修饰器的值可以是任何类型;
+- 修饰器的值可以是任何类型；
 
 ### 添加至 Reply
 
@@ -944,15 +944,15 @@ req.utility();
 
 ##### this 指向
 
-- 修饰器函数使用普通函数形式;
-- 路由中将 req 实例绑定到 this;
-- 否则显式使用 req;
+- 修饰器函数使用普通函数形式；
+- 路由中将 req 实例绑定到 this；
+- 否则显式使用 req；
 
 ##### 值类型
 
-- 修饰器值仅能为值类型和函数;
-- 使用引用类型, 会导致所有类型共享同一对象;
-- 正确使用如下;
+- 修饰器值仅能为值类型和函数；
+- 使用引用类型，会导致所有类型共享同一对象；
+- 正确使用如下；
 
 ```typescript
 import fastify-plugin from "fastify-plugin"
@@ -969,21 +969,21 @@ export fp(myPlugin)
 
 ### 添加至 Request
 
-- 使用 decorateRequest();
-- 同 decorateReply();
+- 使用 decorateRequest()；
+- 同 decorateReply()；
 
 ### 装饰器和封装
 
-- 同一级上下文中不可定义同名装饰器;
-- 不同级上下文可以;
+- 同一级上下文中不可定义同名装饰器；
+- 不同级上下文可以；
 
 ## 错误处理
 
 ### setErrorHandler
 
-- fastify.setErrorHandler(handler(error, request, reply));
-- 定义错误处理程序;
-- 错误发生调用其回调函数;
+- fastify。setErrorHandler(handler(error，request，reply))；
+- 定义错误处理程序；
+- 错误发生调用其回调函数；
 
 ```typescript
 // Register parent error handler
@@ -994,8 +994,8 @@ fastify.setErrorHandler((error, request, reply) => {
 
 ### 封装上下文
 
-- setErrorHandler 会被限制于定义时的封装上下文;
-- 若存在多个处理程序, 优先使用最邻近处理程序;
+- setErrorHandler 会被限制于定义时的封装上下文；
+- 若存在多个处理程序，优先使用最邻近处理程序；
 
 ```typescript
 // Register parent error handler
@@ -1013,8 +1013,8 @@ fastify.register((app, options, next) => {
 
 ### 自定义中间件
 
-- 用于 setErrorHandler 会被限制于定义时的封装上下文;
-- 需使用 fastify-plugin 保留中间件定义的 setErrorHandler;
+- 用于 setErrorHandler 会被限制于定义时的封装上下文；
+- 需使用 fastify-plugin 保留中间件定义的 setErrorHandler；
 
 ```typescript
 import { FastifyTypebox } from "@/type/app.type";
@@ -1034,9 +1034,9 @@ app.register(globalErrorHandler);
 
 ### 全局错误
 
-- 监听 uncaughtException 事件;
-- 处理所有未捕获的错误;
-- 最后的防线;
+- 监听 uncaughtException 事件；
+- 处理所有未捕获的错误；
+- 最后的防线；
 
 ```typescript
 process.on("uncaughtException", (err) => {

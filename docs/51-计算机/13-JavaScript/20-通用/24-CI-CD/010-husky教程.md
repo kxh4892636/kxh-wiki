@@ -4,7 +4,7 @@
 
 ##### husky
 
-- git hook 工具;
+- git hook 工具；
 
 ##### 安装
 

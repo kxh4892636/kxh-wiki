@@ -14,7 +14,7 @@ pnpm add @fastify/cors
 
 ##### 基础
 
-- 解决跨域问题;
+- 解决跨域问题；
 
 ```typescript
 import Fastify from "fastify";
@@ -36,7 +36,7 @@ pnpm add @fastify/formbody
 
 ##### 基础
 
-- 解析 application/x-www-form-urlencoded;
+- 解析 application/x-www-form-urlencoded；
 
 ```typescript
 import Fastify from "fastify";
@@ -58,7 +58,7 @@ pnpm add @fastify/helmet
 
 ##### 基础
 
-- 安全相关 header;
+- 安全相关 header；
 
 ```typescript
 import Fastify from "fastify";
@@ -80,7 +80,7 @@ pnpm add @fastify/multipart
 
 ##### 基础
 
-- multipart content-type 支持;
+- multipart content-type 支持；
 
 ```typescript
 import Fastify from "fastify";
@@ -107,7 +107,7 @@ fastify.post("/", async function (req, reply) {
 
 ##### 大小限制
 
-- 默认限制大小为 1 MB;
+- 默认限制大小为 1 MB；
 
 ```typescript
 // 全局设置
@@ -139,8 +139,8 @@ pnpm add --save-dev @fastify/swagger-ui
 
 ### 基础
 
-- 基于 schema 生成 openapi 文档;
-- 注册插件必须使用 await;
+- 基于 schema 生成 openapi 文档；
+- 注册插件必须使用 await；
 
 ```typescript
 import Fastify from "fastify";
@@ -180,7 +180,7 @@ fastify.post("/the/url", { schema }, handler);
 
 ### 返回非 json 类型
 
-- 仅用于 openapi 3.0;
+- 仅用于 openapi 3。0；
 
 ```typescript
 {

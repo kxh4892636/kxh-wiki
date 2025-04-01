@@ -125,15 +125,15 @@ axios
 
 ##### 发送数据格式
 
-- 发送字符串, 默认为 application/x-www-form-urlencoded;
-- 发送 object, 默认为 application/json;
-- 发送 formdata, 默认为 multipart/form-data;
+- 发送字符串，默认为 application/x-www-form-urlencoded；
+- 发送 object，默认为 application/json；
+- 发送 formdata，默认为 multipart/form-data；
 
 ## 拦截器
 
 ##### request
 
-- 发送请求之前运行;
+- 发送请求之前运行；
 
 ```typescript
 // Add a request interceptor
@@ -151,7 +151,7 @@ axios.interceptors.request.use(
 
 ##### response
 
-- 收到响应之后运行;
+- 收到响应之后运行；
 
 ```typescript
 // Add a response interceptor
@@ -198,7 +198,7 @@ instance.interceptors.request.use(function () {
 
 ##### 执行顺序
 
-- 根据定义顺序依次执行;
+- 根据定义顺序依次执行；
 
 ## 进度处理
 

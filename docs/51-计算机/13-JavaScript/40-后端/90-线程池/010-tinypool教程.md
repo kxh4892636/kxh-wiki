@@ -8,7 +8,7 @@ id: 9c895f07-2e9d-412d-b755-ed5716a96c97
 
 ##### tinypool
 
-- 线程池库;
+- 线程池库；
 
 ##### 安装
 
@@ -22,10 +22,10 @@ pnpm add tinypool
 
 ##### 主函数定义
 
-- 文件路径使用 URL();
-- 文件路径使用 file 格式;
-  - import.meta.url;
-  - 手动拼接;
+- 文件路径使用 URL()；
+- 文件路径使用 file 格式；
+  - import。meta。url；
+  - 手动拼接；
 
 ```typescript
 import Tinypool from "tinypool";
@@ -41,7 +41,7 @@ console.log(result); // Prints 10
 
 ##### 工作函数定义
 
-- 函数参数使用一个 object 定义;
+- 函数参数使用一个 object 定义；
 
 ```typescript
 export default ({ a, b }) => {

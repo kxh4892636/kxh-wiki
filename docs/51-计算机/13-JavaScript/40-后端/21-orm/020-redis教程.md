@@ -28,14 +28,14 @@ await redis.connect();
 
 ##### 报错
 
-- 似乎永远不会发生 crud 逻辑的报错;
-- 只会发生程序的报错;
+- 似乎永远不会发生 crud 逻辑的报错；
+- 只会发生程序的报错；
 
 ### 简单数据类型
 
 ##### 简单数据类型
 
-- 设置简单数据类型;
+- 设置简单数据类型；
 
 ```typescript
 await client.set("key", "value");
@@ -46,8 +46,8 @@ const value = await client.get("key");
 
 ##### hSet
 
-- 创建或更新 key-value;
-- 若 key 不存在则创建, 反之则覆写;
+- 创建或更新 key-value；
+- 若 key 不存在则创建，反之则覆写；
 
 ```typescript
 await client.hSet("key", "field1", "value1", "field2", "value2");
@@ -59,7 +59,7 @@ await client.hSet("key", {
 
 ##### hGet/hGetAll
 
-- 获取 key-value;
+- 获取 key-value；
 
 ```typescript
 await client.hGet("key", "field1"); // 'value1'
@@ -69,8 +69,8 @@ await client.hGetAll("key"); // { field1: 'value1', field2: 'value2' }
 
 ##### hDel
 
-- 删除 value;
-- 若 field 存在则删除, 反之则忽略;
+- 删除 value；
+- 若 field 存在则删除，反之则忽略；
 
 ```typescript
 // 删除单个字段
@@ -79,7 +79,7 @@ await client.hDel("key", "field1");
 
 ##### hExists
 
-- key 存在 filed 返回 1, 反之返回 0;
+- key 存在 filed 返回 1，反之返回 0；
 
 ```typescript
 await client.hExists("key", "field1");
@@ -87,7 +87,7 @@ await client.hExists("key", "field1");
 
 ##### hKeys
 
-- 返回 key 对应的 hash 的所有字段;
+- 返回 key 对应的 hash 的所有字段；
 
 ```typescript
 await client.hKeys("key"); // [field1, field2]
@@ -95,7 +95,7 @@ await client.hKeys("key"); // [field1, field2]
 
 ##### hLen
 
-- 返回 key 对应的 hash 的所有字段的数量;
+- 返回 key 对应的 hash 的所有字段的数量；
 
 ```typescript
 await client.hLen("key"); // 2
@@ -103,7 +103,7 @@ await client.hLen("key"); // 2
 
 ##### hVals
 
-- 返回 key 对应的 hash 的所有字段的值;
+- 返回 key 对应的 hash 的所有字段的值；
 
 ```typescript
 await client.hVals("key"); // ['value1', 'value2']
@@ -113,7 +113,7 @@ await client.hVals("key"); // ['value1', 'value2']
 
 ##### 过期时间
 
-- 到达过期时间后, 自动删除对应 key;
+- 到达过期时间后，自动删除对应 key；
 
 ```typescript
 // 设置过期时间为 60 s
@@ -131,16 +131,16 @@ await redis.expire("key", 60, "LT");
 
 ##### 更新机制
 
-- 覆写过期时间;
-- 过期时间更新为新的值;
+- 覆写过期时间；
+- 过期时间更新为新的值；
 
 ## 最佳实践
 
 ##### redis 报错的坑
 
-- node-redis 未连接成功时;
-- 其方法永远不会 resolve(), 因此 catch 只能捕获 redis 的运行错误;
-- 使用 redis.isReady 判断 redis 是否连接成功;
+- node-redis 未连接成功时；
+- 其方法永远不会 resolve()，因此 catch 只能捕获 redis 的运行错误；
+- 使用 redis。isReady 判断 redis 是否连接成功；
 
 ```typescript
 if (redis.isReady) {

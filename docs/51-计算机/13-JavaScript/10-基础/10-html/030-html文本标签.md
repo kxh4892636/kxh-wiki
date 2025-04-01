@@ -8,7 +8,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### hx element
 
-- 标题;
+- 标题；
 
 ```html
 <h1>Heading level 1</h1>
@@ -21,7 +21,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### p element
 
-- 正文;
+- 正文；
 
 ```html
 <p>This is the first paragraph.</p>
@@ -44,7 +44,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### ol element
 
-- 有序列表;
+- 有序列表；
 
 ```html
 <ol reversed start="2">
@@ -57,8 +57,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### dl element
 
-- 描述列表;
-- dt 和 dd 之间可以是任意数量搭配;
+- 描述列表；
+- dt 和 dd 之间可以是任意数量搭配；
 
 ```html
 <dl>
@@ -72,7 +72,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### 嵌套列表
 
-- li 标签之中嵌套列表;
+- li 标签之中嵌套列表；
 
 ```html
 <ol>
@@ -95,8 +95,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### 加粗
 
-- strong: 语义加粗;
-- b: 形式加粗;
+- strong：语义加粗；
+- b：形式加粗；
 
 ```html
 <p>
@@ -107,8 +107,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### 斜体
 
-- em: 语义倾斜;
-- i: 形式倾斜;
+- em：语义倾斜；
+- i：形式倾斜；
 
 ```html
 <p>This is <em>not</em> a drill!</p>
@@ -117,8 +117,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### u element
 
-- 下划线;
-- 不推荐使用, 推荐使用 css 定义文本下划线;
+- 下划线；
+- 不推荐使用，推荐使用 css 定义文本下划线；
 
 ```html
 <p>This paragraph includes a <u class="spelling">wrnogly</u> spelled word.</p>
@@ -128,8 +128,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### blockquote element
 
-- 块引用;
-- cite 属性指向 url;
+- 块引用；
+- cite 属性指向 url；
 
 ```html
 <blockquote cite="https://datatracker.ietf.org/doc/html/rfc1149">
@@ -139,8 +139,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### q element
 
-- 行内引用;
-- cite 属性指向 url;
+- 行内引用；
+- cite 属性指向 url；
 
 ```html
 <p>
@@ -153,7 +153,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### cite element
 
-- 语义层次上的引用;
+- 语义层次上的引用；
 
 ```html
 <p>More information can be found in <cite>[ISO-0000]</cite>.</p>
@@ -163,8 +163,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### abbr element
 
-- 缩写标签;
-- title 显示缩写全称;
+- 缩写标签；
+- title 显示缩写全称；
 
 ```html
 <!-- 表示缩写 -->
@@ -174,8 +174,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### address element
 
-- 语义表示联系信息;
-- 内部标签只能使用 a;
+- 语义表示联系信息；
+- 内部标签只能使用 a；
 
 ```html
 <p>Contact the author of this page:</p>
@@ -187,8 +187,8 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### time element
 
-- 语义表示时间;
-- 使用 ISO8601 标准;
+- 语义表示时间；
+- 使用 ISO8601 标准；
 
 ```html
 <p>
@@ -201,7 +201,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### sup element
 
-- 语义表示上标;
+- 语义表示上标；
 
 ```html
 <p>
@@ -212,7 +212,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ### sub element
 
-- 语义表示下标;
+- 语义表示下标；
 
 ```html
 <p>
@@ -226,7 +226,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ##### code element
 
-- 代码形式;
+- 代码形式；
 
 ```html
 <p>
@@ -237,7 +237,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ##### pre element
 
-- 保留空格;
+- 保留空格；
 
 ```html
 <pre>
@@ -262,7 +262,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ##### var element
 
-- 程序变量;
+- 程序变量；
 
 ```html
 <p>
@@ -274,7 +274,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ##### kbd element
 
-- 键盘按键形式;
+- 键盘按键形式；
 
 ```html
 <p>
@@ -285,7 +285,7 @@ id: 884beb00-75f1-4251-a6ad-f47173c1d6da
 
 ##### samp element
 
-- 程序输出信息;
+- 程序输出信息；
 
 ```html
 <p>I was trying to boot my computer, but I got this hilarious message:</p>

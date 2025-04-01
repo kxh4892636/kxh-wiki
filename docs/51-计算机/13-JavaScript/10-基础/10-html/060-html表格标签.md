@@ -8,10 +8,10 @@ id: e6080f25-00c4-48bb-9512-cef6963a0846
 
 ### 表格结构
 
-- table: 表格标签;
-- tr: 换行标签;
-- th: 单元格标题标签;
-- td: 单元格标签;
+- table：表格标签；
+- tr：换行标签；
+- th：单元格标题标签；
+- td：单元格标签；
 
 ```html
 <table>
@@ -42,12 +42,12 @@ id: e6080f25-00c4-48bb-9512-cef6963a0846
 
 ##### 属性
 
-- 通用属性;
-  - headers: 表示与 th 的对应关系, 为 th 的 id 属性值, 空格分隔;
-  - colspan: 表示单元格跨列数量;
-  - rowspan: 表示单元格跨行数量;
-- th 特有属性;
-  - scopes: 表示 th 与 td 的对印关系;
+- 通用属性；
+  - headers：表示与 th 的对应关系，为 th 的 id 属性值，空格分隔；
+  - colspan：表示单元格跨列数量；
+  - rowspan：表示单元格跨行数量；
+- th 特有属性；
+  - scopes：表示 th 与 td 的对印关系；
 
 ```html
 <table>
@@ -66,24 +66,24 @@ id: e6080f25-00c4-48bb-9512-cef6963a0846
 
 ##### scopes 属性详解
 
-- row: 表明与对应行所有单元格相关;
-- col: 表明与对应列所有单元格相关;
-- rowgroup: 表明与多列对应行所属所有单元格相关;
-- colgroup: 表明与多列对应列所属所有单元格相关;
+- row：表明与对应行所有单元格相关；
+- col：表明与对应列所有单元格相关；
+- rowgroup：表明与多列对应行所属所有单元格相关；
+- colgroup：表明与多列对应列所属所有单元格相关；
 
 ### 可访问性
 
-- 使用 th 标签 中的 scope attribute 和 id attribute;
-- 使用 td 标签 的 header attribute.
+- 使用 th 标签 中的 scope attribute 和 id attribute；
+- 使用 td 标签 的 header attribute。
 
 ## 表格进阶
 
 ### 可选标签
 
-- caption: 表格标题;
-- colgroup: 表格列样式;
-- col: 嵌套于 colgroup 中, 定义具体列样式
-  - span 属性对应 col 对应的列数量, 默认为 1;
+- caption：表格标题；
+- colgroup：表格列样式；
+- col：嵌套于 colgroup 中，定义具体列样式
+  - span 属性对应 col 对应的列数量，默认为 1；
 
 ```html
 <table>
@@ -107,9 +107,9 @@ id: e6080f25-00c4-48bb-9512-cef6963a0846
 
 ### 表格结构
 
-- thead 标签: 表示表头;
-- tbody 标签: 表示表格主体内容;
-- tfoot 标签: 表示表尾;
+- thead 标签：表示表头；
+- tbody 标签：表示表格主体内容；
+- tfoot 标签：表示表尾；
 
 ```html
 <table>
@@ -140,7 +140,7 @@ id: e6080f25-00c4-48bb-9512-cef6963a0846
 
 ### 嵌套表格
 
-- 在 td 标签中嵌套一个表格;
+- 在 td 标签中嵌套一个表格；
 
 ```html
 <table id="table1">

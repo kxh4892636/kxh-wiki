@@ -8,38 +8,38 @@ id: 4e2da8c8-7675-444a-bf0f-6173d69323f2
 
 ##### 基本单元
 
-- Buffer 是一个 Uint8Array 的子集;
-- 以 1 个字节作为基本单元;
-- 支持 TypedArray 的所有方法;
+- Buffer 是一个 Uint8Array 的子集；
+- 以 1 个字节作为基本单元；
+- 支持 TypedArray 的所有方法；
 
 ##### 字符编码
 
-- 默认值;
-  - utf8;
-- 常见值:
-  - latin1;
-  - base64;
-  - ascii: 等效于 latin1;
-  - binary: latin1 的别名;
+- 默认值；
+  - utf8；
+- 常见值：
+  - latin1；
+  - base64；
+  - ascii：等效于 latin1；
+  - binary：latin1 的别名；
 
 ##### node 中的 utf8 编码
 
-- node 中的 utf8 编码为变长编码;
-- 一个字符使用 1 - 4 个字节;
-- 通过开头的若干位表示该字符占用多少字节;
-  - 开头为 0: 1 个字节, 与 ascii 兼容;
-  - 开头为 1: 有多少个 1 就占用多少个字节;
+- node 中的 utf8 编码为变长编码；
+- 一个字符使用 1 - 4 个字节；
+- 通过开头的若干位表示该字符占用多少字节；
+  - 开头为 0：1 个字节，与 ascii 兼容；
+  - 开头为 1：有多少个 1 就占用多少个字节；
 
 ##### buffer 的内存分配
 
-- 当 buffer 小于 Buffer.poolSize 时;
-- node 会将多个 buffer 进行合并;
-- 减少内存耗费和 gc;
+- 当 buffer 小于 Buffer。poolSize 时；
+- node 会将多个 buffer 进行合并；
+- 减少内存耗费和 gc；
 
 ##### 大字端和小字端
 
-- 大字端: 高位在前面;
-- 小字端: 低位在前面;
+- 大字端：高位在前面；
+- 小字端：低位在前面；
 
 ```typescript
 // 大字端

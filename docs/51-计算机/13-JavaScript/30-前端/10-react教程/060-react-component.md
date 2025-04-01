@@ -5,8 +5,8 @@ id: 970ad259-d439-41f5-ab1e-3ecf17abef22
 
 ## `<Fragment>`
 
-- `<></>` 的简写;
-- 不使用父节点的情况下进行分组;
+- `<></>` 的简写；
+- 不使用父节点的情况下进行分组；
 
 ```typescript
 <>
@@ -19,8 +19,8 @@ id: 970ad259-d439-41f5-ab1e-3ecf17abef22
 
 ### 基本使用
 
-- 编程方式进行组件树性能分析;
-- 生产环境默认禁用;
+- 编程方式进行组件树性能分析；
+- 生产环境默认禁用；
 
 ```typescript
 <App>
@@ -33,7 +33,7 @@ id: 970ad259-d439-41f5-ab1e-3ecf17abef22
 
 ### onRender 回调
 
-- 监听组件每重新渲染, 调用 onRender 回调;
+- 监听组件每重新渲染，调用 onRender 回调；
 
 ```typescript
 function onRender(
@@ -83,8 +83,8 @@ function onRender(
 
 ### 基本使用
 
-- 启动严格模式;
-- 开发过程暴漏常见错误;
+- 启动严格模式；
+- 开发过程暴漏常见错误；
 
 ```typescript
 import { StrictMode } from "react";
@@ -100,15 +100,15 @@ root.render(
 
 ### 运行机制
 
-- 组件渲染两次, 避免 impure 渲染引起错误;
-- useEffect 运行两次, 避免缺少 return 引起的错误;
+- 组件渲染两次，避免 impure 渲染引起错误；
+- useEffect 运行两次，避免缺少 return 引起的错误；
 
 ## `<Suspense>`
 
 ### 基本使用
 
-- 显示占位内容;
-- 直至包裹组件加载完成;
+- 显示占位内容；
+- 直至包裹组件加载完成；
 
 ```typescript
 <Suspense fallback={<Loading />}>
@@ -118,8 +118,8 @@ root.render(
 
 ### 子组件
 
-- 默认情况 `<Suspense>` 视内部的整个树为一个单元;
-- 其中一个组件处于加载中, 整个树都会被替换;
+- 默认情况 `<Suspense>` 视内部的整个树为一个单元；
+- 其中一个组件处于加载中，整个树都会被替换；
 
 ```typescript
 <Suspense fallback={<Loading />}>
@@ -132,8 +132,8 @@ root.render(
 
 ### 嵌套使用
 
-- `<Suspense>` 可嵌套使用;
-- 避免内部整个树统一替换;
+- `<Suspense>` 可嵌套使用；
+- 避免内部整个树统一替换；
 
 ```typescript
 <Suspense fallback={<BigSpinner />}>
@@ -148,10 +148,10 @@ root.render(
 
 ### 避免已显示内容隐藏
 
-- 子组件切换状态会导致显示占位内容;
-- 若已经显示部分内容, 占位内容的切换影响用户体验;
-- 与 useTransition 或 startTransition 使用;
-- 避免子组件切换状态导致的回退;
+- 子组件切换状态会导致显示占位内容；
+- 若已经显示部分内容，占位内容的切换影响用户体验；
+- 与 useTransition 或 startTransition 使用；
+- 避免子组件切换状态导致的回退；
 
 ```typescript
 export default function App() {

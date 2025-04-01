@@ -145,7 +145,7 @@ fs.access("file/that/does/not/exist", (err) => {
 
 ##### util.MIMEType
 
-- 实验性功能;
+- 实验性功能；
 
 ### util.MIMEParams
 
@@ -191,19 +191,19 @@ for (const name of params.keys()) {
 
 ##### util.TextDecoder
 
-- 解码;
+- 解码；
 
 ### util.TextEncoder
 
 ##### util.TextEncoder
 
-- 编码;
+- 编码；
 
 ## util.type
 
 ##### util.type
 
-- 检验 node 内置对象类型;
+- 检验 node 内置对象类型；
 
 ```typescript
 // util.types.isXXX(value)
