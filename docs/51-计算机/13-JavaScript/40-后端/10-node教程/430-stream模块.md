@@ -38,7 +38,7 @@ id: b832dd6e-a42c-4cbd-aa40-e595fa232aa0
 - crypto streams；
 - TCP sockets；
 - child process stdin；
-- process。stdout，process。stderr；
+- process.stdout，process.stderr；
 
 ##### 事件
 
@@ -148,24 +148,24 @@ file.end("world!");
 - crypto streams；
 - TCP sockets；
 - child process stdout and stderr；
-- process。stdin；
+- process.stdin；
 
 ##### 两种读取模式
 
 - flowing mode；
   - 数据自动从底层系统独处，通过事件提供给应用程序；
 - paused mode；
-  - 显示调用 stream。read() 读取数据块；
+  - 显示调用 stream.read() 读取数据块；
 
 ##### 读取模式的转换
 
 - paused mode - flowing mode；
   - 添加 data 事件；
-  - 调用 stream。resume() 方法；
-  - 调用 stream。pipe() 方法；
+  - 调用 stream.resume() 方法；
+  - 调用 stream.pipe() 方法；
 - flowing mode - paused mode；
-  - 调用 stream。pause() 方法；
-  - 调用 stream。unpipe() 方法；
+  - 调用 stream.pause() 方法；
+  - 调用 stream.unpipe() 方法；
 
 ##### 读取数据机制
 
@@ -175,13 +175,13 @@ file.end("world!");
 
 ##### 三种状态
 
-- readable。readableFlowing === null；
+- readable.readableFlowing === null；
   - 初始状态；
-- readable。readableFlowing === true；
+- readable.readableFlowing === true；
   - 添加 data 事件；
-  - 调用 readable。resume() 或 readable。pipe() 方法；
-- readable。readableFlowing === false；
-  - 调用 readable。pause() 或 readable。unpipe() 方法；
+  - 调用 readable.resume() 或 readable.pipe() 方法；
+- readable.readableFlowing === false；
+  - 调用 readable.pause() 或 readable.unpipe() 方法；
   - 此时添加 data 事件无效；
 
 ```typescript

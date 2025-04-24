@@ -53,7 +53,7 @@ id: 17695f0c-e935-4927-ad06-a2abb3262a31
   - 无论宽度都独占一行；
   - 行内 + 块级 or 块级 + 行内 or 块级 + 块级都是两行；
 - 不可嵌套于 inline element，可嵌套于 block-level elements；
-- 常见的块级标签：div/p。hx/li/table/header/main。。。
+- 常见的块级标签：div/p.hx/li/table/header/main。。。
 
 ##### 行内标签
 

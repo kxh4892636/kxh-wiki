@@ -4,7 +4,7 @@
 
 ##### windows
 
-- http：//nginx。org/en/download。html 下载压缩包；
+- http：//nginx.org/en/download.html 下载压缩包；
 - 解压至任意路径下；
 - 不建议配置环境变量，因为即使配置了，nginx 配置文件你依旧要手动指向 nginx 文件夹下；
 
@@ -26,9 +26,9 @@ nginx -s reload
 ##### 默认配置文件位置
 
 - windows；
-  - 根目录 - conf - nginx。conf；
+  - 根目录 - conf - nginx.conf；
 - linux；
-  - /etc/nginx/nginx。conf
+  - /etc/nginx/nginx.conf
 
 ##### 配置文件详解
 

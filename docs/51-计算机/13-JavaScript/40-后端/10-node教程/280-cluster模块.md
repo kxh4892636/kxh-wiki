@@ -8,10 +8,10 @@ id: 24c0860f-1833-48f1-82d0-5654f89a67ab
 
 ### 属性
 
-- cluster。isPrimary：是否为主线程；
-- cluster。workers：当前所有的 worker，主进程可用；
-- cluster。isWorker：是否为子线程；
-- cluster。worker：当前 worker，子进程可用；
+- cluster.isPrimary：是否为主线程；
+- cluster.workers：当前所有的 worker，主进程可用；
+- cluster.isWorker：是否为子线程；
+- cluster.worker：当前 worker，子进程可用；
 
 ### 事件
 
@@ -25,14 +25,14 @@ id: 24c0860f-1833-48f1-82d0-5654f89a67ab
 
 ### 方法
 
-- cluster。disconnect([callback])：关闭所有的 worker；
-- cluster。fork([env])：创建 worker；
+- cluster.disconnect([callback])：关闭所有的 worker；
+- cluster.fork([env])：创建 worker；
 
 ## worker 对象
 
 ### 基础
 
-- cluster。fork() 返回值；
+- cluster.fork() 返回值；
 
 ### 属性
 
@@ -51,11 +51,11 @@ id: 24c0860f-1833-48f1-82d0-5654f89a67ab
 
 ### 方法
 
-- worker。send()：用于主进程中，向对应当前 worker 发送消息，触发子进程 message 事件；
-- worker。disconnect()：用于主进程中，关闭当前 worker；
-- worker。isConnected()：用于主进程中，当前 worker 是否存在 IPC；
-- worker。isDead()：用于主进程中，当前 worker 是否终止；
-- worker。kill([signal])：用于主进程中，立刻终止当前 worker；
+- worker.send()：用于主进程中，向对应当前 worker 发送消息，触发子进程 message 事件；
+- worker.disconnect()：用于主进程中，关闭当前 worker；
+- worker.isConnected()：用于主进程中，当前 worker 是否存在 IPC；
+- worker.isDead()：用于主进程中，当前 worker 是否终止；
+- worker.kill([signal])：用于主进程中，立刻终止当前 worker；
 
 ## 最佳实践
 

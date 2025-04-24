@@ -1,1 +1,15 @@
-# 工具
+# 90-工具
+
+- [010-anki](./010-anki.md)
+- [020-docsify](./020-docsify.md)
+- [030-foam](./030-foam.md)
+- [040-foobar200000](./040-foobar200000.md)
+- [050-谷歌搜索](./050-谷歌搜索.md)
+- [060-goldendict](./060-goldendict.md)
+- [070-powertoys](./070-powertoys.md)
+- [080-sharex](./080-sharex.md)
+- [090-vba](./090-vba.md)
+- [100-windows](./100-windows.md)
+- [110-zotero](./110-zotero.md)
+- [120-word](./120-word.md)
+- [130-obsidian](./130-obsidian.md)

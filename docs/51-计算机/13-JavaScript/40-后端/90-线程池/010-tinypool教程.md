@@ -24,7 +24,7 @@ pnpm add tinypool
 
 - 文件路径使用 URL()；
 - 文件路径使用 file 格式；
-  - import。meta。url；
+  - import.meta.url；
   - 手动拼接；
 
 ```typescript

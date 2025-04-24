@@ -1,6 +1,7 @@
 ---
 id: 1fd423c5-f32a-425a-b94e-a660b7e895f1
 ---
+
 # vitest
 
 ## 基础
@@ -15,7 +16,7 @@ pnpm add -D vitest
 
 ### 工作区配置文件
 
-- vitest。workspace。ts；
+- vitest.workspace.ts；
 
 ```typescript
 import { defineWorkspace } from "vitest/config";
@@ -43,7 +44,7 @@ export default defineWorkspace([
 
 ### 项目配置文件
 
-- 同 vitest。config。ts；
+- 同 vitest.config.ts；
 - 工作区项目不支持所有配置属性；
 - 使用 defineProject 方法；
 
@@ -531,7 +532,7 @@ export default defineProject({
 
 ### 配置文件
 
-- vitest。config。ts；
+- vitest.config.ts；
 
 ```typescript
 import { defineConfig } from "vitest/config";

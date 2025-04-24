@@ -12,7 +12,7 @@ id: 137073e7-94ef-444b-a67b-14b880ad234d
 
 - 进入[下载网站](https://www.gisinternals.com/index.html)；
 - 点击左栏 - DOWNLOADS - Stable Releases，
-- 下载 gdal-305-1916-x64-core。msi 安装包，
+- 下载 gdal-305-1916-x64-core.msi 安装包，
 - 安装 gdal core，安装模式选择 typical，
 - 配置环境变量，
   - 编辑 PATH 环境变量，添加 GDAL 安装路径。
@@ -124,119 +124,119 @@ gdal.Warp('/vsimem/simplify_tif.tif',
 
 ##### SpatialReference
 
-- osr。SpatialReference() -> SpatialReference 构造函数；
+- osr.SpatialReference() -> SpatialReference 构造函数；
   - 创建 SpatialReference 实例；
-- SpatialReference。ImportFromXXX() 方法；
+- SpatialReference.ImportFromXXX() 方法；
   - 根据 XXX 创建 SpatialReference 实例；
   - EPSG：int；
   - WKT/XML：str；
-- SpatialReference。CloneGeogCS() -> SpatialReference 方法；
+- SpatialReference.CloneGeogCS() -> SpatialReference 方法；
   - 克隆地理坐标系。
-- SpatialReference。SetAxisMappingStrategy(strategy：str) 方法；
+- SpatialReference.SetAxisMappingStrategy(strategy：str) 方法；
   - 设置投影策略；
-  - 常用值：osr。OAMS_TRADITIONAL_GIS_ORDER。
+  - 常用值：osr.OAMS_TRADITIONAL_GIS_ORDER。
 
 ##### CoordinateTransformation
 
-- osr。CoordinateTransformation(src：str | gdal。Dataset | org。Datasource，dst：str | gdal。Dataset | org。Datasource) -> CoordinateTransformation 构造函数；
+- osr.CoordinateTransformation(src：str | gdal.Dataset | org.Datasource，dst：str | gdal.Dataset | org.Datasource) -> CoordinateTransformation 构造函数；
   - 创建 CoordinateTransformation 实例；
-- CoordinateTransformation。TransformPoint(x：int，y：int，[，z：int]) -> tuple 方法；
+- CoordinateTransformation.TransformPoint(x：int，y：int，[，z：int]) -> tuple 方法；
   - 对 [x，y，z] 进行坐标变换。
 
 ### ogr
 
 ##### ogr
 
-- ogr。GetDriverByName(name：str) -> Driver 函数；
+- ogr.GetDriverByName(name：str) -> Driver 函数；
   - 创建 Driver 实例；
   - 常见 Driver。
     - ESRI Shapefile；
     - GeoJSON；
-- ogr。CreateLayer(name：str，srs：SpatialReference，geomType：ogr。geomType，options=["ENCODING=UTF-8"]) -> Layer 函数；
+- ogr.CreateLayer(name：str，srs：SpatialReference，geomType：ogr.geomType，options=["ENCODING=UTF-8"]) -> Layer 函数；
   - 创建 Layer 实例；
-- ogr。Feature(featureDefn：ogr。FeatureDefn) -> Feature 构造函数；
+- ogr.Feature(featureDefn：ogr.FeatureDefn) -> Feature 构造函数；
   - 根据 featureDefn 实例创建 Feature 实例；
-- ogr。FieldDefn(name：str，fieldType：ogr。FieleType) -> FieldDefn 构造函数；
+- ogr.FieldDefn(name：str，fieldType：ogr.FieleType) -> FieldDefn 构造函数；
   - 创建 FieldDefn 实例；
-- ogr。Geometry(：ogr。geomType) -> Geometry 构造函数；
+- ogr.Geometry(：ogr.geomType) -> Geometry 构造函数；
   - 创建 Geometry 实例；
-- ogr。CreateGeometryFromXXX() -> Geometry 函数；
+- ogr.CreateGeometryFromXXX() -> Geometry 函数；
   - 根据 XXX 创建 Geometry 实例；
   - GML/Json/Wkb/Wkt：str；
 
 ##### Driver
 
-- Driver。Open(path：str，update：int = 0) -> DataSource 方法；
+- Driver.Open(path：str，update：int = 0) -> DataSource 方法；
   - 创建 DataSource 实例；
   - update：DataSource 实例是否可编辑，默认不可编辑；
-- Driver。CreateDataSource(path：str) -> DataSource 方法；
+- Driver.CreateDataSource(path：str) -> DataSource 方法；
   - 创建 DataSource 实例；
-- Driver。DeleteDataSource(path：str) 方法；
+- Driver.DeleteDataSource(path：str) 方法；
   - 删除 DataSource 实例；
 
 ##### DataSource
 
-- DataSource。GetLayer(index：int = 0) 方法；
+- DataSource.GetLayer(index：int = 0) 方法；
   - 获取 Layer 实例；
-- DataSource。GetLayerCount() -> int 方法；
+- DataSource.GetLayerCount() -> int 方法；
   - 获取 Layer 实例数量；
 
 ##### Layer
 
-- Layer。GetExtent() -> tuple 方法；
+- Layer.GetExtent() -> tuple 方法；
   - 获取 空间范围；
   - tuple：[minx，maxx，miny，maxy]
-- Layer。GetSpatialRef() -> str 方法；
+- Layer.GetSpatialRef() -> str 方法；
   - 获取 SpatialReference 实例；
-- Layer。GetLayerDefn() -> FeatureDefn 方法；
+- Layer.GetLayerDefn() -> FeatureDefn 方法；
   - 获取 FeatureDefn 实例；
-- Layer。CreateFeature(feature：ogr。Feature) 方法；
+- Layer.CreateFeature(feature：ogr.Feature) 方法；
   - 添加 Feature 实例；
-- Layer。GetNextFeature() 方法；
+- Layer.GetNextFeature() 方法；
   - 获取下一个 Feature 实例；
-- Layer。SetFeature(feature：ogr。Feature) 方法；
+- Layer.SetFeature(feature：ogr.Feature) 方法；
   - 重写已经存在的 Feature 实例；
-- Layer。CreateField(fieldDefn：ogr。FieldDefn) 方法；
+- Layer.CreateField(fieldDefn：ogr.FieldDefn) 方法；
   - 添加 Field 实例；
-- Layer。DeleteFeature(FID：int) 方法；
+- Layer.DeleteFeature(FID：int) 方法；
   - 删除 Feature 实例；
 
 ##### Feature
 
-- Feature。GetFieldCount() -> int 方法；
+- Feature.GetFieldCount() -> int 方法；
   - 获取 Field 实例数量；
-- Feature。GetField(id/name：int | str) -> Field 方法；
+- Feature.GetField(id/name：int | str) -> Field 方法；
   - 获取 Field 实例；
-- Feature。SetField(id/name：int | str，value) 方法；
+- Feature.SetField(id/name：int | str，value) 方法；
   - 设置 Field 实例字段值；
-- Feature。SetGeometry(geom：ogr。Geometry) 方法；
+- Feature.SetGeometry(geom：ogr.Geometry) 方法；
   - 添加 Geometry 实例；
-- Feature。GetGeometryRef() -> Geometry 方法；
+- Feature.GetGeometryRef() -> Geometry 方法；
   - 获取 Geometry 实例；
-- Feature。GetFID() -> int 方法；
+- Feature.GetFID() -> int 方法；
   - 获取 FID；
 
 ##### FeatureDefn
 
-- FeatureDefn。GetFieldCount() -> int 方法；
+- FeatureDefn.GetFieldCount() -> int 方法；
   - 获取 Field 实例数量；
-- FeatureDefn。GetFieldDefn(id/name：int | str) -> FieldDefn 方法；
+- FeatureDefn.GetFieldDefn(id/name：int | str) -> FieldDefn 方法；
   - 获取 FieldDefn 实例；
 
 ##### FieldDefn
 
-- FieldDefn。GetNameRef() -> str 方法；
+- FieldDefn.GetNameRef() -> str 方法；
   - 获取字段名；
 
 ##### Geometry
 
-- Geometry。AddPoint(x：float，y：float，z：float = 0) 方法；
+- Geometry.AddPoint(x：float，y：float，z：float = 0) 方法；
   - 添加 [x，y，z] 坐标点；
-- Geometry。AddGeometry(geom：ogr。Geometry) 方法；
+- Geometry.AddGeometry(geom：ogr.Geometry) 方法；
   - 添加 Geometry 实例；
-- Geometry。CloseRings() 方法；
+- Geometry.CloseRings() 方法；
   - 闭合 wkbLinearRing 类型实例；
-- Geometry。Transform(coordinateTransformation：osr。CoordinateTransformation) 方法；
+- Geometry.Transform(coordinateTransformation：osr.CoordinateTransformation) 方法；
   - 对自身进行投影转换；
 
 ##### 几何图形类型
@@ -278,19 +278,19 @@ gdal.Warp('/vsimem/simplify_tif.tif',
 
 ##### gdal
 
-- gdal。open(path) -> Dataset 方法；
+- gdal.open(path) -> Dataset 方法；
   - 打开 path 对应栅格文件创建 Dataset 实例；
-- gdal。GetDriverByName(name) -> Driver 方法；
+- gdal.GetDriverByName(name) -> Driver 方法；
   - 根据 name 创建 Driver 实例；
 
 ##### Dataset
 
-- Dataset。GetProjectionRef() -> str 方法；
+- Dataset.GetProjectionRef() -> str 方法；
   - 获取 Dataset 实例投影信息；
-- Dataset。RasterCount -> int 属性：Dataset 实例波段数量；
-- Dataset。RasterXSize -> int 属性：Dataset 实例水平方向像素数量；
-- Dataset。RasterYSize -> int 属性：Dataset 实例垂直方向像素数量；
-- Dataset。GetGeoTransform() -> tuple 方法；
+- Dataset.RasterCount -> int 属性：Dataset 实例波段数量；
+- Dataset.RasterXSize -> int 属性：Dataset 实例水平方向像素数量；
+- Dataset.RasterYSize -> int 属性：Dataset 实例垂直方向像素数量；
+- Dataset.GetGeoTransform() -> tuple 方法；
   - 获取 Dataset 实例的仿射地理坐标变换 (tuple 类型)。
   - 0：左上角横坐标。
   - 1：水平分辨率；
@@ -298,31 +298,31 @@ gdal.Warp('/vsimem/simplify_tif.tif',
   - 3：左上角纵坐标；
   - 4：地图旋转角度 一般为 0；
   - 5：垂直分辨率。
-- Dataset。GetRasterBand(i) -> Band 方法；
+- Dataset.GetRasterBand(i) -> Band 方法；
   - 根据 i (从 1 开始) 获取 Dataset 实例的对应波段；
 
 ##### Band
 
-- Band。ComputeRasterMinMax(approx_ok：int = 0) -> tuple 方法；
+- Band.ComputeRasterMinMax(approx_ok：int = 0) -> tuple 方法；
   - 返回最大最小值；
   - approx_ok：0 为精确计算，1 为近似计算；
   - tuple：[max，min]
-- Band。ComputeStatistics(approx_ok：int) -> tuple 方法；
+- Band.ComputeStatistics(approx_ok：int) -> tuple 方法；
   - 返回统计数据；
   - tuple：[max，min，mean，std]；
-- Band。ReadAsArray(xoff=0，yoff=0，win_xsize=None，win_ysize=None，buf_xsize=None，buf_ysize=None) -> numpy array 方法；
+- Band.ReadAsArray(xoff=0，yoff=0，win_xsize=None，win_ysize=None，buf_xsize=None，buf_ysize=None) -> numpy array 方法；
   - 转换为 numpy 数组；
   - xoff/yoff：读取矩阵的起始位置，默认为 0；
   - win_xsize/win_ysize：读取矩阵大小，默认为整幅图像；
   - buf_xsize/buf_ysize：输出矩阵大小，gdal 自动缩放；
-- Band。SetRasterColorTable(colorTable：gdal。ColorTable) 方法；
+- Band.SetRasterColorTable(colorTable：gdal.ColorTable) 方法；
   - 设置 ColorTable 实例；
 
 ##### ColorTable
 
-- gdal。ColorTable() -> gdal。ColorTable 构造函数；
+- gdal.ColorTable() -> gdal.ColorTable 构造函数；
   - 返回 ColorTable 实例；
-- ColorTable。CreateColorRamp(startValue：int，startRgb：list，endValue：int，endRgb：list)；
+- ColorTable.CreateColorRamp(startValue：int，startRgb：list，endValue：int，endRgb：list)；
   - 设置颜色表中一段色阶；
   - value：起始/终止值；
   - Rgb：value 对应 rgb(a) 颜色；
@@ -351,10 +351,10 @@ gdal.Warp('/vsimem/simplify_tif.tif',
 
 ##### gdal.Warp() 函数
 
-- gdal。Warp(dst，src，options) 函数；
+- gdal.Warp(dst，src，options) 函数；
   - 对 src 进行重采样，镶嵌，裁剪，合并等一系列操作并输出至 dst；
   - dst/src：dataset / filePath；
-  - options：gdal。WarpOptions() 函数；
+  - options：gdal.WarpOptions() 函数；
 
 ##### gdal.WarpOptions() 函数
 
@@ -367,10 +367,10 @@ gdal.Warp('/vsimem/simplify_tif.tif',
 
 ##### gdal.Translate() 函数
 
-- gdal。Translate(dst，src，options) 函数；
+- gdal.Translate(dst，src，options) 函数；
   - 对 src 栅格图像类型转换等一系列操作并输出至 dst；
   - dst/src：dataset / filePath；
-  - options：gdal。TranslateOptions() 函数；
+  - options：gdal.TranslateOptions() 函数；
 
 ##### gdal.TranslateOptions() 函数
 
@@ -384,10 +384,10 @@ gdal.Warp('/vsimem/simplify_tif.tif',
 
 ##### gdal.Grid() 函数
 
-- gdal。Grid(dst，src，options) 函数；
+- gdal.Grid(dst，src，options) 函数；
   - 实现矢量数据内插栅格数据；
   - dst/src：dataset / filePath；
-  - options：gdal。GridOptions() 函数；
+  - options：gdal.GridOptions() 函数；
 
 ##### gdal.GridOptions() 函数
 
@@ -396,7 +396,7 @@ gdal.Warp('/vsimem/simplify_tif.tif',
   - "PNG"。
 - outputType：设置栅格文件编码格式；
 - algorithm：设置空间内插方法；
-  - 具体参数：'https：//gdal。org/programs/gdal_grid。html#interpolation-algorithms'
-  - 反距离加权："invdist：power=2。0：smoothing=0。0：radius1=0。0：radius2=0。0：angle=0。0：max_points=0：min_points=0：nodata=0。0"
+  - 具体参数：'https：//gdal.org/programs/gdal_grid.html#interpolation-algorithms'
+  - 反距离加权："invdist：power=2.0：smoothing=0.0：radius1=0.0：radius2=0.0：angle=0.0：max_points=0：min_points=0：nodata=0.0"
 - zfield：设置 Z 字段；
 - weight/height：设置输出栅格图像尺寸；

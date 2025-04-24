@@ -81,7 +81,7 @@ id: 7e736772-2607-4572-a8d2-06deb6920806
   - check：执行 setImmediate() 回调；
   - close callback：执行一些 close() 的回调函数(socket，file)；
 - 每个阶段具有自己的任务队列；
-- 每个阶段之间首先清理 process。nextTick() 对应回调，再清理其他微任务回调；
+- 每个阶段之间首先清理 process.nextTick() 对应回调，再清理其他微任务回调；
 
 ### 宏任务和微任务
 
@@ -89,7 +89,7 @@ id: 7e736772-2607-4572-a8d2-06deb6920806
 - 浏览器在每一个宏任务执行前，都要检查，执行和保证微任务队列为空；
 - node 只在 6 个阶段之间检查，执行和保证微任务队列为空；
 - 相关 API；
-  - 微任务：process。nextTick()；
+  - 微任务：process.nextTick()；
   - 宏任务：setImmediate()；
 
 ### 同步任务和异步任务

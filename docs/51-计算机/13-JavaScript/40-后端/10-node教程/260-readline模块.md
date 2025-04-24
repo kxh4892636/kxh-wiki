@@ -125,7 +125,7 @@ rl.write(null, { ctrl: true, name: "u" });
 ## 迭代
 
 - line 为 input 的一行；
-- loop 中调用 break，throw，return 自动调用 rl。close()；
+- loop 中调用 break，throw，return 自动调用 rl.close()；
 - 性能弱于 line 事件；
 
 ```typescript

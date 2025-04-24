@@ -7,7 +7,7 @@
 ## 安装 (windows)
 
 - 解压压缩包，
-- 运行 GoldenDict。exe。
+- 运行 GoldenDict.exe。
 
 ## 配置
 
@@ -47,7 +47,7 @@
 ### 添加谷歌翻译
 
 - 使用[google-translate-for-goldendict 插件](https://github.com/xinebf/google-translate-for-goldendict)，
-- 需要 python3。7 及以上，
+- 需要 python3.7 及以上，
   - pip3 install google-translate-for-goldendict。
 - 打开`GoldenDict-编辑-辞典-来源-程序`，
 - 输入下列参数，
@@ -64,7 +64,7 @@ positional arguments:
 
 optional arguments:
   -h，--help      show this help message and exit
-  -p PROXY        proxy server (eg：127。0。0。1：1080)
+  -p PROXY        proxy server (eg：127.0.0.1：1080)
   -a ALTERNATIVE  alternative language (default：en)
   -r TYPE         result type (default：html)
   -k TKK          tkk

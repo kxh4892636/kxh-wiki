@@ -17,7 +17,7 @@ npm install --save-dev @types/express
 
 ### 项目结构
 
-- index。ts：项目入口；
+- index.ts：项目入口；
 - routes：项目路由；
 - controllers：项目控制器；
 - services：项目服务；

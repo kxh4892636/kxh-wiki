@@ -322,7 +322,7 @@ const App = () => {
 
 ### useRef 的特性
 
-- 使用 ref。current 读写 ref；
+- 使用 ref.current 读写 ref；
 - 改变 ref 不触发渲染；
 - ref 突破快照，实时更新，读写最新值；
 - 渲染过程中无法读取 ref；
@@ -349,8 +349,8 @@ function MyComponent() {
 
 ### 传递 ref
 
-- ref 为引用类型，ref。current 为值类型；
-- 传递 ref。current 不会导致 ref 的改变；
+- ref 为引用类型，ref.current 为值类型；
+- 传递 ref.current 不会导致 ref 的改变；
 
 ### 操作 DOM
 
@@ -433,7 +433,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### 依赖项
 
-- 使用 Object。is 比较依赖项；
+- 使用 Object.is 比较依赖项；
 - dependencies 发生改变时，重新执行 createHandle；
 
 ```typescript
@@ -1125,7 +1125,7 @@ useEffect(() => {
 
 ##### 常见场景
 
-- 在使用 setTimeout，setInterval，Promise。then，addEventListen，回调函数的场景下；
+- 在使用 setTimeout，setInterval，Promise.then，addEventListen，回调函数的场景下；
 - 一定会存在闭包问题；
 
 ##### 具体表现

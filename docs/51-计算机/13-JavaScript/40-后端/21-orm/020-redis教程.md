@@ -140,7 +140,7 @@ await redis.expire("key", 60, "LT");
 
 - node-redis 未连接成功时；
 - 其方法永远不会 resolve()，因此 catch 只能捕获 redis 的运行错误；
-- 使用 redis。isReady 判断 redis 是否连接成功；
+- 使用 redis.isReady 判断 redis 是否连接成功；
 
 ```typescript
 if (redis.isReady) {

@@ -89,7 +89,7 @@
 ### 更改查找 pdf 功能网站为 scihub
 
 - zotero - 编辑 - 首选项 - 高级 - 设置编辑器，
-- 查找 extensions。zotero。findPDFs。resolvers，
+- 查找 extensions.zotero.findPDFs.resolvers，
 - 将默认值设置为下列代码(复制大括号)。
 
 ```text

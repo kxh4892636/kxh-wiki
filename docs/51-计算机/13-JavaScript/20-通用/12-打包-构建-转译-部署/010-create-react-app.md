@@ -25,7 +25,7 @@ npx create-react-app my-app --template typescript
 
 ##### 使用方法
 
-- 在 index。css 或 App。css 中添加以下代码；
+- 在 index.css 或 App.css 中添加以下代码；
 
 ```css
 @import-normalize; /* bring in normalize.css styles */

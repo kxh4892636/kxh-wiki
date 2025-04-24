@@ -14,7 +14,7 @@ pnpm add eslint
 
 ##### 配置文件
 
-- 。eslintrc。js/cjs/xml/json：配置文件；
+- 。eslintrc.js/cjs/xml/json：配置文件；
 - 。eslintignore：忽略文件；
 
 ##### 常用命令
@@ -198,7 +198,7 @@ pnpm add eslint-import-resolver-typescript --save-dev
 
 ##### 配置
 
-- 解决 node import 不使用 index。d。ts 问题；
+- 解决 node import 不使用 index.d.ts 问题；
 - 前端似乎不用配置；
 
 ```javascript

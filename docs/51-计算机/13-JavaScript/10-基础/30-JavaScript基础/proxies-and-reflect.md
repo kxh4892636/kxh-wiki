@@ -91,7 +91,7 @@ console.log(target.foo); // bar
 
 ##### Proxy.revocable() 方法
 
-- Proxy。revocable(target，handler)；
+- Proxy.revocable(target，handler)；
   - 创建一个可销毁的 proxy；
   - 返回值：object；
     - proxy 属性：等同于 new Proxy(target，handler) 创建的 proxy；
@@ -106,11 +106,11 @@ console.log(target.foo); // bar
 ##### Status Flags
 
 - 一些 Reflect 方法返回 boolean，
-  - Reflect。defineProperty
-  - Reflect。preventExtensions
-  - Reflect。setPrototypeOf
-  - Reflect。set
-  - Reflect。deleteProperty
+  - Reflect.defineProperty
+  - Reflect.preventExtensions
+  - Reflect.setPrototypeOf
+  - Reflect.set
+  - Reflect.deleteProperty
 - 表示该方法是否执行成功，
 - 在一些场景极其有用。
 
@@ -167,7 +167,7 @@ console.log(secondProxy.foo);
 
 ### Proxy Considerations and Shortcomings
 
-##### ' this'  Inside a Proxy
+##### ' this' Inside a Proxy
 
 ##### Proxies and Internal Slots
 
@@ -177,7 +177,7 @@ console.log(secondProxy.foo);
 
 ##### handler.get() 方法
 
-- handler。get(target，property，receiver)。
+- handler.get(target，property，receiver)。
   - 检索某个属性值。
   - 返回值：任何值。
 
@@ -193,7 +193,7 @@ console.log(secondProxy.foo);
 
 ##### handler.set() 方法
 
-- handler。set(target，property，value，receiver)。
+- handler.set(target，property，value，receiver)。
   - 设置某个属性值。
   - 返回值。
     - true：设置成功；
@@ -211,7 +211,7 @@ console.log(secondProxy.foo);
 
 ##### handler.has() 方法
 
-- handler。has(target，prop)。
+- handler.has(target，prop)。
   - in 操作符的 trap 形式。
   - 返回值：boolean。
 
@@ -227,8 +227,8 @@ console.log(secondProxy.foo);
 
 ##### handler.defineProperty() 方法
 
-- handler。defineProperty(target，property，descriptor)。
-  - Object。defineProperty() 的 trap 形式。
+- handler.defineProperty(target，property，descriptor)。
+  - Object.defineProperty() 的 trap 形式。
   - 返回值：boolean。
 
 ##### Interceptions
@@ -243,8 +243,8 @@ console.log(secondProxy.foo);
 
 ##### handler.getOwnPropertyDescriptor() 方法
 
-- handler。getOwnPropertyDescriptor(target，prop)。
-  - Object。getOwnPropertyDescriptor() 的 trap 形式。
+- handler.getOwnPropertyDescriptor(target，prop)。
+  - Object.getOwnPropertyDescriptor() 的 trap 形式。
   - 返回值：object/undefined。
 
 ##### Interceptions
@@ -259,7 +259,7 @@ console.log(secondProxy.foo);
 
 ##### handler.deleteProperty() 方法
 
-- handler。deleteProperty(target，property)。
+- handler.deleteProperty(target，property)。
   - delete 操作符的 trap 形式。
   - 返回值：boolean。
 
@@ -275,8 +275,8 @@ console.log(secondProxy.foo);
 
 ##### handler.ownKeys() 方法
 
-- handler。ownKeys(target)。
-  - Reflect。ownKeys() 的 trap 形式 。
+- handler.ownKeys(target)。
+  - Reflect.ownKeys() 的 trap 形式 。
   - 返回值：enumerable object。
 
 ##### Interceptions
@@ -291,7 +291,7 @@ console.log(secondProxy.foo);
 
 ##### handler.getPrototypeOf() 方法
 
-- handler。getPrototypeOf(target)。
+- handler.getPrototypeOf(target)。
   - \[\[GetPrototypeOf\]\] 的 trap 形式。
   - 返回值：object/null。
 
@@ -307,8 +307,8 @@ console.log(secondProxy.foo);
 
 ##### handler.setPrototypeOf() 方法
 
-- handler。setPrototypeOf(target，prototype)。
-  - Object。setPrototypeOf() 的 trap 形式。
+- handler.setPrototypeOf(target，prototype)。
+  - Object.setPrototypeOf() 的 trap 形式。
   - 返回值：boolean。
 
 ##### Interceptions
@@ -323,8 +323,8 @@ console.log(secondProxy.foo);
 
 ##### handler.isExtensible() 方法
 
-- handler。isExtensible(target)。
-  - Object。isExtensible() 的 trap 形式。
+- handler.isExtensible(target)。
+  - Object.isExtensible() 的 trap 形式。
   - 返回值：boolean。
 
 ##### Interceptions
@@ -339,8 +339,8 @@ console.log(secondProxy.foo);
 
 ##### handler.preventExtensions() 方法
 
-- handler。set(target，property，value，receiver)。
-  - Object。preventExtensions() 的 trap 形式。
+- handler.set(target，property，value，receiver)。
+  - Object.preventExtensions() 的 trap 形式。
   - 返回值：boolean。
 
 ##### Interceptions
@@ -355,7 +355,7 @@ console.log(secondProxy.foo);
 
 ##### handler.apply() 方法
 
-- handler。apply(target，thisArg，argumentsList)。
+- handler.apply(target，thisArg，argumentsList)。
   - function call 的 trap 形式。
   - 返回值：任何值。
 
@@ -371,7 +371,7 @@ console.log(secondProxy.foo);
 
 ##### handler.construct() 方法
 
-- handler。construct(target，argumentsList，newTarget)。
+- handler.construct(target，argumentsList，newTarget)。
   - new 关键字的 trap 形式。
   - 返回值：object。
 

@@ -8,7 +8,7 @@ id: 7ab51c98-098c-429b-b626-a6dc8c4fc106
 
 ##### child_process.exec()
 
-- child_process。exec(command[，options][，callback])；
+- child_process.exec(command[，options][，callback])；
 - 回调函数方式；
 - 默认创建一个终端，直接执行 bash/shell 命令；
   - 存在注入风险；
@@ -50,8 +50,8 @@ controller.abort();
 
 ##### child_process.execFile()
 
-- child_process。execFile(file[，args][，options][，callback])；
-- child_process。exec() 的不使用终端版本；
+- child_process.execFile(file[，args][，options][，callback])；
+- child_process.exec() 的不使用终端版本；
 - 直接执行可执行文件，不会使用 shell/bash；
 
 ```typescript
@@ -90,7 +90,7 @@ controller.abort();
 
 ##### child_process.spawn()
 
-- child_process。spawn(command[，args][，options])；
+- child_process.spawn(command[，args][，options])；
 - 事件响应模式；
 - 默认不会创建终端；
 - 流式输出，可自定义输入/输出/报错流；
@@ -120,7 +120,7 @@ controller.abort();
 
 ##### child_process.fork()
 
-- child_process。fork(modulePath[，args][，options])；
+- child_process.fork(modulePath[，args][，options])；
 - 基于 spawn 实现，自动建立 IPC 机制；
   - 可直接使用 message 事件 和 send 方法；
 
@@ -164,7 +164,7 @@ n.send({ hello: "world" });
 - overlapped：同 pipe 但是输出到 file handler，非 windows 等效于 pipe；
 - ipc：创建父进程和子进程的 IPC 通道；
 - ignore：忽略子进程的 fd；
-- inherit：等效于 process。stdin，process。stdout 和 process。stderr；
+- inherit：等效于 process.stdin，process.stdout 和 process.stderr；
 - stream：某个 stream 实例；
 - null/undefined：使用默认值；
 
@@ -226,12 +226,12 @@ subprocess.stdio; // [stdin, stdout, stderr]
 
 ##### 方法
 
-- subprocess。send(message[，sendHandle[，options]][，callback])；
+- subprocess.send(message[，sendHandle[，options]][，callback])；
   - 通过 IPC 通道发送信息，触发 message 事件；
-- subprocess。disconnect()：关闭父进程和子进程的 IPC 通道
-- subprocess。kill([signal])：杀死子进程
-- subprocess。ref()：恢复子进程的移除引用计数
-- subprocess。unref()：移除子进程的移除引用计数
+- subprocess.disconnect()：关闭父进程和子进程的 IPC 通道
+- subprocess.kill([signal])：杀死子进程
+- subprocess.ref()：恢复子进程的移除引用计数
+- subprocess.unref()：移除子进程的移除引用计数
 
 ```typescript
 // parent.js

@@ -32,7 +32,7 @@ id: 4e2da8c8-7675-444a-bf0f-6173d69323f2
 
 ##### buffer 的内存分配
 
-- 当 buffer 小于 Buffer。poolSize 时；
+- 当 buffer 小于 Buffer.poolSize 时；
 - node 会将多个 buffer 进行合并；
 - 减少内存耗费和 gc；
 

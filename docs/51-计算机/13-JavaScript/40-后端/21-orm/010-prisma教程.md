@@ -95,14 +95,14 @@ npx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma 
 
 ##### npx prisma migrate dev --name xxx
 
-- 将 schema。prisma 配置应用至数据库；
+- 将 schema.prisma 配置应用至数据库；
 - 同时自动执行 npx prisma generate；
 - 在修改数据库结构时使用；
 
 ##### npx prisma generate
 
-- 将 schema。prisma 配置应用至 prisma client；
-- 一般在修改 schema。prisma 配置中别名或拉取数据库配置后使用；
+- 将 schema.prisma 配置应用至 prisma client；
+- 一般在修改 schema.prisma 配置中别名或拉取数据库配置后使用；
 - 修改后 vscode 要重启才能生效，其余 IDE 不清楚；
 
 ## prisma schema

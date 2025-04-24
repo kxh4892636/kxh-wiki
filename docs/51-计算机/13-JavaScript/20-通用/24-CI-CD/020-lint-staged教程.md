@@ -15,7 +15,7 @@ pnpm add --save-dev lint-staged
 
 ##### 配置
 
-- package。json 配置；
+- package.json 配置；
 
 ```json
 {

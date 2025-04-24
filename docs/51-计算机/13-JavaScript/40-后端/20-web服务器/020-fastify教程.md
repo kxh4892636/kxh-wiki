@@ -162,7 +162,7 @@ fastify.get("/", options, async function (request, reply) {
 
 ##### 回调函数返回请求
 
-- 使用 reply。send() 并 return reply；
+- 使用 reply.send() 并 return reply；
 
 ```typescript
 fastify.get("/", options, async function (request, reply) {
@@ -457,7 +457,7 @@ export const globalErrorHandler = fp(async (app: FastifyTypebox) => {
 
 ##### 工作机制
 
-- 使用 fastify。addHook() 监听声明周期特定事件；
+- 使用 fastify.addHook() 监听声明周期特定事件；
 - 到达事件触发对应 hook
 
 ##### 注册 hook
@@ -576,7 +576,7 @@ fastify.addHook("onRequest", async (request, reply) => {
 
 ##### 提前返回请求
 
-- 使用 return 或 reply。send()；
+- 使用 return 或 reply.send()；
 
 ```typescript
 fastify.addHook("onRequest", (request, reply, done) => {
@@ -595,14 +595,14 @@ fastify.addHook("preHandler", async (request, reply) => {
 
 ##### 路由级别 hook
 
-- fastify。route 中使用对应 hook；
+- fastify.route 中使用对应 hook；
 
 ### fastify hook
 
 ##### onListen
 
 - fastify 实例监听之前触发；
-- 调用 fastify。ready() 触发；
+- 调用 fastify.ready() 触发；
 
 ```typescript
 fastify.addHook("onReady", async function () {
@@ -623,7 +623,7 @@ fastify.addHook("onListen", async function () {
 
 ##### onReady
 
-- 所有请求处理完毕，且调用 fastify。close() 后触发；
+- 所有请求处理完毕，且调用 fastify.close() 后触发；
 
 ```typescript
 fastify.addHook("onClose", async (instance) => {
@@ -634,7 +634,7 @@ fastify.addHook("onClose", async (instance) => {
 
 ##### preClose
 
-- 调用 fastify。close() 之前触发；
+- 调用 fastify.close() 之前触发；
 
 ```typescript
 fastify.addHook("preClose", async () => {
@@ -981,7 +981,7 @@ export fp(myPlugin)
 
 ### setErrorHandler
 
-- fastify。setErrorHandler(handler(error，request，reply))；
+- fastify.setErrorHandler(handler(error，request，reply))；
 - 定义错误处理程序；
 - 错误发生调用其回调函数；
 

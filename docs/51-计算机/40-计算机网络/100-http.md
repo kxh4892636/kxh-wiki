@@ -84,7 +84,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 
 - 一次 HTTP 请求建立并断开一次 TCP 连接；
 - 增加无用的通信开销；
-- http/1。0 默认为非持久连接；
+- http/1.0 默认为非持久连接；
 - 使用 `Connection: Keep-Alive` 尝试持久连接；
 
 ![非持久连接](./images/2024-01-15-19-07-30.png)
@@ -94,7 +94,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 - HTTP keep-alive；
 - 任意一端没有断开连接，保持 TCP 连接状态；
 - 减少 TCP 重复建立和断开的开销；
-- HTTP/1。1 以上版本默认为持久连接；
+- HTTP/1.1 以上版本默认为持久连接；
 - 使用 `Connection: Close` 关闭持久连接；
 - 要求 HTTP 请求为同源请求；
 
@@ -102,7 +102,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 
 ##### 管线化
 
-- http/1。1 特性；
+- http/1.1 特性；
 - 管线化技术做到一次发送多个请求；
 - 依旧要求按发送顺序接受响应请求；
 - 依旧会发生堵塞现象；
@@ -111,7 +111,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 
 ### 多路复用
 
-- http/2。0 特性；
+- http/2.0 特性；
 - 并行交错发送多个请求；
 - 请求和响应之间互不影响；
 
@@ -284,7 +284,7 @@ Range: bytes=-3000, 5000-7000
 
 ##### 字段协议
 
-- HTTP/1。1 协议 (RFC2616)；
+- HTTP/1.1 协议 (RFC2616)；
 - 非 HTTP 协议(RFC4229)；
 
 ##### 端到端首部
@@ -904,7 +904,7 @@ IVAa IVDa OUR BUS IND UNI COM NAV INT"
 
 ##### 相关方法和状态码
 
-- HTTP/1。1 添加；
+- HTTP/1.1 添加；
 
 | 方法                     | 描述                                            |
 | ------------------------ | ----------------------------------------------- |
@@ -1072,7 +1072,7 @@ IVAa IVDa OUR BUS IND UNI COM NAV INT"
 
 ### QUIC 协议
 
-- HTTP3。0 使用 UDP 协议传输；
+- HTTP3.0 使用 UDP 协议传输；
 - 基于 UDP 指定 QUIC 协议；
   - 前向纠错：基于 FEC 技术，通过发送冗余数据还原丢包数据；
     - 额外发送一个校验包，其值为所有数据包的异或值；

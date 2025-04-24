@@ -12,7 +12,7 @@ id: 1a8bbacf-f353-47b3-90ac-b07cb9fccd25
 
 ##### postMessage()
 
-- otherWindow。postMessage(message，targetOrigin，[transfer])；
+- otherWindow.postMessage(message，targetOrigin，[transfer])；
 - 发送 message 至 otherWindow，targetOrigin 为发送者源；
 
 ```typescript
@@ -23,9 +23,9 @@ iframeWindow.postMessage("A secret", "http://www.wrox.com");
 ##### message 事件
 
 - 接受 XDM 消息后触发 message 事件；
-  - event。origin 表示发送者的源；
-  - event。data 表示消息内容；
-  - event。source 为发送者的 window 对象的代理；
+  - event.origin 表示发送者的源；
+  - event.data 表示消息内容；
+  - event.source 为发送者的 window 对象的代理；
 
 ```typescript
 window.addEventListener("message", (event) => {
@@ -64,7 +64,7 @@ window.addEventListener("message", (event) => {
 
 - url 对象；
 - 使用 text，base64。。。编码；
-- window。URL。createObjectURL(file)：接受一个 File 或 Blob 对象；
+- window.URL.createObjectURL(file)：接受一个 File 或 Blob 对象；
 
 ```typescript
 url = window.URL.createObjectURL(file);
@@ -183,7 +183,7 @@ const blob = new Blob(['{"a": "b"}'], { type: "application/json" }); // {size: 1
 
 ##### 切分数据
 
-- blob。slice()；
+- blob.slice()；
 
 ```typescript
 const obj = { hello: "world" };
@@ -323,7 +323,7 @@ Notification.requestPermission().then((permission) => {
 ##### 显示和隐藏通知
 
 - 显示通知：n = new Notification(text，init)；
-- 隐藏通知：n。close()
+- 隐藏通知：n.close()
 
 ```typescript
 const n = new Notification("Title text!"); // 显示 Title text!
@@ -359,7 +359,7 @@ n.onerror = () => console.log("Notification experienced an error!"); // 报错�
 
 ##### API
 
-- document。visibilityState：页面当前状态；
+- document.visibilityState：页面当前状态；
   - hidden 表示不可见，visible 表示可见；
 - 状态切换触发 visibilitychange 事件；
 
@@ -405,8 +405,8 @@ document.addEventListener("visibilitychange", () => {
 
 ### High Resolution Time API
 
-- performance。now()：微秒级别的浮点值，从执行上下文创建计时；
-- performance。timeOrigin：执行上下文创建的基准值；
+- performance.now()：微秒级别的浮点值，从执行上下文创建计时；
+- performance.timeOrigin：执行上下文创建的基准值；
 
 ```typescript
 const relativeTimestamp = performance.now();
@@ -418,7 +418,7 @@ const absoluteTimestamp = performance.timeOrigin + relativeTimestamp;
 
 ##### 性能条目
 
-- performance。getEntries()：条目信息；
+- performance.getEntries()：条目信息；
 
 ```typescript
 console.log(performance.getEntries());
@@ -444,8 +444,8 @@ console.log(entry.duration); // 182.36500001512468
 
 ### 随机数
 
-- crypto。getRandomValues(typedArray)：生成 typedArray 对应位数的随机数；
-- crypto。randomUUID()：生成 UUID；
+- crypto.getRandomValues(typedArray)：生成 typedArray 对应位数的随机数；
+- crypto.randomUUID()：生成 UUID；
 
 ```typescript
 const array = new Uint8Array(1);

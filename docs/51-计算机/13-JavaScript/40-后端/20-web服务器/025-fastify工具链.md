@@ -180,7 +180,7 @@ fastify.post("/the/url", { schema }, handler);
 
 ### 返回非 json 类型
 
-- 仅用于 openapi 3。0；
+- 仅用于 openapi 3.0；
 
 ```typescript
 {

@@ -669,7 +669,7 @@ module.exports = {
 
 ##### 基础样式
 
-- index。css 中设置；
+- index.css 中设置；
 - 使用 `@layer base` 操作符；
 
 ```css

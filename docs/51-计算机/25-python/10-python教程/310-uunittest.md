@@ -19,7 +19,7 @@
 
 - import 语句；
 - 测试类；
-  - 继承类：unittest。TestCase；
+  - 继承类：unittest.TestCase；
 - 测试函数；
   - assert 相关方法；
 - if 语句。
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
 - import 语句；
 - 测试类；
-  - 继承类：unittest。TestCase；
+  - 继承类：unittest.TestCase；
 - 测试函数；
   - setUp() 函数；
   - assert 相关方法；
