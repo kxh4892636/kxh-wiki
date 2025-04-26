@@ -13,7 +13,7 @@
 
 ### 设置便携模式
 
-- 在 GoldenDict(。exe) 所在的目录中创建一个名称为 portable 的文件夹，
+- 在 GoldenDict(.exe) 所在的目录中创建一个名称为 portable 的文件夹，
 - Windows 的"系统盘符：\Users\用户名\AppData\Roaming\GoldenDict" 下的所有文件及文件夹移动到建好的 portable 文件夹中去。
 
 ### 添加字典

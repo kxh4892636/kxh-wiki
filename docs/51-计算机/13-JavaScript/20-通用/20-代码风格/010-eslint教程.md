@@ -14,8 +14,8 @@ pnpm add eslint
 
 ##### 配置文件
 
-- 。eslintrc.js/cjs/xml/json：配置文件；
-- 。eslintignore：忽略文件；
+- .eslintrc.js/cjs/xml/json：配置文件；
+- .eslintignore：忽略文件；
 
 ##### 常用命令
 
@@ -32,7 +32,7 @@ eslint src --fix
 
 ##### cjs
 
-- eslint 不支持 esm，只能使用后缀 。cjs；
+- eslint 不支持 esm，只能使用后缀 .cjs；
 
 ##### node
 
@@ -266,14 +266,6 @@ module.exports = {
 
 ```bash
 pnpm add eslint-config-prettier --save-dev
-```
-
-### eslint-plugin-prettier
-
-##### 安装
-
-```bash
-pnpm add eslint-plugin-jsdoc --save-dev
 ```
 
 ##### 配置

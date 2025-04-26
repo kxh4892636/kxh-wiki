@@ -23,7 +23,7 @@ rm -f Miniforge3-Linux-x86_64.sh
 
 ## 换源
 
-- `conda config --system` 创建 。condarc 文件；
+- `conda config --system` 创建 .condarc 文件；
 
 ```bash
 channels:

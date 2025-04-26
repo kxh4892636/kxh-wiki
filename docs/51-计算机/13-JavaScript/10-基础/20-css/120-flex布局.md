@@ -162,8 +162,8 @@ element {
 ##### 机制
 
 - 在 cross/main-axis 方向拉伸；
-- 若多个 flex item cross/main-axis 方向大小依次为 a_1，a_2，。。。a_n
-- flex-grow 依次为 b_1，b_2，。。。b_n 时；
+- 若多个 flex item cross/main-axis 方向大小依次为 a_1，a_2，。。.a_n
+- flex-grow 依次为 b_1，b_2，。。.b_n 时；
 - 当存在剩余空间，且假设其大小为 x；
 - 对应 flex item 大小增加溢出空间 x 的 $\frac{a_i * b_i}{\sum^n_{i=1}{a_i * b_i}}$
 
@@ -187,8 +187,8 @@ element {
 ##### 机制
 
 - 在 cross/main-axis 方向收缩；
-- 若多个 flex item cross/main-axis 方向大小依次为 a_1，a_2，。。。a_n
-- flex-grow 依次为 b_1，b_2，。。。b_n 时；
+- 若多个 flex item cross/main-axis 方向大小依次为 a_1，a_2，。。.a_n
+- flex-grow 依次为 b_1，b_2，。。.b_n 时；
 - 当 flex item 溢出容器，且假设其溢出空间大小为 x；
 - 对应 flex item 大小缩小溢出空间 x 的 $\frac{a_i * b_i}{\sum^n_{i=1}{a_i * b_i}}$
 
