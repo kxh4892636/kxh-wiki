@@ -127,14 +127,19 @@ const config: Config = {
           label: "专业基础",
           position: "right",
         },
-        {
-          to: "/docs/工作/",
-          label: "工作",
-          position: "right",
-        },
+        // {
+        //   to: "/docs/工作/",
+        //   label: "工作",
+        //   position: "right",
+        // },
         {
           to: "/docs/工具/",
           label: "工具",
+          position: "right",
+        },
+        {
+          to: "/docs/SOP/",
+          label: "SOP",
           position: "right",
         },
         {
