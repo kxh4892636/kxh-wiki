@@ -1046,6 +1046,7 @@ IVAa IVDa OUR BUS IND UNI COM NAV INT"
 | 状态码    | xxxx             | 更多的状态码                       |
 | 带宽优化  | xxx              | 分块传输 + 范围请求                |
 | Host 头部 | xxx              | 引入 Host 首部字段                 |
+| 管线化    | 不支持           | 支持                               |
 
 ## HTTP2.0
 
