@@ -2,7 +2,7 @@
 id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 ---
 
-# grid
+# grid 布局
 
 ## grid 布局
 
@@ -18,8 +18,6 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 
 ### grid 属性值
 
-##### 作用
-
 - 容器创建 grid 布局；
 
 ```css
@@ -30,72 +28,34 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 
 ## grid-template-rows 属性
 
-##### 作用
-
 - 设置 grid 行名 (custom-ident)；
 - 设置 grid 行轨道大小；
 
 ```css
 .container {
+  /* 使用 grid-auto-rows 属性 */
+  grid-template-rows: none;
+
+  /* length 类型 */
+  /* percentage 类型，设置各轨道 flex 比例系数，fr 后缀 */
+  /* flex 类型 */
   grid-template-rows: 1fr 2fr 1fr;
-}
 
-.container {
+  /* 设置尽可能大的最大宽度，最小宽度 */
+  grid-template-rows: 10px max-content;
+  grid-template-rows: 10px min-content;
+
+  /* minmax(min, max) 函数 */
+  grid-template-rows: 10px minmax(min, max);
+  /* 单独使用视为 minmax(min-content，max-content) */
+  grid-template-rows: 10px auto;
+  /* repeat() 函数 */
+  grid-template-rows: 10px repeat(2, 1fr);
+
+  /* 设置 grid 行名，名称为除保留字之外的有效字符串 */
   grid-template-rows: [linename1] 100px [linename2 linename3];
 }
 ```
-
-#### 属性值
-
-##### none
-
-- 使用 grid-auto-rows 属性；
-
-##### [linename]
-
-- 设置 grid 行名；
-- 名称除保留字之外的有效字符串；
-- 同一行可取多个行名，包裹在同一[] 下，，分隔；
-
-```css
-.container {
-  grid-template-rows: [linename1] 100px [linename2 linename3];
-}
-```
-
-##### length 类型
-
-- 非负值；
-
-##### percentage 类型
-
-- 非负值；
-
-##### flex 类型
-
-- 非负值；
-- 设置各轨道 flex 比例系数，fr 后缀；
-- 单独使用视为 minmax(auto，flex)；
-
-##### max-content
-
-- 设置尽可能大的最大宽度；
-
-##### min-content
-
-- 设置尽可能大的最小宽度；
-
-##### minmax(min, max)
-
-- 不作详述；
-
-##### auto
-
-- 单独使用视为 minmax(min-content，max-content)；
-
-##### repeat()
-
-- 不作详述；
 
 ## grid-template-columns 属性
 
@@ -104,11 +64,10 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 
 ## grid-auto-rows 属性
 
-##### 机制
-
 - 当无 grid-template-rows 属性；
 - 或其属性值为 none 时；
 - 自动使用 grid-auto-rows 属性；
+- 属性值同 grid-template-rows 属性；
 
 ```css
 #grid {
@@ -117,10 +76,6 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 }
 ```
 
-#### 属性值
-
-- 同 grid-template-row；
-
 ## grid-auto-columns 属性
 
 - 同 grid-auto-rows 属性；
@@ -128,7 +83,7 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 
 ## repeat() 函数
 
-##### 作用
+### 作用
 
 - 作为 grid-template-rows(columns) 的属性值；
 - 使用更简洁的方式表示重复的 track list 参数；
@@ -151,7 +106,7 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 }
 ```
 
-##### 尽可能多的列
+### 尽可能多的列
 
 - 使用 repeat() 函数；
 - 使用 auto-fill；
@@ -166,7 +121,7 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 }
 ```
 
-##### auto-fill 和 auto-fit
+### auto-fill 和 auto-fit
 
 - 相同之处；
   - 设置重复次数为尽可能大的数字；
@@ -179,8 +134,6 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
     - 空白通道空间平均分配给其他通道；
 
 ## minmax() 函数
-
-##### 作用
 
 - 用于 gird 布局；
 - 设置最大最小值范围；
@@ -220,8 +173,6 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
   - row-gap column-gap；
 
 ### column-gap 属性
-
-##### column-gap 属性
 
 - 见 multiple columns；
 
@@ -264,46 +215,25 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 
 ### grid-column-start 属性
 
-##### 作用
-
 - 设置 grid item 基于 grid column 的起始位置和尺寸；
 
 ```css
 #item {
-  grid-column-start: span 2;
-}
-```
+  /* 默认值，等同于 span */
+  grid-column-start: auto;
+  /* 正数：基于正数第 i 列 */
+  /* 负数：基于倒数第 i 列 */
+  grid-column-start: 2;
+  grid-column-start: -2;
 
-#### 属性值
-
-##### auto
-
-- 默认值；
-- 默认 span 为 1；
-
-##### integer
-
-- 可正可负；
-  - 正数：基于正数第 i 列；
-  - 负数：基于倒数第 i 列 ；
-
-##### span
-
-- span [int]；
-- 若省略 int，默认为 1；
-- 表示 grid 横跨 int 个列；
-- 单独使用时；
-- `grid-column-start: span 2` 等效于 `grid-column: i / span 2`；
-
-```css
-#item {
+  /* span [int]，表示横跨 int 列，int 缺省为 1 */
+  /* 单独使用 span，`grid-column-start: span 2` 等效于 `grid-column: i / span 2` */
   grid-column-start: 1 / span 2;
+
+  /* custom-ident 列名 */
+  grid-column-start: test;
 }
 ```
-
-##### custom-ident
-
-- custom-ident 对应列；
 
 ### grid-column-end 属性
 
@@ -343,23 +273,11 @@ id: 4aa876ce-d550-4ae6-9c27-b10ef9dee445
 ##### 原则
 
 - 一旦使用，必须填充所有网格；
-- 使用 。视为该网格不命名；
+- 使用 .视为该网格不命名；
 - 命名网格区域必须为矩形；
 - 同一命名网格必须相连；
 
-#### 属性值
-
-##### none
-
-- 不定义 grid areas；
-
-##### string
-
-- 除标识符外的有效字符串；
-
 ### grid-area 属性
-
-##### 作用
 
 - 指定 grid item 的命名网格区域；
 - 设置 grid item 基于 grid column/row 的位置和尺寸；
