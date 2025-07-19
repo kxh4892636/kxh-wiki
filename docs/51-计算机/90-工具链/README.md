@@ -12,5 +12,6 @@
 - [090-plantUML](./090-plantUML.md)
 - [100-ssh教程](./100-ssh教程.md)
 - [110-vim教程](./110-vim教程.md)
+- [120-vscode](./120-vscode.md)
 - [810-认证和授权教程](./810-认证和授权教程.md)
 - [drawio](./drawio/README.md)
