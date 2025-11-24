@@ -1,9 +1,11 @@
-#
+# personal file
+# docs
+*/*记录*
+*/*中转*
+*/*工作*
+# root
 .obsidian
-*记录*
-*中转*
-*code*
-*工作*
+code
 
 # Dependencies
 /node_modules
