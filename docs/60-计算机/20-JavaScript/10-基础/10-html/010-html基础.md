@@ -24,8 +24,8 @@ id: 17695f0c-e935-4927-ad06-a2abb3262a31
 
 ##### 空格的数量机制
 
-- 无论多少个空格，
-- 都视为一个空格。
+- 无论多少个空格,
+- 都视为一个空格;
 
 ##### 转义字符
 
@@ -37,47 +37,49 @@ id: 17695f0c-e935-4927-ad06-a2abb3262a31
 | '        | `&apos;` |
 | &        | `&amp;`  |
 
-## html 标签
+## html 标签&属性
+
+### html 标签
 
 ##### html element 组成
 
-- opening tag；
-- closing tag；
-- content。
+- opening tag;
+- closing tag;
+- content;
 
 ![html element 组成](./images/2022-05-18-10-46-17.png)
 
 ##### 块级标签
 
-- 自动换行且独占一行；
-  - 无论宽度都独占一行；
-  - 行内 + 块级 or 块级 + 行内 or 块级 + 块级都是两行；
-- 不可嵌套于 inline element，可嵌套于 block-level elements；
-- 常见的块级标签：div/p.hx/li/table/header/main。。。
+- 自动换行且独占一行;
+  - 无论宽度都独占一行;
+  - 行内 + 块级 or 块级 + 行内 or 块级 + 块级都是两行;
+- 不可嵌套于 inline element, 可嵌套于 block-level elements;
+- 常见的块级标签: div/p.hx/li/table/header/main...
 
 ##### 行内标签
 
-- 无法设置宽高，通过文本内容确定，不换行；
-- 可嵌套于 block-level elements 和 inline element；
-- 常见的行内标签：span/a/img/input/button。。。
+- 无法设置宽高, 通过文本内容确定, 不换行;
+- 可嵌套于 block-level elements 和 inline element;
+- 常见的行内标签: span/a/img/input/button...
 
 ##### empty element
 
-- 仅包含单个 tag；
-- img。。。
+- 仅包含单个 tag;
+- img...
 
-## html 属性
+### html 属性
 
-### html 属性基础
+#### html 属性基础
 
 ![attribute](./images/2022-05-18-10-55-31.png)
 
-### 常见属性
+#### 常见属性
 
-#### id 属性
+##### id 属性
 
-- 标识元素，不能包含空白，唯一值；
-- 基于 `id#value` 或 `id=value` 引用；
+- 标识元素, 不能包含空白, 唯一值;
+- 基于 `id#value` 或 `id=value` 引用;
 
 ```html
 <p id="exciting">The most exciting paragraph on the page. One of a kind!</p>
@@ -87,12 +89,12 @@ id: 17695f0c-e935-4927-ad06-a2abb3262a31
 
 ### 基础
 
-- 根据用户行为和设备环境；
-- 使用不同的页面布局和资源；
+- 根据用户行为和设备环境;
+- 使用不同的页面布局和资源;
 
 ### meta 标签
 
-- 用于检查不同设备屏幕尺寸；
+- 用于检查不同设备屏幕尺寸;
 
 ```html
 <meta
@@ -103,26 +105,26 @@ id: 17695f0c-e935-4927-ad06-a2abb3262a31
 
 ### 媒体查询
 
-- 基于媒体查询使用不同布局，元素尺寸；
+- 基于媒体查询使用不同布局, 元素尺寸;
 
 ### 相对尺寸
 
-- 使用百分比/rem/vx 等相对尺寸；
-- 实现弹性布局；
+- 使用百分比/rem/vx 等相对尺寸;
+- 实现弹性布局;
 
 ### 响应式多媒体
 
-- 基于 source 标签或 srcset 属性实现响应式多媒体；
+- 基于 source 标签或 srcset 属性实现响应式多媒体;
 
 ## html5 新特性
 
-- 语义化标签；
-- 视频和音频标签；
-- 表单元素；
-- canvas 标签；
-- svg 标签；
-- web 存储；
-- worker；
-- WebSocket；
-- 拖动 API；
-- history API；
+- 语义化标签;
+- 视频和音频标签;
+- 表单元素;
+- canvas 标签;
+- svg 标签;
+- web 存储;
+- worker;
+- WebSocket;
+- 拖动 API;
+- history API;

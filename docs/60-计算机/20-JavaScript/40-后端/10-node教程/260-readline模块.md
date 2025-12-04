@@ -6,7 +6,7 @@ id: bd98186f-4745-4f96-8576-517c5b8c1176
 
 ## 创建
 
-- 继承于 EventEmitter；
+- 继承于 EventEmitter;
 
 ```typescript
 import { stdin as input, stdout as output } from "process";
@@ -124,9 +124,9 @@ rl.write(null, { ctrl: true, name: "u" });
 
 ## 迭代
 
-- line 为 input 的一行；
-- loop 中调用 break，throw，return 自动调用 rl.close()；
-- 性能弱于 line 事件；
+- line 为 input 的一行;
+- loop 中调用 break, throw, return 自动调用 rl.close();
+- 性能弱于 line 事件;
 
 ```typescript
 // rl[Symbol.asyncIterator]();

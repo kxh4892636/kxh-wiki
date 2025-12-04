@@ -4,8 +4,8 @@
 
 ##### lint-staged
 
-- 搭配 git hooks；
-- 检查代码风格；
+- 搭配 git hooks;
+- 检查代码风格;
 
 ##### 安装
 
@@ -15,7 +15,7 @@ pnpm add --save-dev lint-staged
 
 ##### 配置
 
-- package.json 配置；
+- package.json 配置;
 
 ```json
 {

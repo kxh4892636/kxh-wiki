@@ -48,8 +48,8 @@ const useSoundStore = create((set, get) => ({
 
 ##### 渲染机制
 
-- zustand 中 state 发生改变；
-- zustand 会从新渲染所有使用该 state 的组件；
+- zustand 中 state 发生改变;
+- zustand 会从新渲染所有使用该 state 的组件;
 
 ## 工具链
 
@@ -73,7 +73,7 @@ const useBearStore = create<BearStore>((set) => ({
 
 ### immer
 
-- [immer](./410-immer教程.md#zustand)；
+- [immer](./410-immer教程.md#zustand);
 
 ## 中间件
 
@@ -104,9 +104,9 @@ export const useBearStore = create(
 
 ### 组件只有 action 而没有 state
 
-- zustand 根据 state 的变化决定是否渲染组件；
-- 若组件只有 action 而没有 state；
-- state 发生改变，该组件不会重新渲染；
+- zustand 根据 state 的变化决定是否渲染组件;
+- 若组件只有 action 而没有 state;
+- state 发生改变, 该组件不会重新渲染;
 
 ```typescript
 // 该组件不会重新渲染
@@ -120,8 +120,8 @@ const App = () => {
 
 ### zustand 的闭包问题
 
-- 由于 react 闭包，zustand 无法获取最新的值；
-- 使用 zustand 中的 get() 函数可以获取最新的值；
+- 由于 react 闭包, zustand 无法获取最新的值;
+- 使用 zustand 中的 get() 函数可以获取最新的值;
 
 ```typescript
 // store.tsx

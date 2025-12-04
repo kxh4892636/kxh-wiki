@@ -11,14 +11,11 @@ pnpm add @tanstack/react-query
 ## 模版代码
 
 ```jsx
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-import { getTodos, postTodo } from '../my-api'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { getTodos, postTodo } from "../my-api";
 
 // Create a client
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -26,7 +23,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Todos />
     </QueryClientProvider>
-  )
+  );
 }
 ```
 
@@ -34,7 +31,7 @@ function App() {
 
 ### 基本概念
 
-- 用于在服务器获取数据，无修改操作
+- 用于在服务器获取数据, 无修改操作
 - 通常使用 isPending、isError、data、error 属性
 - isPending、isError 和 isSuccess 互斥
 
@@ -66,10 +63,10 @@ const {
   status,
 } = useQuery(
   {
-    queryKey, // 表示查询的唯一标识符，可定义多个
-    queryFn, // 请求函数，返回数据或 throw error
+    queryKey, // 表示查询的唯一标识符, 可定义多个
+    queryFn, // 请求函数, 返回数据或 throw error
     gcTime,
-    enabled, // enabled 为 true，才会触发请求
+    enabled, // enabled 为 true, 才会触发请求
     networkMode,
     initialData, // 初始数据
     initialDataUpdatedAt,
@@ -79,20 +76,20 @@ const {
     queryKeyHashFn,
     refetchInterval, // 定时查询
     refetchIntervalInBackground,
-    refetchOnMount, // 使用 query 的组件挂载时自动查询，建议全局关闭
+    refetchOnMount, // 使用 query 的组件挂载时自动查询, 建议全局关闭
     refetchOnReconnect,
-    refetchOnWindowFocus, // 使用 query 的组件获得焦点时自动查询，建议全局关闭
+    refetchOnWindowFocus, // 使用 query 的组件获得焦点时自动查询, 建议全局关闭
     retry, // 重试次数
     retryOnMount, // 使用 query 的组件挂载时自动重试
     retryDelay, // 重试间隔时间
     select,
-    staleTime, // 过期时间，默认为 0
+    staleTime, // 过期时间, 默认为 0
     structuralSharing,
     subscribed,
     throwOnError,
   },
-  queryClient,
-)
+  queryClient
+);
 ```
 
 ### 查询键
@@ -104,7 +101,7 @@ const {
 
 ##### 确定性哈希
 
-- 忽视对象中键的顺序，以下查询视为相等
+- 忽视对象中键的顺序, 以下查询视为相等
 
 ```jsx
 useQuery({ queryKey: ['todos', { status, page }], ... })
@@ -112,7 +109,7 @@ useQuery({ queryKey: ['todos', { page, status }], ...})
 useQuery({ queryKey: ['todos', { page, status, other: undefined }], ... })
 ```
 
-- 保留数组元素顺序，以下查询不相等
+- 保留数组元素顺序, 以下查询不相等
 
 ```jsx
 useQuery({ queryKey: ['todos', status, page], ... })
@@ -124,13 +121,12 @@ useQuery({ queryKey: ['todos', undefined, page, status], ...})
 
 - 将查询函数的依赖变量放置于查询键
 
-
 ```jsx
 function Todos({ todoId }) {
   const result = useQuery({
-    queryKey: ['todos', todoId],
+    queryKey: ["todos", todoId],
     queryFn: () => fetchTodoById(todoId),
-  })
+  });
 }
 ```
 
@@ -142,18 +138,18 @@ function Todos({ todoId }) {
 
 ```jsx
 const { error } = useQuery({
-  queryKey: ['todos', todoId],
+  queryKey: ["todos", todoId],
   queryFn: async () => {
     if (somethingGoesWrong) {
-      throw new Error('Oh no!')
+      throw new Error("Oh no!");
     }
     if (somethingElseGoesWrong) {
-      return Promise.reject(new Error('Oh no!'))
+      return Promise.reject(new Error("Oh no!"));
     }
 
-    return data
+    return data;
   },
-})
+});
 ```
 
 ### 查询键传递
@@ -163,23 +159,23 @@ const { error } = useQuery({
 ```jsx
 function Todos({ status, page }) {
   const result = useQuery({
-    queryKey: ['todos', { status, page }],
+    queryKey: ["todos", { status, page }],
     queryFn: fetchTodoList,
-  })
+  });
 }
 
 // Access the key, status and page variables in your query function!
 function fetchTodoList({ queryKey }) {
-  const [_key, { status, page }] = queryKey
-  return new Promise()
+  const [_key, { status, page }] = queryKey;
+  return new Promise();
 }
 ```
 
 ### 查询函数上下文
 
-- queryKey：查询键
-- client：查询客户端
-- signal：AbortSignal
+- queryKey: 查询键
+- client: 查询客户端
+- signal: AbortSignal
 
 ### 并行查询
 
@@ -202,11 +198,11 @@ function App({ users }) {
   const userQueries = useQueries({
     queries: users.map((user) => {
       return {
-        queryKey: ['user', user.id],
+        queryKey: ["user", user.id],
         queryFn: () => fetchUserById(user.id),
-      }
+      };
     }),
-  })
+  });
 }
 ```
 
@@ -250,14 +246,14 @@ const {
     scope,
     throwOnError,
   },
-  queryClient,
-)
+  queryClient
+);
 
 mutate(variables, {
   onError,
   onSettled,
   onSuccess,
-})
+});
 ```
 
 ### 基本使用
@@ -266,28 +262,28 @@ mutate(variables, {
 // 创建修改函数
 const mutation = useMutation({
   mutationFn: (newTodo) => {
-    return axios.post('/todos', newTodo)
+    return axios.post("/todos", newTodo);
   },
-})
+});
 
 // 重置突变状态
-mutation.mutate({ id: new Date(), title: 'Do Laundry' })
+mutation.mutate({ id: new Date(), title: "Do Laundry" });
 ```
 
 ### 生命周期
 
-- 根据定义顺序，顺序调用
+- 根据定义顺序, 顺序调用
 
 ```jsx
 useMutation({
   mutationFn: addTodo,
   onMutate: (variables) => {
     // A mutation is about to happen!
-    return { id: 1 }
+    return { id: 1 };
   },
   onError: (error, variables, context) => {
     // An error happened!
-    console.log(`rolling back optimistic update with id ${context.id}`)
+    console.log(`rolling back optimistic update with id ${context.id}`);
   },
   onSuccess: (data, variables, context) => {
     // Boom baby!
@@ -295,7 +291,7 @@ useMutation({
   onSettled: (data, error, variables, context) => {
     // Error or success... doesn't matter!
   },
-})
+});
 ```
 
 ## 查询失效
@@ -303,23 +299,23 @@ useMutation({
 ### queryClient.invalidateQueries
 
 - 根据 queryKey 匹配 useQuery
-- 标记失效，并后台重新获取
+- 标记失效, 并后台重新获取
 
 ```jsx
 // Invalidate every query in the cache
-queryClient.invalidateQueries()
+queryClient.invalidateQueries();
 
 // Invalidate every query with a key that starts with `todos`
-queryClient.invalidateQueries({ queryKey: ['todos'] })
+queryClient.invalidateQueries({ queryKey: ["todos"] });
 // Both queries below will be invalidated
 const todoListQuery = useQuery({
-  queryKey: ['todos'],
+  queryKey: ["todos"],
   queryFn: fetchTodoList,
-})
+});
 const todoListQuery = useQuery({
-  queryKey: ['todos', { page: 1 }],
+  queryKey: ["todos", { page: 1 }],
   queryFn: fetchTodoList,
-})
+});
 ```
 
 ### queryClient.refetchQueries
@@ -335,96 +331,96 @@ const todoListQuery = useQuery({
 ### 匹配函数
 
 - 定义 predicate 匹配函数
-- 根据返回布尔值，确定查询是否失效
+- 根据返回布尔值, 确定查询是否失效
 
 ```jsx
 queryClient.invalidateQueries({
   predicate: (query) =>
-    query.queryKey[0] === 'todos' && query.queryKey[1]?.version >= 10,
-})
+    query.queryKey[0] === "todos" && query.queryKey[1]?.version >= 10,
+});
 
 // The query below will be invalidated
 const todoListQuery = useQuery({
-  queryKey: ['todos', { version: 20 }],
+  queryKey: ["todos", { version: 20 }],
   queryFn: fetchTodoList,
-})
+});
 // The query below will be invalidated
 const todoListQuery = useQuery({
-  queryKey: ['todos', { version: 10 }],
+  queryKey: ["todos", { version: 10 }],
   queryFn: fetchTodoList,
-})
+});
 // However, the following query below will NOT be invalidated
 const todoListQuery = useQuery({
-  queryKey: ['todos', { version: 5 }],
+  queryKey: ["todos", { version: 5 }],
   queryFn: fetchTodoList,
-})
+});
 ```
 
 ### 修改导致的失效
 
 ```jsx
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-const queryClient = useQueryClient()
+const queryClient = useQueryClient();
 
 // When this mutation succeeds, invalidate any queries with the `todos` or `reminders` query key
 const mutation = useMutation({
   mutationFn: addTodo,
   onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ['todos'] })
-    queryClient.invalidateQueries({ queryKey: ['reminders'] })
+    queryClient.invalidateQueries({ queryKey: ["todos"] });
+    queryClient.invalidateQueries({ queryKey: ["reminders"] });
   },
-})
+});
 ```
 
 ## 来自修改的更新
 
-- 使用 setQueryData，手动更新数据
+- 使用 setQueryData, 手动更新数据
 
 ```jsx
-const queryClient = useQueryClient()
+const queryClient = useQueryClient();
 
 const mutation = useMutation({
   mutationFn: editTodo,
   onSuccess: (data) => {
-    queryClient.setQueryData(['todo', { id: 5 }], data)
+    queryClient.setQueryData(["todo", { id: 5 }], data);
   },
-})
+});
 
 mutation.mutate({
   id: 5,
-  name: 'Do the laundry',
-})
+  name: "Do the laundry",
+});
 
 // The query below will be updated with the response from the successful mutation
 const { status, data, error } = useQuery({
-  queryKey: ['todo', { id: 5 }],
+  queryKey: ["todo", { id: 5 }],
   queryFn: fetchTodoById,
-})
+});
 ```
 
 - setQueryData 中的 data 为不可变
 
 ```jsx
-queryClient.setQueryData(['posts', { id }], (oldData) => {
+queryClient.setQueryData(["posts", { id }], (oldData) => {
   if (oldData) {
     // ❌ do not try this
-    oldData.title = 'my new post title'
+    oldData.title = "my new post title";
   }
-  return oldData
-})
+  return oldData;
+});
 
 queryClient.setQueryData(
-  ['posts', { id }],
+  ["posts", { id }],
   // ✅ this is the way
   (oldData) =>
     oldData
       ? {
           ...oldData,
-          title: 'my new post title',
+          title: "my new post title",
         }
-      : oldData,
-)
+      : oldData
+);
 ```
 
 # 筛选
@@ -432,28 +428,28 @@ queryClient.setQueryData(
 ## 查询筛选
 
 - Stale
-  - true：匹配失效查询
-  - false：匹配活动查询
+  - true: 匹配失效查询
+  - false: 匹配活动查询
 - fetchStatus
-  - fetching：匹配正在 fetching 的查询
-  - paused：匹配想要重新查询，但现在处于 paused 状态的查询
-  - idle：匹配目前不在 fetching 的查询
+  - fetching: 匹配正在 fetching 的查询
+  - paused: 匹配想要重新查询, 但现在处于 paused 状态的查询
+  - idle: 匹配目前不在 fetching 的查询
 
 # QueryClient
 
 ## 设置全局默认状态
 
 ```jsx
-import { QueryClient } from '@tanstack/react-query'
+import { QueryClient } from "@tanstack/react-query";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      refetchOnMount: false
-    }
-  }
+      refetchOnMount: false,
+    },
+  },
 });
 
-await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
+await queryClient.prefetchQuery({ queryKey: ["posts"], queryFn: fetchPosts });
 ```

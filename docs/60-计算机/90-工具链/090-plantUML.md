@@ -38,8 +38,8 @@ struct  struct
 
 ### 关系标签
 
-- 关系类型在符号两边使用 ""；
-- 关系说明在 ：后接说明
+- 关系类型在符号两边使用 "";
+- 关系说明在 : 后接说明
 
 ```
 @startuml
@@ -71,9 +71,9 @@ class Dummy {
 
 ##### 可访问性
 
-- +：公共；
-- #：保护；
-- -：私有；
+- +: 公共;
+- #: 保护;
+- -: 私有;
 
 ```
 class Dummy {
@@ -99,12 +99,12 @@ class Dummy {
 
 ##### 类
 
-- 类的声明末尾；
-- note left/right/top/bottom of 添加备注；
+- 类的声明末尾;
+- note left/right/top/bottom of 添加备注;
 
 ##### 链接
 
-- 使用 note (left/right/top/bottom) on link 关机找你；
+- 使用 note (left/right/top/bottom) on link 关机找你;
 
 ```
 @startuml
@@ -117,8 +117,8 @@ Dummy --> Foo2 : Another link
 
 ##### 单独使用
 
-- 单独使用 note 关键字；
-- 。。符号链接其他对象
+- 单独使用 note 关键字;
+- ..符号链接其他对象
 
 ```
 @startuml
@@ -138,7 +138,7 @@ note left: On last defined class
 
 ### 包
 
-- 使用 package 关键字；
+- 使用 package 关键字;
 
 ```
 @startuml
@@ -170,8 +170,8 @@ Demo1 *- Demo2
 
 ### 图形方向
 
-- 右方向：+；
-- 左方向 -；
+- 右方向: +;
+- 左方向 -;
 
 ```
 @startmindmap
@@ -187,7 +187,7 @@ Demo1 *- Demo2
 
 ### 多行表示
 
-- ：和 ；包裹；
+- : 和 ; 包裹;
 
 ```python
 @startmindmap
@@ -205,7 +205,7 @@ void f1()<U+003B>
 
 ### 多个根节点
 
-- 多个 \*；
+- 多个 \*;
 
 ```
 @startmindmap
@@ -220,7 +220,7 @@ void f1()<U+003B>
 
 ### 移除外部方框
 
-- \*/+/- 后使用 \_；
+- \*/+/- 后使用 \_;
 
 ```
 @startmindmap

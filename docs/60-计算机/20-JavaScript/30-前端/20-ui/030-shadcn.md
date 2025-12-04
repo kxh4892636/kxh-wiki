@@ -6,11 +6,11 @@
 
 ##### tailwindcss
 
-- [tailwindcss](./020-tailwindcss.md)；
+- [tailwindcss](./020-tailwindcss.md);
 
 ##### typescript
 
-- 配置 alias；
+- 配置 alias;
 
 ```typescript
 {
@@ -29,7 +29,7 @@
 
 ##### vite
 
-- 配置 alias；
+- 配置 alias;
 
 ```typescript
 import path from "path";
@@ -54,7 +54,7 @@ pnpm dlx shadcn-ui@latest init
 
 ##### components.json
 
-- 配置 shadcn 配置文件；
+- 配置 shadcn 配置文件;
 
 ```bash
 √ Would you like to use TypeScript (recommended)? ... no / yes

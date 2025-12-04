@@ -4,7 +4,7 @@
 
 ##### eslint
 
-- 代码风格检查；
+- 代码风格检查;
 
 ##### 安装
 
@@ -14,8 +14,8 @@ pnpm add eslint
 
 ##### 配置文件
 
-- .eslintrc.js/cjs/xml/json：配置文件；
-- .eslintignore：忽略文件；
+- .eslintrc.js/cjs/xml/json: 配置文件;
+- .eslintignore: 忽略文件;
 
 ##### 常用命令
 
@@ -32,7 +32,7 @@ eslint src --fix
 
 ##### cjs
 
-- eslint 不支持 esm，只能使用后缀 .cjs；
+- eslint 不支持 esm, 只能使用后缀 .cjs;
 
 ##### node
 
@@ -186,7 +186,7 @@ module.exports = {
 
 ##### typescript 支持
 
-- 安装 eslint-import-resolver-typescript；
+- 安装 eslint-import-resolver-typescript;
 
 ### eslint-import-resolver-typescript
 
@@ -198,8 +198,8 @@ pnpm add eslint-import-resolver-typescript --save-dev
 
 ##### 配置
 
-- 解决 node import 不使用 index.d.ts 问题；
-- 前端似乎不用配置；
+- 解决 node import 不使用 index.d.ts 问题;
+- 前端似乎不用配置;
 
 ```javascript
 module.exports = {
@@ -241,7 +241,7 @@ module.exports = {
 
 ##### typescript 支持
 
-- 安装 eslint-import-resolver-typescript；
+- 安装 eslint-import-resolver-typescript;
 
 ### eslint-config-standard
 

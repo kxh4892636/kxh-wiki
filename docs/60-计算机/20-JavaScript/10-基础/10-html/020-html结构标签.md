@@ -36,7 +36,7 @@ id: 9914830d-cea8-4feb-b8be-07057754d709
 
 ### html 头部基础
 
-- html 元数据；
+- html 元数据;
 
 ```html
 <head>
@@ -46,7 +46,7 @@ id: 9914830d-cea8-4feb-b8be-07057754d709
 
 ### title 标签
 
-- 网页标题；
+- 网页标题;
 
 ```html
 <title>My test page</title>
@@ -54,7 +54,7 @@ id: 9914830d-cea8-4feb-b8be-07057754d709
 
 ### meta 标签
 
-- 网页元数据；
+- 网页元数据;
 
 ```html
 <!-- 确定文档编码 -->
@@ -72,7 +72,7 @@ started with developing web sites and applications."
 
 ### link 标签
 
-- 外部资源；
+- 外部资源;
 
 ```html
 <!-- 添加网页图标 -->
@@ -87,8 +87,8 @@ started with developing web sites and applications."
 
 ### header element
 
-- 设置网页内容页眉；
-- 与 hx 配合使用；
+- 设置网页内容页眉;
+- 与 hx 配合使用;
 
 ```html
 <header>
@@ -98,12 +98,12 @@ started with developing web sites and applications."
 
 ### footer element
 
-- 设置网页内容页脚；
-- 基本内容；
-  - 作者信息；
-  - 版权信息；
-  - 友情链接；
-  - 。。。；
+- 设置网页内容页脚;
+- 基本内容;
+  - 作者信息;
+  - 版权信息;
+  - 友情链接;
+  - ...;
 
 ```html
 <footer>
@@ -113,7 +113,7 @@ started with developing web sites and applications."
 
 ### nav element
 
-- 导航栏；
+- 导航栏;
 
 ```html
 <nav class="menu">
@@ -127,7 +127,7 @@ started with developing web sites and applications."
 
 ### aside element
 
-- 侧边栏；
+- 侧边栏;
 
 ```html
 <article>
@@ -144,7 +144,7 @@ started with developing web sites and applications."
 
 ### main element
 
-- 正文；
+- 正文;
 
 ```html
 <main>
@@ -165,7 +165,7 @@ started with developing web sites and applications."
 
 ### section element
 
-- 正文分段，与 hx 配合使用；
+- 正文分段, 与 hx 配合使用;
 
 ```html
 <section>
@@ -176,8 +176,8 @@ started with developing web sites and applications."
 
 ### article element
 
-- 正文分段，与 hx 配合使用；
-- 可视为特殊的 section，强调其独立，完整性；
+- 正文分段, 与 hx 配合使用;
+- 可视为特殊的 section, 强调其独立, 完整性;
 
 ```html
 <article>
@@ -190,8 +190,8 @@ started with developing web sites and applications."
 
 #### div element
 
-- 自定义语义标签；
-- 块级标签；
+- 自定义语义标签;
+- 块级标签;
 
 ```html
 <div class="shadowbox">
@@ -201,8 +201,8 @@ started with developing web sites and applications."
 
 #### span element
 
-- 自定义语义标签；
-- 行内标签；
+- 自定义语义标签;
+- 行内标签;
 
 ```html
 <p><span>Some text</span></p>
@@ -210,7 +210,7 @@ started with developing web sites and applications."
 
 #### br element
 
-- 换行；
+- 换行;
 
 ```html
 Mozilla<br />
@@ -220,7 +220,7 @@ Mountain View, CA<br />
 
 #### hr element
 
-- 水平线；
+- 水平线;
 
 ```html
 <p>This is the first paragraph of text.</p>

@@ -17,10 +17,10 @@ npm install --save-dev @types/express
 
 ### 项目结构
 
-- index.ts：项目入口；
-- routes：项目路由；
-- controllers：项目控制器；
-- services：项目服务；
+- index.ts: 项目入口;
+- routes: 项目路由;
+- controllers: 项目控制器;
+- services: 项目服务;
 
 ```typescript
 // route
@@ -272,7 +272,7 @@ npm install --save-dev @types/cors
 
 ##### 作用
 
-- 解决前后端交互跨域问题。
+- 解决前后端交互跨域问题;
 
 ##### 语法格式
 
@@ -291,7 +291,7 @@ npm install helmet
 
 ##### 作用
 
-- 提供一定程度的安全你保护；
+- 提供一定程度的安全你保护;
 
 ##### 语法格式
 
@@ -311,8 +311,8 @@ npm install --save-dev @types/multer
 
 ##### 作用
 
-- express 处理 multipart/form-data 类型数据中间件；
-- 用于数据上传；
+- express 处理 multipart/form-data 类型数据中间件;
+- 用于数据上传;
 
 ##### 语法格式
 

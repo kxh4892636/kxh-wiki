@@ -1,6 +1,7 @@
 ---
 id: 1c0f189a-2acf-45b1-b1ec-7c396743b439
 ---
+
 # typebox 教程
 
 ## 基础
@@ -540,7 +541,7 @@ const Node = Type.Recursive((This) =>
 
 ### Clone
 
-- 深拷贝；
+- 深拷贝;
 
 ```typescript
 const A = Value.Clone({ x: 1, y: 2, z: 3 }); // const A = { x: 1, y: 2, z: 3 }
@@ -548,7 +549,7 @@ const A = Value.Clone({ x: 1, y: 2, z: 3 }); // const A = { x: 1, y: 2, z: 3 }
 
 ### Check
 
-- 类型验证；
+- 类型验证;
 
 ```typescript
 const T = Type.Object({ x: Type.Number() });
@@ -557,7 +558,7 @@ const R = Value.Check(T, { x: 1 }); // const R = true
 
 ### Clean
 
-- 移除多余属性；
+- 移除多余属性;
 
 ```typescript
 const T = Type.Object({
@@ -572,7 +573,7 @@ const Z = Value.Clean(T, { x: 1, y: 2, z: 3 }); // const 'Z = { x: 1, y: 2 }
 
 ### Equal
 
-- 深相等；
+- 深相等;
 
 ```typescript
 const R = Value.Equal({ x: 1, y: 2, z: 3 }, { x: 1, y: 2, z: 3 });

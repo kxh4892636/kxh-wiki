@@ -45,7 +45,7 @@ await esbuild.build({
 
 ##### 浏览器
 
-- 默认为浏览器环境；
+- 默认为浏览器环境;
 
 ```bash
 esbuild app.jsx --bundle --minify --sourcemap
@@ -53,7 +53,7 @@ esbuild app.jsx --bundle --minify --sourcemap
 
 ##### node
 
-- 使用 platform 指定 node 环境；
+- 使用 platform 指定 node 环境;
 
 ```bash
 esbuild app.js --bundle --platform=node
@@ -94,4 +94,4 @@ await esbuild.build({
 
 ##### "Dynamic require of "os" is not supported"
 
-- 设置配置文件中的 banner；
+- 设置配置文件中的 banner;

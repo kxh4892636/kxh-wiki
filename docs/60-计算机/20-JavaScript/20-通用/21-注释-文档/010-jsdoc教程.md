@@ -8,8 +8,8 @@ id: 1b056aeb-b161-4d0a-8675-e6a74c6953dd
 
 ##### jsdoc
 
-- 用于 js 的 API 文档生成器；
-- 使用特殊的 JSDoc 标签自动生成文档；
+- 用于 js 的 API 文档生成器;
+- 使用特殊的 JSDoc 标签自动生成文档;
 
 ##### 安装 jsdoc
 
@@ -28,51 +28,51 @@ function foo() {}
 
 ##### @async
 
-- @async：表示函数是异步的；
+- @async: 表示函数是异步的;
 
 ##### @author
 
-- @author name\> [\<emailAddress]：表示作者信息；
+- @author name\> [\<emailAddress]: 表示作者信息;
 
 ##### @callback
 
-- @callback namepath：创建一个回调函数类型；
+- @callback namepath: 创建一个回调函数类型;
 
 ##### @copyright
 
-- @copyright some copyright text：表示版权信息；
+- @copyright some copyright text: 表示版权信息;
 
 ##### @default
 
-- @default [some value]：表示默认值；
+- @default [some value]: 表示默认值;
 
 ##### @description
 
-- @description some description：描述信息；
+- @description some description: 描述信息;
 
 ##### @example
 
-- @example：展示例子，其后注释显示为代码；
+- @example: 展示例子, 其后注释显示为代码;
 
 ##### @exports
 
-- @exports moduleName：表示输出模块；
+- @exports moduleName: 表示输出模块;
 
 ##### @file
 
-- @file descriptionOfFile：文件描述信息；
+- @file descriptionOfFile: 文件描述信息;
 
 ##### @function
 
-- @function [functionName]：表示为函数；
+- @function [functionName]: 表示为函数;
 
 ##### @module
 
-- `@module [[{type\>}] \<moduleName]`：表示为模块；
+- `@module [[{type\>}] \<moduleName]`: 表示为模块;
 
 ##### @param
 
-- `@param [type\>]  [\<description]`：表示函数参数；
+- `@param [type\>]  [\<description]`: 表示函数参数;
 
 ```typescript
 // 带有属性的参数
@@ -136,15 +136,15 @@ function doSomethingAsynchronously(cb) {
 
 ##### @readonly
 
-- @readonly：表示只读；
+- @readonly: 表示只读;
 
 ##### @return
 
-- `@return [{type}] [description]`：表示函数返回值；
+- `@return [{type}] [description]`: 表示函数返回值;
 
 ##### @version
 
-- @version version：表示版本信息；
+- @version version: 表示版本信息;
 
 ## 模板
 

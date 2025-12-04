@@ -10,16 +10,16 @@ id: d042e820-8deb-44fa-84c2-706fcb1555f9
 
 ##### 机制
 
-- 使用 setInterval() 控制动画；
+- 使用 setInterval() 控制动画;
 
 ##### 问题
 
-- setInterval() 无法保证时间间隔精度；
+- setInterval() 无法保证时间间隔精度;
 
 ### requestAnimationFrame
 
-- 在浏览器重绘之前调用；
-- 根据屏幕刷新率同步；
+- 在浏览器重绘之前调用;
+- 根据屏幕刷新率同步;
 
 ```typescript
 function updateProgress() {
@@ -310,17 +310,17 @@ context.globalAlpha = 0.5;
 
 ##### 合成
 
-- source-over：默认值，新图形覆盖原图形；
-- source-in：新图形覆盖原图形，新图形和原图形取交集；
-- source-out：新图形覆盖原图形，新图形和原图形取空集；
-- source-atop：新图形覆盖原图形，新图形和原图形取交集，原图形不受影响；
-- destination-over：原图形覆盖新图形；
-- destination-in：原图形覆盖新图形，新图形和原图形取交集；
-- destination-out：原图形覆盖新图形，新图形和原图形取空集；
-- destination-atop：新图形覆盖原图形，新图形和原图形取交集，新图形不受影响；
-- lighter：新图形与原图形重叠部分的像素值相加，该部分变亮；
-- copy：新图形将擦除并完全取代原图形；
-- xor：新图形与原图形重叠部分像素执行 "异或" 计算；
+- source-over: 默认值, 新图形覆盖原图形;
+- source-in: 新图形覆盖原图形, 新图形和原图形取交集;
+- source-out: 新图形覆盖原图形, 新图形和原图形取空集;
+- source-atop: 新图形覆盖原图形, 新图形和原图形取交集, 原图形不受影响;
+- destination-over: 原图形覆盖新图形;
+- destination-in: 原图形覆盖新图形, 新图形和原图形取交集;
+- destination-out: 原图形覆盖新图形, 新图形和原图形取空集;
+- destination-atop: 新图形覆盖原图形, 新图形和原图形取交集, 新图形不受影响;
+- lighter: 新图形与原图形重叠部分的像素值相加, 该部分变亮;
+- copy: 新图形将擦除并完全取代原图形;
+- xor: 新图形与原图形重叠部分像素执行 "异或" 计算;
 
 ```typescript
 // 绘制红色矩形

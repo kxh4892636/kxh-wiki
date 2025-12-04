@@ -9,9 +9,9 @@ id: fbbd256b-63d9-46ea-bdaa-6cf91284225e
 ##### windows
 
 - [安装地址](https://github.com/conda-forge/miniforge)
-- 选择对应版本；
-- 安装即可；
-- 建议添加环境变量，虽然 conda 不建议，但我不听；
+- 选择对应版本;
+- 安装即可;
+- 建议添加环境变量, 虽然 conda 不建议, 但我不听;
 
 ##### linux
 
@@ -23,16 +23,16 @@ rm -f Miniforge3-Linux-x86_64.sh
 
 ## 换源
 
-- `conda config --system` 创建 .condarc 文件；
+- `conda config --system` 创建 .condarc 文件;
 
 ```bash
 channels:
   - defaults
 show_channel_urls: true
 default_channels:
-  - https：//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-  - https：//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
-  - https：//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+  - https: //mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https: //mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https: //mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
 custom_channels:
   conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud

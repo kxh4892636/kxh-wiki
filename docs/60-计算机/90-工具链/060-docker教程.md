@@ -10,8 +10,8 @@ id: b9567d9f-17ec-4f36-b4d7-d9849e930507
 
 ##### windows
 
-- 下载 docker desktop 即可；
-- 要求 21H2 版本之后且打开 Hyper-V；
+- 下载 docker desktop 即可;
+- 要求 21H2 版本之后且打开 Hyper-V;
 
 ##### debian11
 
@@ -39,13 +39,13 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 ##### 镜像
 
-- 最小化的 linux 系统；
+- 最小化的 linux 系统;
 
 ### 管理镜像
 
 ##### 拉取镜像
 
-- `docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]`；
+- `docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]`;
 
 ```bash
 docker pull debian
@@ -65,8 +65,8 @@ docker system df
 
 ##### 删除镜像
 
-- `docker image rm [选项] <镜像1> [<镜像2> ...]`；
-- `docker image prune`；
+- `docker image rm [选项] <镜像1> [<镜像2> ...]`;
+- `docker image prune`;
 
 ```bash
 # 删除指定镜像
@@ -79,7 +79,7 @@ docker image prune
 
 ##### 导出镜像
 
-- 不推荐使用；
+- 不推荐使用;
 
 ```bash
 # 导出为 file
@@ -98,12 +98,12 @@ docker load -i alpine-latest.tar.gz
 
 ##### DockerFile
 
-- 名为 DockerFile 的文本文件；
-- 包含若干指令；
+- 名为 DockerFile 的文本文件;
+- 包含若干指令;
 
 ##### FROM
 
-- 指定基础镜像；
+- 指定基础镜像;
 
 ```bash
 FROM debian:stretch
@@ -111,9 +111,9 @@ FROM debian:stretch
 
 ##### RUN
 
-- 执行命令行命令；
-- shell 格式：`RUN <命令>`；
-- exec 格式：`RUN ["可执行文件", "参数1", "参数2"]`；
+- 执行命令行命令;
+- shell 格式: `RUN <命令>`;
+- exec 格式: `RUN ["可执行文件", "参数1", "参数2"]`;
 
 ```bash
 RUN apt-get update \
@@ -123,9 +123,9 @@ RUN apt-get update \
 
 ##### COPY
 
-- 复制文件；
-- `COPY [--chown=<user>:<group>] <源路径>... <目标路径>`；
-- `COPY [--chown=<user>:<group>] ["<源路径1>",... "<目标路径>"]`；
+- 复制文件;
+- `COPY [--chown=<user>:<group>] <源路径>... <目标路径>`;
+- `COPY [--chown=<user>:<group>] ["<源路径1>",... "<目标路径>"]`;
 
 ```bash
 COPY package.json /usr/src/app/
@@ -135,11 +135,11 @@ COPY hom?.txt /mydir/
 
 ##### CMD
 
-- 容器默认启动命令；
-- 默认为 `bash`；
-- shell 格式：`CMD <命令>`；
-  - 使用 shell 格式实际为 `CMD [ "sh", "-c", "<命令>" ]`；
-- exec 格式：`CMD ["可执行文件", "参数1", "参数2"]`；
+- 容器默认启动命令;
+- 默认为 `bash`;
+- shell 格式: `CMD <命令>`;
+  - 使用 shell 格式实际为 `CMD [ "sh", "-c", "<命令>" ]`;
+- exec 格式: `CMD ["可执行文件", "参数1", "参数2"]`;
 
 ```bash
 CMD echo $HOME
@@ -148,7 +148,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ##### ENV
 
-- 定义环境变量；
+- 定义环境变量;
 
 ```bash
 ENV VERSION=1.0 DEBUG=on \
@@ -157,8 +157,8 @@ ENV VERSION=1.0 DEBUG=on \
 
 ##### EXPOSE
 
-- 告知容器使用什么端口；
-- 同时宿主机使用随机端口映射时默认映射的该端口；
+- 告知容器使用什么端口;
+- 同时宿主机使用随机端口映射时默认映射的该端口;
 
 ```bash
 EXPOSE 1234
@@ -166,7 +166,7 @@ EXPOSE 1234
 
 ##### 构建镜像
 
-- `docker build [选项] <上下文路径/URL/->`；
+- `docker build [选项] <上下文路径/URL/->`;
 
 ```bash
 # -t 容器名称
@@ -175,8 +175,8 @@ docker build -t nginx .
 
 ##### 指令数量
 
-- DockerFile 中一条指令构建一层镜像；
-- 指令数量尽可能的少；
+- DockerFile 中一条指令构建一层镜像;
+- 指令数量尽可能的少;
 
 ## 容器
 
@@ -184,8 +184,8 @@ docker build -t nginx .
 
 ##### 镜像
 
-- 镜像是系统的定义模板；
-- 容器是镜像的实例化；
+- 镜像是系统的定义模板;
+- 容器是镜像的实例化;
 
 ### 管理镜像
 
@@ -202,7 +202,7 @@ docker ps -a
 
 ##### 启动容器
 
-- `docker run [选项] [镜像名/id] [命令]`；
+- `docker run [选项] [镜像名/id] [命令]`;
 
 ```bash
 # -d 后台运行
@@ -265,9 +265,9 @@ docker inspect web
 
 ##### 数据卷
 
-- 可被多个容器共享使用的文件目录；
-- 数据卷默认一直存在；
-- 生命周期独立于容器；
+- 可被多个容器共享使用的文件目录;
+- 数据卷默认一直存在;
+- 生命周期独立于容器;
 
 ##### 创建数据卷
 

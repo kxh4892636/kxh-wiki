@@ -14,17 +14,17 @@ pnpm add react-router-dom
 
 ### 使用流程
 
-- 选择路由模式；
-- 定义路由；
-- 跳转路由；
+- 选择路由模式;
+- 定义路由;
+- 跳转路由;
 
 ## 路由模式
 
 ### BrowserRouter
 
-- 基于 DOM History API；
-- 根据 url 进行路由管理；
-- 推荐使用模式；
+- 基于 DOM History API;
+- 根据 url 进行路由管理;
+- 推荐使用模式;
 
 ```typescript
 import * as React from "react";
@@ -40,8 +40,8 @@ root.render(
 
 ### HashRouter
 
-- 使用 url 中的 hash 部分进行路由管理；
-- 强烈不推荐使用；
+- 使用 url 中的 hash 部分进行路由管理;
+- 强烈不推荐使用;
 
 ```typescript
 import * as React from "react";
@@ -56,8 +56,8 @@ ReactDOM.render(
 
 ### MemoryRouter
 
-- 基于内存进行路由管理；
-- 主要用于测试和组件开发工具；
+- 基于内存进行路由管理;
+- 主要用于测试和组件开发工具;
 
 ```typescript
 import * as React from "react";
@@ -73,7 +73,7 @@ root.render(
 
 ### StaticRouter
 
-- 用于 ssr；
+- 用于 ssr;
 
 ```typescript
 import * as React from "react";
@@ -99,9 +99,9 @@ http.createServer(requestHandler).listen(3000);
 
 ##### Routes 和 Route
 
-- 模板定义；
-- Routes 作为根路由；
-- Route 作为具体跳转路由；
+- 模板定义;
+- Routes 作为根路由;
+- Route 作为具体跳转路由;
 
 ```typescript
 export default function App() {
@@ -122,7 +122,7 @@ export default function App() {
 
 ##### useRoutes
 
-- 函数式定义；
+- 函数式定义;
 
 ```typescript
 import * as React from "react";
@@ -158,8 +158,8 @@ export default function App() {
 
 ##### 基本使用
 
-- 基于 a 的封装；
-- 切换至对应 path；
+- 基于 a 的封装;
+- 切换至对应 path;
 
 ```typescript
 import * as React from "react";
@@ -176,7 +176,7 @@ function UsersPage({ user }) {
 
 ##### relative
 
-- 基于当前 path 进行切换；
+- 基于当前 path 进行切换;
 
 ```typescript
 import * as React from "react";
@@ -195,7 +195,7 @@ function EditContact() {
 
 ##### preventScrollReset
 
-- 保存滚动位置状态；
+- 保存滚动位置状态;
 
 ```typescript
 <Link to="?tab=one" preventScrollReset={true} />
@@ -203,8 +203,8 @@ function EditContact() {
 
 ##### state
 
-- 附加状态信息；
-- 使用 useLocation() 获取状态；
+- 附加状态信息;
+- 使用 useLocation() 获取状态;
 
 ```typescript
 <Link to="new-path" state={{ some: "value" }} />;
@@ -216,9 +216,9 @@ let { state } = useLocation();
 
 ##### NavLink
 
-- Link 的封装；
-- 具有 active，pending 和 transitioning 三种状态，默认为 active 状态；
-- 用于 className，style 和子标签的状态管理；
+- Link 的封装;
+- 具有 active, pending 和 transitioning 三种状态, 默认为 active 状态;
+- 用于 className, style 和子标签的状态管理;
 
 ```typescript
 <NavLink
@@ -237,8 +237,8 @@ let { state } = useLocation();
 
 ### useNavigate
 
-- 编程式导航；
-- 切换至对应 path；
+- 编程式导航;
+- 切换至对应 path;
 
 ```typescript
 import { useNavigate } from "react-router-dom";
@@ -258,21 +258,21 @@ function useLogoutTimer() {
 
 ##### relative
 
-- 同 Link；
+- 同 Link;
 
 ##### preventScrollReset
 
-- 同 Link；
+- 同 Link;
 
 ##### state
 
-- 同 Link；
+- 同 Link;
 
 ## 常用 hook 和工具
 
 ### useLocation
 
-- 获取当前路由的 location object；
+- 获取当前路由的 location object;
 
 ```typescript
 import * as React from "react";
@@ -286,7 +286,7 @@ function App() {
 
 ### matchRoutes
 
-- 根据当前 url 返回对应的 Route 元数据；
+- 根据当前 url 返回对应的 Route 元数据;
 
 ```typescript
 export const ExtendRouter = ({ children }: AppProps) => {
@@ -329,12 +329,12 @@ export const ExtendRouter = ({ children }: AppProps) => {
 
 ### 实现 Router
 
-- 监听 history 事件；
-  - 监听 pushState 和 popState 事件；
-  - pushState 自己通过状态管理库实现；
-  - popState 浏览器自带；
-- 定义 push 和 goBack 函数；
-- 使用状态管理保存 history 和 location；
+- 监听 history 事件;
+  - 监听 pushState 和 popState 事件;
+  - pushState 自己通过状态管理库实现;
+  - popState 浏览器自带;
+- 定义 push 和 goBack 函数;
+- 使用状态管理保存 history 和 location;
 
 ```typescript
 const useRouterStore = create((set) => ({
@@ -389,8 +389,8 @@ export const Router = ({ children }) => {
 
 ### 实现 Route
 
-- 从属性中获取 component 和 path；
-- 如果 path 相同返回 component，反之返回 null；
+- 从属性中获取 component 和 path;
+- 如果 path 相同返回 component, 反之返回 null;
 
 ```typescript
 export const Route = (props) => {
@@ -403,8 +403,8 @@ export const Route = (props) => {
 
 ### Link
 
-- 从属性获取 to；
-- 使用 history 的 push 方法定向到 to；
+- 从属性获取 to;
+- 使用 history 的 push 方法定向到 to;
 
 ```typescript
 const Link = (props) => {

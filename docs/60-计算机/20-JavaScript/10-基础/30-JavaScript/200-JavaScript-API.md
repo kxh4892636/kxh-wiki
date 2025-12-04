@@ -8,12 +8,12 @@ id: 1a8bbacf-f353-47b3-90ac-b07cb9fccd25
 
 ##### 要求
 
-- 同源；
+- 同源;
 
 ##### postMessage()
 
-- otherWindow.postMessage(message，targetOrigin，[transfer])；
-- 发送 message 至 otherWindow，targetOrigin 为发送者源；
+- otherWindow.postMessage(message, targetOrigin, [transfer]);
+- 发送 message 至 otherWindow, targetOrigin 为发送者源;
 
 ```typescript
 let iframeWindow = document.getElementById("myframe").contentWindow;
@@ -22,10 +22,10 @@ iframeWindow.postMessage("A secret", "http://www.wrox.com");
 
 ##### message 事件
 
-- 接受 XDM 消息后触发 message 事件；
-  - event.origin 表示发送者的源；
-  - event.data 表示消息内容；
-  - event.source 为发送者的 window 对象的代理；
+- 接受 XDM 消息后触发 message 事件;
+  - event.origin 表示发送者的源;
+  - event.data 表示消息内容;
+  - event.source 为发送者的 window 对象的代理;
 
 ```typescript
 window.addEventListener("message", (event) => {
@@ -42,29 +42,29 @@ window.addEventListener("message", (event) => {
 
 ##### Blob
 
-- 浏览器二进制文件；
+- 浏览器二进制文件;
 
 ##### File
 
-- File 对于 Blob 的封装；
-- 针对文件操作拓展；
+- File 对于 Blob 的封装;
+- 针对文件操作拓展;
 
 ##### Buffer
 
-- node 内置二进制数据类型；
-- js 无内置读写方法；
-- 等同于 es6 中的 Uint8Array；
+- node 内置二进制数据类型;
+- js 无内置读写方法;
+- 等同于 es6 中的 Uint8Array;
 
 ##### ArrayBuffer
 
-- es6 二进制缓冲区；
-- 通过 DataView 和 TypedArray 读写；
+- es6 二进制缓冲区;
+- 通过 DataView 和 TypedArray 读写;
 
 ##### 对象 URL
 
-- url 对象；
-- 使用 text，base64。。。编码；
-- window.URL.createObjectURL(file)：接受一个 File 或 Blob 对象；
+- url 对象;
+- 使用 text, base64...编码;
+- window.URL.createObjectURL(file): 接受一个 File 或 Blob 对象;
 
 ```typescript
 url = window.URL.createObjectURL(file);
@@ -76,8 +76,8 @@ window.URL.revokeObjectURL(url);
 
 #### File
 
-- myFile = new File(bits，name[，options])；
-- bits 可为 ArrayBuffer，ArrayBufferView，Blob，String；
+- myFile = new File(bits, name[, options]);
+- bits 可为 ArrayBuffer, ArrayBufferView, Blob, String;
 
 ```typescript
 var file = new File(["foo"], "foo.txt", {
@@ -89,9 +89,9 @@ var file = new File(["foo"], "foo.txt", {
 
 ##### API
 
-- 异步读取文件；
-- 创建 FileReader 对象；
-- 接受 File 或者 Blob 类型数据；
+- 异步读取文件;
+- 创建 FileReader 对象;
+- 接受 File 或者 Blob 类型数据;
 
 ```typescript
 const reader = new FileReader();
@@ -115,10 +115,10 @@ reader.abort(); // 触发 abort 事件
 
 ##### 事件
 
-- progress：50ms 触发一次；
-- error：报错触发；
-- load：加载成功触发；
-- abort：执行 abort() 触发；
+- progress: 50ms 触发一次;
+- error: 报错触发;
+- load: 加载成功触发;
+- abort: 执行 abort() 触发;
 
 ```typescript
 const reader = new FileReader();
@@ -159,8 +159,8 @@ reader.addEventListener(
 
 ##### FileReaderSync 类型
 
-- FileReader 的同步版本；
-- 只在 FileReaderSync 中可用；
+- FileReader 的同步版本;
+- 只在 FileReaderSync 中可用;
 
 ### Blob API
 
@@ -168,13 +168,13 @@ reader.addEventListener(
 
 ##### blob
 
-- 二进制大对象；
+- 二进制大对象;
 
 ##### 创建 blob
 
-- new Blob(data，init)；
-  - 接受字符串数组，ArrayBuffers，ArrayBufferViews，可指定 MIME 类型；
-  - size 属性表示字节大小，type 表示 MIME 类型；
+- new Blob(data, init);
+  - 接受字符串数组, ArrayBuffers, ArrayBufferViews, 可指定 MIME 类型;
+  - size 属性表示字节大小, type 表示 MIME 类型;
 
 ```typescript
 const blob = new Blob(["foo"]); // Blob {size: 3, type: ""}
@@ -183,7 +183,7 @@ const blob = new Blob(['{"a": "b"}'], { type: "application/json" }); // {size: 1
 
 ##### 切分数据
 
-- blob.slice()；
+- blob.slice();
 
 ```typescript
 const obj = { hello: "world" };
@@ -200,20 +200,20 @@ const slice = blob.slice(0, 3);
 
 ##### 拖动触发顺序
 
-- 触发元素为拖动元素；
-- dragstart，drag，dragend 依次触发；
-- 开始移动鼠标瞬间触发 dragstart 事件；
-- 拖动鼠标持续触发 drag；
-- 停止移动触发 dragend 事件；
+- 触发元素为拖动元素;
+- dragstart, drag, dragend 依次触发;
+- 开始移动鼠标瞬间触发 dragstart 事件;
+- 拖动鼠标持续触发 drag;
+- 停止移动触发 dragend 事件;
 
 ##### 放置触发顺序
 
-- 触发元素为目标放置元素；
-- dragenter，dragover，drop/dragleave 依次触发；
-- 移动到放置目标上触发 dragenter 事件；
-- dragenter 触发后，拖动元素只要在放置元素范围内持续触发 dragover 事件；
-- 离开放置元素范围触发 dragleave 事件；
-- 放置到目标元素后触发 drop 事件；
+- 触发元素为目标放置元素;
+- dragenter, dragover, drop/dragleave 依次触发;
+- 移动到放置目标上触发 dragenter 事件;
+- dragenter 触发后, 拖动元素只要在放置元素范围内持续触发 dragover 事件;
+- 离开放置元素范围触发 dragleave 事件;
+- 放置到目标元素后触发 drop 事件;
 
 ### 读取拖放文件
 
@@ -236,7 +236,7 @@ droptarget.addEventListener("drop", handleEvent);
 
 ### 强制放置
 
-- 部分元素不支持放置，可通过覆盖 dragover 和 dragenter 默认行为将任何标签转换为可放置目标；
+- 部分元素不支持放置, 可通过覆盖 dragover 和 dragenter 默认行为将任何标签转换为可放置目标;
 
 ```typescript
 let droptarget = document.getElementById("droptarget");
@@ -252,8 +252,8 @@ droptarget.addEventListener("dragenter", (event) => {
 
 ##### dataTransfer 对象
 
-- 暴露于拖放回调中 event 属性；
-- 用于被拖动元素向放置目标传递字符串数据；
+- 暴露于拖放回调中 event 属性;
+- 用于被拖动元素向放置目标传递字符串数据;
 
 ##### API
 
@@ -283,8 +283,8 @@ const effectAllowed = dataTransfer.effectAllowed;
 
 ##### 可拖动能力
 
-- 图片，链接和文本默认可拖动；
-- 可使用 draggable 设置任意元素可拖动；
+- 图片, 链接和文本默认可拖动;
+- 可使用 draggable 设置任意元素可拖动;
 
 ```html
 <!-- 禁止拖动图片 -->
@@ -297,22 +297,22 @@ const effectAllowed = dataTransfer.effectAllowed;
 
 ##### Web 组件
 
-- 用于增强 DOM 行为的工具；
-  - shadow DOM；
-  - HTML 模板；
-  - 自定义元素；
+- 用于增强 DOM 行为的工具;
+  - shadow DOM;
+  - HTML 模板;
+  - 自定义元素;
 
 ## Notifications API
 
 ##### 通知权限
 
-- 只能在安全上下文触发；
-- 每个源必须得到用户允许；
+- 只能在安全上下文触发;
+- 每个源必须得到用户允许;
 
 ##### 请求权限
 
-- 权限请求每个域只能触发一次；
-- 返回一个 promise，期约值为 granted 表示允许，denied 表示拒绝；
+- 权限请求每个域只能触发一次;
+- 返回一个 promise, 期约值为 granted 表示允许, denied 表示拒绝;
 
 ```typescript
 Notification.requestPermission().then((permission) => {
@@ -322,8 +322,8 @@ Notification.requestPermission().then((permission) => {
 
 ##### 显示和隐藏通知
 
-- 显示通知：n = new Notification(text，init)；
-- 隐藏通知：n.close()
+- 显示通知: n = new Notification(text, init);
+- 隐藏通知: n.close()
 
 ```typescript
 const n = new Notification("Title text!"); // 显示 Title text!
@@ -338,10 +338,10 @@ setTimeout(() => n.close(), 1000);
 
 ##### 事件
 
-- show：显示触发；
-- click：点击触发；
-- close：关闭触发；
-- error：报错触发；
+- show: 显示触发;
+- click: 点击触发;
+- close: 关闭触发;
+- error: 报错触发;
 
 ```typescript
 const n = new Notification("foo");
@@ -355,13 +355,13 @@ n.onerror = () => console.log("Notification experienced an error!"); // 报错�
 
 ##### Page Visibility API
 
-- 表示页面对用户是否可见；
+- 表示页面对用户是否可见;
 
 ##### API
 
-- document.visibilityState：页面当前状态；
-  - hidden 表示不可见，visible 表示可见；
-- 状态切换触发 visibilitychange 事件；
+- document.visibilityState: 页面当前状态;
+  - hidden 表示不可见, visible 表示可见;
+- 状态切换触发 visibilitychange 事件;
 
 ```typescript
 const visibilityState = document.visibilityState;
@@ -376,37 +376,37 @@ document.addEventListener("visibilitychange", () => {
 
 ##### 可读流
 
-- 通过接口读取数据块的流；
+- 通过接口读取数据块的流;
 
 ##### 可写流
 
-- 通过接口写入数据块的流；
+- 通过接口写入数据块的流;
 
 ##### 转换流
 
-- 由可读流和可写流组成；
+- 由可读流和可写流组成;
 
 ##### 块
 
-- 流的基本单位，通常是定型数组；
-- 大小不一，之间时间间隔不一；
+- 流的基本单位, 通常是定型数组;
+- 大小不一, 之间时间间隔不一;
 
 ##### 内部队列
 
-- 流存在不平衡问题；
-- 通过内部队列暂存额外的块；
+- 流存在不平衡问题;
+- 通过内部队列暂存额外的块;
 
 ##### 反压
 
-- 流入持续大于流出，内部队列无限增大；
-- 超过一定阈值，启动反压停止流入；
+- 流入持续大于流出, 内部队列无限增大;
+- 超过一定阈值, 启动反压停止流入;
 
 ## 计时 API
 
 ### High Resolution Time API
 
-- performance.now()：微秒级别的浮点值，从执行上下文创建计时；
-- performance.timeOrigin：执行上下文创建的基准值；
+- performance.now(): 微秒级别的浮点值, 从执行上下文创建计时;
+- performance.timeOrigin: 执行上下文创建的基准值;
 
 ```typescript
 const relativeTimestamp = performance.now();
@@ -418,7 +418,7 @@ const absoluteTimestamp = performance.timeOrigin + relativeTimestamp;
 
 ##### 性能条目
 
-- performance.getEntries()：条目信息；
+- performance.getEntries(): 条目信息;
 
 ```typescript
 console.log(performance.getEntries());
@@ -436,16 +436,16 @@ console.log(entry.duration); // 182.36500001512468
 
 ##### 私有 API
 
-- User Timing API：自定义性能条目；
-- Navigation Timing API：导航事件的各种时间戳；
-- Resource Timing API：页面加载的各种时间戳；
+- User Timing API: 自定义性能条目;
+- Navigation Timing API: 导航事件的各种时间戳;
+- Resource Timing API: 页面加载的各种时间戳;
 
 ## Web Cryptography API
 
 ### 随机数
 
-- crypto.getRandomValues(typedArray)：生成 typedArray 对应位数的随机数；
-- crypto.randomUUID()：生成 UUID；
+- crypto.getRandomValues(typedArray): 生成 typedArray 对应位数的随机数;
+- crypto.randomUUID(): 生成 UUID;
 
 ```typescript
 const array = new Uint8Array(1);
@@ -464,19 +464,19 @@ let uuid = crypto.randomUUID();
 
 ##### 分片上传
 
-- 根据一定规则，将大文件分割成若干片；
-- 客户端发送分片规则，每个分片具有唯一标识；
-- 串行或者并行发送各分片；
-- 所有分片发送完毕后，服务端根据 md5 判断数据是否上传完整，完整则合并分片为原始文件；
+- 根据一定规则, 将大文件分割成若干片;
+- 客户端发送分片规则, 每个分片具有唯一标识;
+- 串行或者并行发送各分片;
+- 所有分片发送完毕后, 服务端根据 md5 判断数据是否上传完整, 完整则合并分片为原始文件;
 
 ##### 第一个分片
 
-- 第一个分片附带原始文件 md5，用于服务器验证文件完整性检验；
-- 第一个分片大小最好小；
+- 第一个分片附带原始文件 md5, 用于服务器验证文件完整性检验;
+- 第一个分片大小最好小;
 
 ##### 断点续传
 
-- 客户端传送给服务器端分片信息；
-- 服务器端接受分片，保存为临时文件，根据分片信息判断上传进度；
-- 如果发生网络错误，恢复连接后，服务器端发送给客户端当前仍未发送的分片信息；
-- 客户端继续发送剩余分片；
+- 客户端传送给服务器端分片信息;
+- 服务器端接受分片, 保存为临时文件, 根据分片信息判断上传进度;
+- 如果发生网络错误, 恢复连接后, 服务器端发送给客户端当前仍未发送的分片信息;
+- 客户端继续发送剩余分片;

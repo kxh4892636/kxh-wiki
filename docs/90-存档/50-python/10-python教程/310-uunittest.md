@@ -4,25 +4,25 @@
 
 ##### 单元测试
 
-- unit test；
-- 针对函数/类/模块各方面，
-- 进行正确性检验。
+- unit test;
+- 针对函数/类/模块各方面,
+- 进行正确性检验;
 
 ##### 测试用例
 
-- test case；
-- 进行单元测试各实例的集合。
+- test case;
+- 进行单元测试各实例的集合;
 
 ### 定义测试
 
 ##### 测试函数
 
-- import 语句；
-- 测试类；
-  - 继承类：unittest.TestCase；
-- 测试函数；
-  - assert 相关方法；
-- if 语句。
+- import 语句;
+- 测试类;
+  - 继承类: unittest.TestCase;
+- 测试函数;
+  - assert 相关方法;
+- if 语句;
 
 ```python
 import unittest
@@ -41,13 +41,13 @@ if __name__ == '__main__':
 
 ##### 测试类
 
-- import 语句；
-- 测试类；
-  - 继承类：unittest.TestCase；
-- 测试函数；
-  - setUp() 函数；
-  - assert 相关方法；
-- if 语句。
+- import 语句;
+- 测试类;
+  - 继承类: unittest.TestCase;
+- 测试函数;
+  - setUp() 函数;
+  - assert 相关方法;
+- if 语句;
 
 ```python
 import unittest
@@ -73,9 +73,9 @@ if __name__ == '__main__':
 
 ##### 测试结果
 
-- 通过：。；
-- 出现错误：E；
-- 断言失败：F。
+- 通过: . ;
+- 出现错误: E;
+- 断言失败: F;
 
 ```python
 # 成功
@@ -119,22 +119,22 @@ FAILED (failures=1)
 
 ##### 机制
 
-- 一个类中最先被调用的函数，
-- 每次执行一个函数都要先执行这个函数。
+- 一个类中最先被调用的函数,
+- 每次执行一个函数都要先执行这个函数;
 
 ---
 
 ##### if \_\_name\_\_ == '\_\_main\_\_':
 
-- 魔法方法；
-- 保证导入某模块时，不执行该模块。
+- 魔法方法;
+- 保证导入某模块时, 不执行该模块;
 
 ##### 机制
 
-- 每个 python 模块包含内置变量 \_\_name\_\_，表示该模块
-- 当直接执行该模块时，其值为 "\_\_main\_\_"，
-- 当导入到其他模块时，其值为模块文件名(无后缀 .py)，
-- 故通过使用上述 if 语句，当导入该模块时，不执行对应语句。
+- 每个 python 模块包含内置变量 \_\_name\_\_, 表示该模块
+- 当直接执行该模块时, 其值为 "\_\_main\_\_",
+- 当导入到其他模块时, 其值为模块文件名(无后缀 .py),
+- 故通过使用上述 if 语句, 当导入该模块时, 不执行对应语句;
 
 ```python
 # 不使用 if __name__ == '__main__':
@@ -181,48 +181,48 @@ __main__
 
 ##### assertEqual() 方法
 
-- assertEqual(first，second，msg=None)。
-  - 判断 first 和 second 是否相等，相等测试成功，反之失败；
-  - first/second：比较值；
-  - msg：失败时显示信息；
+- assertEqual(first, second, msg=None);
+  - 判断 first 和 second 是否相等, 相等测试成功, 反之失败;
+  - first/second: 比较值;
+  - msg: 失败时显示信息;
 
 ##### assertNotEqual() 方法
 
-- assertNotEqual(first，second，msg=None)。
-  - 判断 first 和 second 是否不相等，不相等测试成功，反之失败；；
-  - first/second：比较值；
-  - msg：失败时显示信息；
+- assertNotEqual(first, second, msg=None);
+  - 判断 first 和 second 是否不相等, 不相等测试成功, 反之失败; ;
+  - first/second: 比较值;
+  - msg: 失败时显示信息;
 
 ---
 
 ##### assertTrue() 方法
 
-- assertTrue(expr，msg=None)
-  - 判断 exper 是否为真，为真测试成功，反之失败；
-  - exper：判断对象；
-  - msg：失败时显示信息；
+- assertTrue(expr, msg=None)
+  - 判断 exper 是否为真, 为真测试成功, 反之失败;
+  - exper: 判断对象;
+  - msg: 失败时显示信息;
 
 ##### assertFalse() 方法
 
-- assertFalse(expr，msg=None)
-  - 判断 exper 是否为假，为假测试成功，反之失败；
-  - exper：判断对象；
-  - msg：失败时显示信息；
+- assertFalse(expr, msg=None)
+  - 判断 exper 是否为假, 为假测试成功, 反之失败;
+  - exper: 判断对象;
+  - msg: 失败时显示信息;
 
 ---
 
 ##### assertIn() 方法
 
-- assertIn(member，container，msg=None)。
-  - 判断 member 是否在 container 中，在 container 中测试成功，反之失败；
-  - member：判断对象；
-  - container：包含若干结果的列表。
-  - msg：失败时显示信息；
+- assertIn(member, container, msg=None);
+  - 判断 member 是否在 container 中, 在 container 中测试成功, 反之失败;
+  - member: 判断对象;
+  - container: 包含若干结果的列表;
+  - msg: 失败时显示信息;
 
 ##### assertNotIn() 方法
 
-- assertNotIn(member，container，msg=None)。
-  - 判断 member 是否在 container 中，不在 container 中测试成功，反之失败；
-  - member：判断对象；
-  - container：包含若干结果的列表；
-  - msg：失败时显示信息；
+- assertNotIn(member, container, msg=None);
+  - 判断 member 是否在 container 中, 不在 container 中测试成功, 反之失败;
+  - member: 判断对象;
+  - container: 包含若干结果的列表;
+  - msg: 失败时显示信息;

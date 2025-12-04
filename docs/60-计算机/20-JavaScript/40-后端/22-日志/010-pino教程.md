@@ -26,7 +26,7 @@ logger.fatal('this is a "fatal" statement with "');
 
 ##### 输出详解
 
-- pino.info 为例，其他以此类推；
+- pino.info 为例, 其他以此类推;
 
 ```typescript
 // logger.info([mergingObject], [message], [...interpolationValues]);
@@ -38,7 +38,7 @@ logger.info({ err: new Error("test"), otherkey: 123 }, "some text");
 
 ##### 输出本地文件
 
-- 使用 pino.destination() 设置输出路径；
+- 使用 pino.destination() 设置输出路径;
 
 ```typescript
 import pino from "pino";

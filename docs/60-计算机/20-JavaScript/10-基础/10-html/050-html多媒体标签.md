@@ -10,8 +10,8 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ##### 语法格式
 
-- src：图片 url；
-- alt：图片描述信息；
+- src: 图片 url;
+- alt: 图片描述信息;
 
 ```html
 <a href="https://developer.mozilla.org">
@@ -26,11 +26,11 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ##### 响应式图片
 
-- 根据屏幕像素比选择不同分辨率的图片；
-  - srcset：url + ddr；
-- 根据设备屏幕宽度选择不同分辨率图片；
-  - srcset：url + 图片固有宽度；
-  - sizes：设置对应媒体查询；
+- 根据屏幕像素比选择不同分辨率的图片;
+  - srcset: url + ddr;
+- 根据设备屏幕宽度选择不同分辨率图片;
+  - srcset: url + 图片固有宽度;
+  - sizes: 设置对应媒体查询;
 
 ```html
 <img
@@ -52,9 +52,9 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ##### 语法格式
 
-- 嵌套 img\> 标签和多个 \<picture 标签；
-- 浏览器不支持 picture\> 显示 \<img 标签；
-- 常用于响应式图片；
+- 嵌套 \<img\> 标签和多个 \<picture\> 标签;
+- 浏览器不支持 \<picture\> 显示 \<img\> 标签;
+- 常用于响应式图片;
 
 ```html
 <picture>
@@ -66,15 +66,15 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ##### 响应式图片
 
-- 根据屏幕像素比选择不同分辨率的图片；
-  - srcset：url + ddr；
-- 根据设备屏幕宽度选择不同分辨率图片；
-  - srcset：url + 图片固有宽度；
-  - sizes：设置对应媒体查询；
-- 根据图片类型选择虚着呢图片；
-  - type：设置对应 MIME 类型；
-- 根据媒体查询选择图片；
-  - media 设置媒体查询；
+- 根据屏幕像素比选择不同分辨率的图片;
+  - srcset: url + ddr;
+- 根据设备屏幕宽度选择不同分辨率图片;
+  - srcset: url + 图片固有宽度;
+  - sizes: 设置对应媒体查询;
+- 根据图片类型选择虚着呢图片;
+  - type: 设置对应 MIME 类型;
+- 根据媒体查询选择图片;
+  - media 设置媒体查询;
 
 ```html
 <picture>
@@ -102,8 +102,8 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ### figure element
 
-- 嵌套 img\> 和 \<figcaption 标签；
-- figcaption 标签作为图片标题；
+- 嵌套 \<img\> 和 \<figcaption\> 标签;
+- figcaption 标签作为图片标题;
 
 ```html
 <figure>
@@ -116,14 +116,14 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ### audio element
 
-- 音频标签；
-- 内部使用 p 标签用于音频无法播放的情境下作为 feedback；
-- src：表示音频 URL；
-- control：表示是否启用自带控制组件；
-- autoplay：表示是否自动播放；
-- loop：是否默认循环播放；
-- muted：表示是否默认静音；
-- preload：表示是否默认缓冲；
+- 音频标签;
+- 内部使用 p 标签用于音频无法播放的情境下作为 feedback;
+- src: 表示音频 URL;
+- control: 表示是否启用自带控制组件;
+- autoplay: 表示是否自动播放;
+- loop: 是否默认循环播放;
+- muted: 表示是否默认静音;
+- preload: 表示是否默认缓冲;
 
 ```html
 <audio src="AudioTest.ogg" controls autoplay loop muted preload>
@@ -133,15 +133,15 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ### video element
 
-- 视频标签；
-- 内部使用 p 标签用于音频无法播放的情境下作为 feedback；
-- src：表示音频 URL；
-- control：表示是否启用自带控制组件；
-- autoplay：表示是否自动播放；
-- loop：是否默认循环播放；
-- muted：表示是否默认静音；
-- preload：表示是否默认缓冲；
-- poster：表示视频封面 URL；
+- 视频标签;
+- 内部使用 p 标签用于音频无法播放的情境下作为 feedback;
+- src: 表示音频 URL;
+- control: 表示是否启用自带控制组件;
+- autoplay: 表示是否自动播放;
+- loop: 是否默认循环播放;
+- muted: 表示是否默认静音;
+- preload: 表示是否默认缓冲;
+- poster: 表示视频封面 URL;
 
 ```html
 <video
@@ -161,8 +161,8 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ### 响应式多媒体
 
-- source\> 标签嵌套于 audio 和 \<video 标签内部，用于响应式多媒体；
-- 具体使用参照 picture 标签响应式图片；
+- \<source\> 标签嵌套于 \<audio\> 和 \<video\> 标签内部, 用于响应式多媒体;
+- 具体使用参照 picture 标签响应式图片;
 
 ```html
 <video controls>
@@ -177,13 +177,13 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ##### 语法格式
 
-- 字幕标签，内嵌于 audio\> 和 \<video 标签；
-- 通过使用多个 track 标签表示多个字幕；
-- default：表示默认字幕；
-- src：表示字幕 URL；
-- label：表示字幕用户界面显示文字；
-- srclang：表示字幕语言类型，kind 属性为 subtitles 必须使用；
-- kind：表示字幕类型；
+- 字幕标签, 内嵌于 \<audio\> 和 \<video\> 标签;
+- 通过使用多个 track 标签表示多个字幕;
+- default: 表示默认字幕;
+- src: 表示字幕 URL;
+- label: 表示字幕用户界面显示文字;
+- srclang: 表示字幕语言类型, kind 属性为 subtitles 必须使用;
+- kind: 表示字幕类型;
 
 ```html
 <video controls poster="/images/sample.gif">
@@ -198,8 +198,8 @@ id: adea75ae-854b-4e1c-ba5d-8387cbe0f7cb
 
 ##### kind 属性值详解
 
-- subtitles：表示用于非母语人群的字幕，默认值；
-- caption：表示用于母语人群的字幕，一般用于听障人士或静音场合。
-- descriptions：表示场景描述的字幕
-- chapters：表示电影章节的字幕；
-- metadata：表示电影元数据的字幕，不可见。
+- subtitles: 表示用于非母语人群的字幕, 默认值;
+- caption: 表示用于母语人群的字幕, 一般用于听障人士或静音场合;
+- descriptions: 表示场景描述的字幕
+- chapters: 表示电影章节的字幕;
+- metadata: 表示电影元数据的字幕, 不可见;

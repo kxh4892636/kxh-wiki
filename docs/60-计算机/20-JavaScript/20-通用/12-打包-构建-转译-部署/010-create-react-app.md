@@ -8,7 +8,7 @@ id: 116af4bf-9f75-4fa7-a0c0-0d78a1c500ff
 
 ##### create react app
 
-- 构建 react 应用程序。
+- 构建 react 应用程序;
 
 ##### 创建 app
 
@@ -25,7 +25,7 @@ npx create-react-app my-app --template typescript
 
 ##### 使用方法
 
-- 在 index.css 或 App.css 中添加以下代码；
+- 在 index.css 或 App.css 中添加以下代码;
 
 ```css
 @import-normalize; /* bring in normalize.css styles */
@@ -75,8 +75,8 @@ npx create-react-app my-app --template typescript
 
 ##### 机制
 
-- cra 根目录下的 public 为公共文件夹；
-- 其文件可通过 URL 静态访问；
+- cra 根目录下的 public 为公共文件夹;
+- 其文件可通过 URL 静态访问;
 
 ##### 语法格式
 

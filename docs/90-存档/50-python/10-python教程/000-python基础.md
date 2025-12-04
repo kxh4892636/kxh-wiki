@@ -10,14 +10,14 @@ id: 434ea10a-0d6c-4e83-933b-15480b1ecf71
 
 ##### 安装步骤
 
-- 下载安装包，
-- 勾选 `add python to path`。
+- 下载安装包,
+- 勾选 `add python to path`;
 
 ##### 检查是否安装成功
 
-- 打开系统终端；
-- 输入代码 `python`，
-- 如出现下图，则安装成功，反之安装不成功。
+- 打开系统终端;
+- 输入代码 `python`,
+- 如出现下图, 则安装成功, 反之安装不成功;
 
 ```
 PS C:\Users\KXH> python
@@ -37,15 +37,15 @@ sudo apt install python3-pip -y
 
 ## IDE/文本编辑器
 
-- pycharm；
-- vs code；
+- pycharm;
+- vs code;
 
 ## Python terminal
 
-- 打开任意终端，
-- 键入 `python`，
-- 进入 python 终端，
-- 使用 quit()/exit() 退出。
+- 打开任意终端,
+- 键入 `python`,
+- 进入 python 终端,
+- 使用 quit()/exit() 退出;
 
 ## 常用命令
 
@@ -65,7 +65,7 @@ python --version
 print("Hello Python world!")
 ```
 
-- 运行代码。
+- 运行代码;
 
 ### terminal
 
@@ -78,5 +78,5 @@ hello python world!
 
 ### Python terminal
 
-- 打开 Python terminal；
-- 输入代码；
+- 打开 Python terminal;
+- 输入代码;

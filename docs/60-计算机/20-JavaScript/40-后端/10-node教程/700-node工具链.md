@@ -56,14 +56,14 @@ pnpm add node-fetch
 
 ### 基本使用
 
-- 同 fetch；
+- 同 fetch;
 
 ### stream 相关
 
 #### 基础
 
-- node-fetch 中 body 与 fetch 不同；
-- 为 Readable stream；
+- node-fetch 中 body 与 fetch 不同;
+- 为 Readable stream;
 
 #### 读取 body
 
@@ -119,10 +119,10 @@ const data = await response.json();
 
 ### 差异
 
-- res.body 为 Readable stream；
-- 仅支持 text()/json()/blob()/arraybuffer()/buffer()；
-- 没有实现服务器端 cookie 状态管理；
-- 无法使用 bodyUsed；
+- res.body 为 Readable stream;
+- 仅支持 text()/json()/blob()/arraybuffer()/buffer();
+- 没有实现服务器端 cookie 状态管理;
+- 无法使用 bodyUsed;
 
 ## cfork
 
@@ -197,14 +197,14 @@ process.on("uncaughtException", (err) => {
 
 ### 选项
 
-- exec ：exec file path；
-- slaves ：slave process config；
-- args ：exec arguments；
-- count ：fork worker nums，default is os.cpus().length；
-- refork ：refork when worker disconnect or unexpected exit，default is true；
-- limit：limit refork times within the duration，default is 60；
-- duration：default is 60000，one minute (so，the refork times < limit / duration)；
-- autoCoverage：auto fork with istanbul when running_under_istanbul env set，default is false；
-- env：attach some environment variable key-value pairs to the worker / slave process，default to an empty object；
-- windowsHide：Hide the forked processes console window that would normally be created on Windows systems，default to false；
-- serialization：Specify the kind of serialization used for sending messages between processes.Possible values are 'json' and 'advanced'.See Advanced serialization for child_process for more details.Default：false；
+- exec : exec file path;
+- slaves : slave process config;
+- args : exec arguments;
+- count : fork worker nums, default is os.cpus().length;
+- refork : refork when worker disconnect or unexpected exit, default is true;
+- limit: limit refork times within the duration, default is 60;
+- duration: default is 60000, one minute (so, the refork times < limit / duration);
+- autoCoverage: auto fork with istanbul when running_under_istanbul env set, default is false;
+- env: attach some environment variable key-value pairs to the worker / slave process, default to an empty object;
+- windowsHide: Hide the forked processes console window that would normally be created on Windows systems, default to false;
+- serialization: Specify the kind of serialization used for sending messages between processes.Possible values are 'json' and 'advanced'.See Advanced serialization for child_process for more details.Default: false;
