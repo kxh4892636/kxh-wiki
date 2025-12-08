@@ -1,3 +1,6 @@
+---
+id: 7b64b85e-1918-4f52-8457-9898284c1dce
+---
 # langchain
 
 ## 概述
@@ -374,6 +377,11 @@ const model = new ChatOpenAI({
   temperature: 0.1,
   maxTokens: 1000,
   timeout: 30,
+});
+
+const agent = createAgent({
+  model,
+  tools: [],
 });
 ```
 
