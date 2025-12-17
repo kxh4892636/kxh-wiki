@@ -1,6 +1,7 @@
 ---
 id: 7b64b85e-1918-4f52-8457-9898284c1dce
 ---
+
 # langchain
 
 ## 概述
@@ -685,28 +686,307 @@ const handleToolErrors = createMiddleware({
 });
 ```
 
-## 记忆
+## 短期记忆
 
-### 短期记忆
+### 定义短期记忆
 
-- 使用
+#### stateSchema
+
+- 会话状态;
+- 定义 stateSchema;
 
 ```typescript
 import * as z from "zod";
-import { MessagesZodState } from "@langchain/langgraph";
-import { createAgent } from "langchain";
-import { type BaseMessage } from "@langchain/core/messages";
+import { createAgent, createMiddleware } from "langchain";
 
-const customAgentState = z.object({
-  messages: MessagesZodState.shape.messages,
-  userPreferences: z.record(z.string(), z.string()),
+const customStateSchema = z.object({
+  userId: z.string(),
+  preferences: z.record(z.string(), z.any()),
 });
 
-const CustomAgentState = createAgent({
+const checkpointer = new MemorySaver();
+const agent = createAgent({
+  model: "gpt-5",
+  stateSchema: customStateSchema,
+});
+
+// Custom state can be passed in invoke
+const result = await agent.invoke({
+  messages: [{ role: "user", content: "Hello" }],
+  userId: "user_123",
+  preferences: { theme: "dark" },
+});
+```
+
+#### checkPointer
+
+- 线程级持久性;
+- 使用 checkPointer 搭配 MemorySaver;
+- context 使用 `configurable.thread_id` 标识;
+
+```typescript
+import { createAgent } from "langchain";
+import { MemorySaver } from "@langchain/langgraph";
+
+const checkpointer = new MemorySaver();
+
+const agent = createAgent({
+  model: "claude-sonnet-4-5-20250929",
+  tools: [],
+  checkpointer,
+});
+
+await agent.invoke(
+  { messages: [{ role: "user", content: "hi! i am Bob" }] },
+  { configurable: { thread_id: "1" } }
+);
+```
+
+#### 访问短期记忆
+
+##### Tools
+
+- tool 使用 runtime 参数;
+- 可获取 context 和 state;
+
+```typescript
+const getUserInfo = tool(
+  async (_, config) => {
+    const userId = config.context?.userId;
+    return { userId };
+  },
+  {
+    name: "get_user_info",
+    description: "Get user info",
+    schema: z.object({}),
+  }
+);
+```
+
+#### 写入记忆
+
+- 使用 Command 中的 update;
+- 更新 state, context 无法更新;
+
+```typescript
+const updateUserInfo = tool(
+  async (_, config) => {
+    const userId = config.context?.userId;
+    const name = userId === "user_123" ? "John Smith" : "Unknown user";
+    return new Command({
+      update: {
+        userName: name,
+        messages: [
+          {
+            role: "tool",
+            content: "Successfully looked up user information",
+            tool_call_id: config.toolCall?.id,
+          },
+        ],
+      },
+    });
+  },
+  {
+    name: "update_user_info",
+    description: "Look up and update user info.",
+    schema: z.object({}),
+  }
+);
+```
+
+#### 最佳实践
+
+##### 裁剪消息
+
+```typescript
+const stateModifier = async (state: AgentState) => {
+  return {
+    messages: await trimMessages(state.messages, {
+      strategy: "last",
+      maxTokens: 384,
+      startOn: "human",
+      endOn: ["human", "tool"],
+      tokenCounter: (msgs) => msgs.length,
+    }),
+  };
+};
+```
+
+##### 删除消息
+
+```typescript
+const deleteMessages = (state) => {
+  const messages = state.messages;
+  if (messages.length > 2) {
+    // remove the earliest two messages
+    return {
+      messages: messages
+        .slice(0, 2)
+        .map((m) => new RemoveMessage({ id: m.id })),
+    };
+  }
+};
+```
+
+##### 总结消息
+
+- langchain 内置 summarizationMiddleware;
+
+```typescript
+const agent = createAgent({
   model: "gpt-4o",
   tools: [],
-  stateSchema: customAgentState,
+  middleware: [
+    summarizationMiddleware({
+      model: "gpt-4o-mini",
+      trigger: { tokens: 4000 },
+      keep: { messages: 20 },
+    }),
+  ],
+  checkpointer,
 });
+```
+
+## 流式输出
+
+### agent 进度
+
+- agent 抽象为若干步骤;
+- 每个步骤之后触发一个事件, 进行更新;
+- 步骤;
+  - 调用 LLM;
+  - LLM 返回 ToolMessage;
+  - LLM 响应;
+- streamMode 指定为 update;
+
+```typescript
+const getWeather = tool(
+  async ({ city }) => {
+    return `The weather in ${city} is always sunny!`;
+  },
+  {
+    name: "get_weather",
+    description: "Get weather for a given city.",
+    schema: z.object({
+      city: z.string(),
+    }),
+  }
+);
+
+const agent = createAgent({
+  model: "gpt-5-nano",
+  tools: [getWeather],
+});
+
+for await (const chunk of await agent.stream(
+  { messages: [{ role: "user", content: "what is the weather in sf" }] },
+  { streamMode: "updates" }
+)) {
+  const [step, content] = Object.entries(chunk)[0];
+  console.log(`step: ${step}`);
+  console.log(`content: ${JSON.stringify(content, null, 2)}`);
+}
+/**
+ * step: model
+ * content: {
+ *   "messages": [
+ *     {
+ *       "kwargs": {
+ *         // ...
+ *         "tool_calls": [
+ *           {
+ *             "name": "get_weather",
+ *             "args": {
+ *               "city": "San Francisco"
+ *             },
+ *             "type": "tool_call",
+ *             "id": "call_0qLS2Jp3MCmaKJ5MAYtr4jJd"
+ *           }
+ *         ],
+ *         // ...
+ *       }
+ *     }
+ *   ]
+ * }
+ * step: tools
+ * content: {
+ *   "messages": [
+ *     {
+ *       "kwargs": {
+ *         "content": "The weather in San Francisco is always sunny!",
+ *         "name": "get_weather",
+ *         // ...
+ *       }
+ *     }
+ *   ]
+ * }
+ * step: model
+ * content: {
+ *   "messages": [
+ *     {
+ *       "kwargs": {
+ *         "content": "The latest update says: The weather in San Francisco is always sunny!\n\nIf you'd like real-time details (current temperature, humidity, wind, and today's forecast), I can pull the latest data for you. Want me to fetch that?",
+ *         // ...
+ *       }
+ *     }
+ *   ]
+ * }
+ */
+```
+
+### token 流式输出
+
+- 即常见的 token 输出;
+- streamMode 指定为 messages;
+
+```typescript
+const agent = createAgent({
+  model: "gpt-4o-mini",
+  tools: [getWeather],
+});
+
+for await (const [token, metadata] of await agent.stream(
+  { messages: [{ role: "user", content: "what is the weather in sf" }] },
+  { streamMode: "messages" }
+)) {
+  console.log(`node: ${metadata.langgraph_node}`);
+  console.log(`content: ${JSON.stringify(token.contentBlocks, null, 2)}`);
+}
+```
+
+### 多种模式
+
+- streamMode 指定为数组形式;
+
+```typescript
+const getWeather = tool(
+  async (input, config: LangGraphRunnableConfig) => {
+    // Stream any arbitrary data
+    config.writer?.(`Looking up data for city: ${input.city}`);
+    // ... fetch city data
+    config.writer?.(`Acquired data for city: ${input.city}`);
+    return `It's always sunny in ${input.city}!`;
+  },
+  {
+    name: "get_weather",
+    description: "Get weather for a given city.",
+    schema: z.object({
+      city: z.string().describe("The city to get weather for."),
+    }),
+  }
+);
+
+const agent = createAgent({
+  model: "gpt-4o-mini",
+  tools: [getWeather],
+});
+
+for await (const [streamMode, chunk] of await agent.stream(
+  { messages: [{ role: "user", content: "what is the weather in sf" }] },
+  { streamMode: ["updates", "messages"] }
+)) {
+  console.log(`${streamMode}: ${JSON.stringify(chunk, null, 2)}`);
+}
 ```
 
 ## Agent 调用
