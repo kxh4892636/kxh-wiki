@@ -36,6 +36,7 @@
 		"docusaurus-mdx-checker": "^3.0.0",
 		"javascript-lemmatizer": "^0.0.2",
 		"p-limit": "^6.2.0",
+		"pnpm": "^10.26.2",
 		"tsx": "^4.20.3",
 		"typescript": "~5.6.2"
 	},
@@ -50,8 +51,5 @@
 			"last 3 firefox version",
 			"last 5 safari version"
 		]
-	},
-	"engines": {
-		"node": ">=18.0"
 	}
 }
